@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Evaluation - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Evaluation</h1>
+  <p style="color:#9aa3bd">
+    A fresh, labeled synthetic dataset (fixed seed - reproducible) run
+    through the exact same pipeline the live app uses, against a
+    throwaway in-memory database. Compares the full correlation engine
+    against an isolated-rule baseline - this project's core research
+    question (blueprint §2.1). See
+    <a href="/docs">POST /api/evaluation/run</a> for the machine-readable
+    form, and <code>docs/evaluation.md</code> for what these numbers do
+    and don't claim.
+  </p>
+
+  <form class="filters" method="get" action="/evaluation">
+    <input type="number" name="seed" value="{{ seed }}" title="random seed">
+    <input type="number" name="scenarios_per_type" value="{{ scenarios_per_type }}" title="instances per attack type">
+    <button type="submit" class="btn">Re-run</button>
+  </form>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="value">{{ metrics.totals.attack_scenarios }}</div><div class="label">attack scenarios</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.totals.benign_events }}</div><div class="label">benign events</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.totals.malicious_events }}</div><div class="label">malicious events</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.totals.atomic_alerts }}</div><div class="label">atomic alerts (Phase 2)</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.totals.incidents }}</div><div class="label">incidents (Phase 4)</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.alert_reduction_ratio or "-" }}&times;</div><div class="label">alert reduction</div></div>
+  </div>
+
+  <h2>Isolated rules vs. the correlation engine</h2>
+  <table>
+    <thead><tr><th></th><th>Recall</th><th>Precision</th><th>False positives</th><th>Avg. detection latency</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Isolated atomic rules (baseline)</td>
+        <td>{{ metrics.isolated_rule_baseline.recall }}</td>
+        <td>{{ metrics.isolated_rule_baseline.precision }}</td>
+        <td>{{ metrics.isolated_rule_baseline.false_positive_alerts }} alerts (FPR {{ metrics.isolated_rule_baseline.false_positive_rate }})</td>
+        <td>{{ metrics.isolated_rule_baseline.avg_detection_latency_seconds }}s</td>
+      </tr>
+      <tr>
+        <td>Full correlation engine</td>
+        <td>{{ metrics.correlation_engine.recall }}</td>
+        <td>{{ metrics.correlation_engine.precision }}</td>
+        <td>{{ metrics.correlation_engine.false_positive_incidents }} incidents</td>
+        <td>{{ metrics.correlation_engine.avg_detection_latency_seconds }}s</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Scenario coverage</h2>
+  <table>
+    <thead><tr><th>Attack type</th><th>Instances</th><th>Isolated-rule recall</th><th>Correlation recall</th></tr></thead>
+    <tbody>
+      {% for attack_type, cov in metrics.scenario_coverage.items() %}
+      <tr>
+        <td>{{ attack_type }}</td>
+        <td>{{ cov.instances }}</td>
+        <td>{{ cov.recall_isolated }}</td>
+        <td>{{ cov.recall_correlated }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Per-scenario detail</h2>
+  <table>
+    <thead><tr><th>Scenario</th><th>Type</th><th>Isolated?</th><th>Correlated?</th><th>Isolated latency</th><th>Correlated latency</th></tr></thead>
+    <tbody>
+      {% for p in metrics.per_scenario %}
+      <tr>
+        <td><code>{{ p.scenario_id }}</code></td>
+        <td>{{ p.attack_type }}</td>
+        <td class="{{ 'enabled-yes' if p.detected_isolated_rule else 'enabled-no' }}">{{ "yes" if p.detected_isolated_rule else "no" }}</td>
+        <td class="{{ 'enabled-yes' if p.detected_correlation else 'enabled-no' }}">{{ "yes" if p.detected_correlation else "no" }}</td>
+        <td>{{ p.latency_isolated_seconds if p.latency_isolated_seconds is not none else "-" }}</td>
+        <td>{{ p.latency_correlated_seconds if p.latency_correlated_seconds is not none else "-" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,24 @@
+id: IDT-ENTRA-006
+title: Privileged role assignment
+description: >
+  A directory audit event recorded a role/privilege assignment - the
+  mechanism a compromised identity uses to escalate itself or grant a
+  foothold to attacker-controlled principals.
+severity: high
+version: 1
+enabled: true
+source: entra
+event_type: audit
+match:
+  - op: contains
+    field: action
+    value: role
+  - op: equals
+    field: result
+    value: success
+score: 50
+scenario: A5
+signal: privilege_escalation
+attack:
+  - id: T1098
+    name: Account Manipulation

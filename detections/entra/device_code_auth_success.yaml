@@ -1,0 +1,26 @@
+id: IDT-ENTRA-003
+title: Successful device-code authentication
+description: >
+  Device-code flow is legitimate (CLI/IoT sign-in) but is also the mechanism
+  CrowdStrike reports a 15x rise in phishing abuse of (2026 Threat Hunting
+  Report) - a victim approves a code an attacker generated. Scored low on
+  its own; becomes much stronger evidence once Phase 4 correlation chains it
+  with what happens immediately after.
+severity: low
+version: 1
+enabled: true
+source: entra
+event_type: signin
+match:
+  - op: equals
+    field: auth_protocol
+    value: deviceCode
+  - op: equals
+    field: result
+    value: success
+score: 15
+scenario: A1
+signal: new_session_context
+attack:
+  - id: T1621
+    name: Multi-Factor Authentication Request Generation

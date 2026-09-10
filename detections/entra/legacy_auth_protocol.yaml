@@ -1,0 +1,24 @@
+id: IDT-ENTRA-005
+title: Legacy/basic authentication protocol used
+description: >
+  Legacy auth protocols (basic/IMAP/POP-style credential submission) can't
+  enforce modern conditional access or MFA, making them a common vector for
+  password-spray and replay attacks against stolen credentials.
+severity: medium
+version: 1
+enabled: true
+source: entra
+event_type: signin
+match:
+  - op: in
+    field: auth_protocol
+    values: [basic, legacy]
+  - op: equals
+    field: result
+    value: success
+score: 25
+scenario: A3
+signal: weak_auth_session
+attack:
+  - id: T1110
+    name: Brute Force

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Overview - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Overview</h1>
+  <p style="color:#9aa3bd">
+    Phase 1 foundation build: normalized event ingestion is live. Detections,
+    baselines, correlation, and incidents land in later phases and will
+    appear here once built.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="value">{{ total }}</div>
+      <div class="label">Total events</div>
+    </div>
+    {% for source, count in by_source.items() %}
+    <div class="stat-card">
+      <div class="value">{{ count }}</div>
+      <div class="label">{{ source }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Recent incidents</h2>
+  <table>
+    <thead>
+      <tr><th>Last event</th><th>Incident</th><th>Severity</th><th>Score</th><th>Confidence</th><th>Identity</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for i in recent_incidents %}
+      <tr>
+        <td>{{ i.last_event_at }}</td>
+        <td><a href="/incidents/{{ i.incident_id }}">{{ i.correlation_rule_title }}</a></td>
+        <td class="sev-{{ i.severity }}">{{ i.severity }}</td>
+        <td>{{ i.score }}</td>
+        <td>{{ i.confidence }}</td>
+        <td><a href="/identities/{{ i.identity_id }}">{{ i.identity_id }}</a></td>
+        <td>{{ i.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7">No incidents correlated yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Recent detections</h2>
+  <table>
+    <thead>
+      <tr><th>Time</th><th>Rule</th><th>Severity</th><th>Score</th><th>Scenario</th><th>Actor</th></tr>
+    </thead>
+    <tbody>
+      {% for m in recent_matches %}
+      <tr>
+        <td>{{ m.timestamp }}</td>
+        <td>{{ m.title }} <code>{{ m.rule_id }}</code></td>
+        <td class="sev-{{ m.severity }}">{{ m.severity }}</td>
+        <td>{{ m.score }}</td>
+        <td>{{ m.scenario or "-" }}</td>
+        <td><a href="/identities/{{ m.actor_id }}">{{ m.actor_id }}</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">No detections have fired yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Recent events</h2>
+  <table>
+    <thead>
+      <tr><th>Time</th><th>Source</th><th>Type</th><th>Action</th><th>Actor</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      {% for e in recent %}
+      <tr>
+        <td>{{ e.timestamp }}</td>
+        <td><span class="badge">{{ e.source }}</span></td>
+        <td>{{ e.event_type }}</td>
+        <td>{{ e.action }}</td>
+        <td><a href="/identities/{{ e.actor_id }}">{{ e.actor_id }}</a></td>
+        <td>{{ e.result }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">No events ingested yet. POST to <code>/api/events</code> to get started.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

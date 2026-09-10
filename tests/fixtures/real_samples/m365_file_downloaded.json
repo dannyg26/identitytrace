@@ -1,0 +1,15 @@
+{
+  "Id": "m365-a1b2c3d4",
+  "RecordType": 6,
+  "CreationTime": "2026-09-10T14:20:00",
+  "Operation": "FileDownloaded",
+  "OrganizationId": "00000000-0000-0000-0000-0000000000aa",
+  "UserType": 0,
+  "UserKey": "i:0h.f|membership|10033FFF9A1B2C3D@live.com",
+  "Workload": "SharePoint",
+  "ClientIP": "198.51.100.77",
+  "UserId": "priya.k@contoso-example.test",
+  "ObjectId": "https://contoso-example.sharepoint.com/sites/finance/Shared Documents/Q3-Budget.xlsx",
+  "ResultStatus": "Succeeded",
+  "Scope": "Online"
+}

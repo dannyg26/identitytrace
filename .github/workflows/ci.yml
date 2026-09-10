@@ -1,0 +1,69 @@
+# CI (blueprint §12.3 + §14.1's "Automated tests and CI" deliverable).
+#
+# What's NOT here, deliberately: a migration check (this project has no
+# migration tool - SQLite/dev uses Base.metadata.create_all, documented as
+# a known limitation in app/models/db.py) and a formatting check (`ruff
+# format` disagrees with a lot of already-reviewed, already-tested code's
+# hand-picked layout; enforcing it now would be a purely cosmetic mass
+# diff - `ruff check`, which catches real issues, still runs and is clean).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+        working-directory: identitytrace
+      - run: ruff check app tests
+        working-directory: identitytrace
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+        working-directory: identitytrace
+      # Schema validation for detection/correlation YAML (blueprint §12.3)
+      # is exercised as part of the suite itself - load_rules()/
+      # load_correlation_rules() against the real shipped files are
+      # asserted in tests/unit/test_detection_loader.py and
+      # test_correlation_loader.py, so a malformed rule fails CI here
+      # rather than needing a separate step.
+      - run: pytest --cov=app --cov-report=term-missing --cov-fail-under=90
+        working-directory: identitytrace
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t identitytrace .
+        working-directory: identitytrace
+      # Scenario smoke test (blueprint §12.3): boot the built image for
+      # real and confirm the API/dashboard actually come up - not just
+      # that the image builds.
+      - run: |
+          docker run -d --name identitytrace-smoke -p 8000:8000 identitytrace
+          for i in $(seq 1 20); do
+            if curl -sf http://localhost:8000/health; then break; fi
+            sleep 1
+          done
+          curl -sf http://localhost:8000/health
+          curl -sf -X POST http://localhost:8000/api/events \
+            -H "Content-Type: application/json" \
+            -d '{"source":"entra","raw":{"id":"ci-smoke-1","createdDateTime":"2026-01-01T00:00:00Z","userPrincipalName":"ci@example.test","status":{"errorCode":0},"authenticationProtocol":"deviceCode"}}'
+          curl -sf http://localhost:8000/api/events | grep -q "ci-smoke-1"
+          curl -sf http://localhost:8000/rules | grep -q "IDT-ENTRA-001"
+          docker logs identitytrace-smoke
+          docker stop identitytrace-smoke

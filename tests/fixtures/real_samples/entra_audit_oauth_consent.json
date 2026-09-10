@@ -1,0 +1,31 @@
+{
+  "id": "d4e5f6a7-0004-4000-8000-000000000004",
+  "activityDateTime": "2026-09-10T14:05:00Z",
+  "activityDisplayName": "Consent to application",
+  "category": "ApplicationManagement",
+  "operationType": "Assign",
+  "result": "success",
+  "correlationId": "e5f6a7b8-0005-4000-8000-000000000005",
+  "loggedByService": "Core Directory",
+  "initiatedBy": {
+    "user": {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "userPrincipalName": "priya.k@contoso-example.test",
+      "displayName": "Priya K."
+    }
+  },
+  "targetResources": [
+    {
+      "id": "f6a7b8c9-0006-4000-8000-000000000006",
+      "displayName": "Reporting Sync Tool",
+      "type": "Application",
+      "modifiedProperties": [
+        {
+          "displayName": "ConsentAction.Permissions",
+          "oldValue": "[]",
+          "newValue": "[\"Files.Read.All\", \"offline_access\"]"
+        }
+      ]
+    }
+  ]
+}

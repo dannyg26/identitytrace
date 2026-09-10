@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}{{ actor_id }} - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>{{ actor_id }}</h1>
+  <p style="color:#9aa3bd">
+    Behavioral baseline built from {{ profile.event_count }} prior event(s),
+    {{ profile.first_seen }} - {{ profile.last_seen }}. Deviations below are
+    flagged against this baseline as of each event's own timestamp (never
+    using events that happened after it).
+  </p>
+
+  <h2>Baseline</h2>
+  <table>
+    <tbody>
+      <tr><th style="width:180px">Known devices ({{ profile.known_devices|length }})</th>
+        <td>{% for v in profile.known_devices %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Known IPs ({{ profile.known_ips|length }})</th>
+        <td>{% for v in profile.known_ips %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Known countries ({{ profile.known_countries|length }})</th>
+        <td>{% for v in profile.known_countries %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Known apps ({{ profile.known_apps|length }})</th>
+        <td>{% for v in profile.known_apps %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Known resources ({{ profile.known_resources|length }})</th>
+        <td>{% for v in profile.known_resources %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Known auth protocols ({{ profile.known_auth_protocols|length }})</th>
+        <td>{% for v in profile.known_auth_protocols %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Usual login hours (UTC)</th>
+        <td>{% for v in profile.login_hours %}<span class="badge">{{ v }}</span>{% else %}-{% endfor %}</td></tr>
+      <tr><th>Data volume</th>
+        <td>
+          {% if profile.avg_bytes_transferred %}
+            avg {{ "%.0f"|format(profile.avg_bytes_transferred) }} bytes,
+            max {{ profile.max_bytes_transferred }} bytes
+          {% else %}no transfer history{% endif %}
+        </td></tr>
+      <tr><th>Recent sessions</th>
+        <td>{% for s in recent_sessions %}<span class="badge">{{ s }}</span>{% else %}-{% endfor %}</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prior incidents</h2>
+  <table>
+    <thead><tr><th>Last event</th><th>Incident</th><th>Severity</th><th>Score</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for i in prior_incidents %}
+      <tr>
+        <td>{{ i.last_event_at }}</td>
+        <td><a href="/incidents/{{ i.incident_id }}">{{ i.correlation_rule_title }}</a></td>
+        <td class="sev-{{ i.severity }}">{{ i.severity }}</td>
+        <td>{{ i.score }}</td>
+        <td>{{ i.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">No incidents for this identity.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Recent baseline deviations</h2>
+  <table>
+    <thead><tr><th>Time</th><th>Type</th><th>Weight</th><th>Reason</th></tr></thead>
+    <tbody>
+      {% for d in recent_deviations %}
+      <tr>
+        <td>{{ d.timestamp }}</td>
+        <td>{{ d.deviation_type }}</td>
+        <td>+{{ d.weight }}</td>
+        <td>{{ d.reason }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4">No deviations flagged yet (needs at least 3 prior events before anything can look "new").</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Recent detections</h2>
+  <table>
+    <thead><tr><th>Time</th><th>Rule</th><th>Severity</th><th>Score</th></tr></thead>
+    <tbody>
+      {% for m in recent_matches %}
+      <tr>
+        <td>{{ m.timestamp }}</td>
+        <td>{{ m.title }} <code>{{ m.rule_id }}</code></td>
+        <td class="sev-{{ m.severity }}">{{ m.severity }}</td>
+        <td>{{ m.score }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4">No detections fired yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Recent events</h2>
+  <table>
+    <thead><tr><th>Time</th><th>Source</th><th>Type</th><th>Action</th><th>Result</th></tr></thead>
+    <tbody>
+      {% for e in recent_events %}
+      <tr>
+        <td>{{ e.timestamp }}</td>
+        <td><span class="badge">{{ e.source }}</span></td>
+        <td>{{ e.event_type }}</td>
+        <td>{{ e.action }}</td>
+        <td>{{ e.result }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

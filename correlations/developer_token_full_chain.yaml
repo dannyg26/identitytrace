@@ -1,0 +1,15 @@
+id: IDT-CORR-005
+title: Developer token access escalating from repo access to bulk clone
+description: >
+  A personal access token is used for routine repo access, then reaches a
+  sensitive-named repository, then performs a bulk clone - the full
+  developer-token compromise chain (A4) from first use to data theft,
+  within 20 minutes.
+window_seconds: 1200
+enabled: true
+sequence: [repo_access, sensitive_resource_access, bulk_data_access]
+score_bonus: 30
+scenario: A4
+attack:
+  - id: T1213
+    name: Data from Information Repositories

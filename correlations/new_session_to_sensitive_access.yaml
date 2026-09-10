@@ -1,0 +1,19 @@
+id: IDT-CORR-001
+title: New session -> risky OAuth consent -> sensitive resource access
+description: >
+  The blueprint's own reference correlation example (§16.2), adapted to
+  this project's signal vocabulary: a new authentication session, a risky
+  OAuth application consent, and access to a sensitive resource, all for
+  the same identity within 15 minutes. Any one of these alone is weak
+  evidence (the project's core thesis); together, in this order, they tell
+  a much stronger story.
+window_seconds: 900
+enabled: true
+sequence: [new_session_context, risky_oauth_consent, sensitive_resource_access]
+score_bonus: 40
+scenario: A2
+attack:
+  - id: T1078
+    name: Valid Accounts
+  - id: T1550.001
+    name: "Use Alternate Authentication Material: Application Access Token"

@@ -1,0 +1,13 @@
+{
+  "Id": "m365-e5f6a7b8",
+  "RecordType": 1,
+  "CreationTime": "2026-09-10T14:25:00",
+  "Operation": "New-InboxRule",
+  "OrganizationId": "00000000-0000-0000-0000-0000000000aa",
+  "UserType": 0,
+  "UserKey": "10033FFF9A1B2C3D@contoso-example.test",
+  "Workload": "Exchange",
+  "UserId": "priya.k@contoso-example.test",
+  "ResultStatus": "PartiallySucceeded",
+  "Scope": "Online"
+}

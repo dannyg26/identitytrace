@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}{{ incident.incident_id }} - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>{{ incident.correlation_rule_title }}</h1>
+  <p><code>{{ incident.incident_id }}</code>
+    <span class="badge sev-{{ incident.severity }}">{{ incident.severity }}</span>
+    <span class="badge">score {{ incident.score }}</span>
+    <span class="badge">confidence {{ incident.confidence }}</span>
+    <span class="badge">{{ incident.scenario or "no scenario" }}</span>
+  </p>
+
+  <p style="color:#9aa3bd">
+    {{ incident.evidence_reasons|length }} related signal(s) for
+    <a href="/identities/{{ incident.identity_id }}">{{ incident.identity_id }}</a>
+    matched the &ldquo;{{ incident.correlation_rule_title }}&rdquo; pattern
+    (rule <code>{{ incident.correlation_rule_id }}</code>, {{ incident.window_seconds }}s window):
+    {{ incident.attack_chain|join(' &rarr; ')|safe }}.
+  </p>
+
+  <h2>Evidence graph</h2>
+  <p style="color:#9aa3bd;font-size:0.85rem">
+    Every identity/session/device/IP/app/resource/privilege touched by this
+    incident's evidence events, per the blueprint's §8.1 relationship
+    vocabulary. Also available as JSON at
+    <code>GET /api/incidents/{{ incident.incident_id }}/graph</code>.
+  </p>
+  <div style="overflow-x:auto">{{ graph_svg|safe }}</div>
+
+  <h2>Timeline &amp; evidence</h2>
+  <table>
+    <thead><tr><th>Time</th><th>Signal</th><th>Kind</th><th>Weight</th><th>Why</th><th>Raw event</th></tr></thead>
+    <tbody>
+      {% for e in incident.evidence_reasons %}
+      <tr>
+        <td>{{ e.timestamp }}</td>
+        <td><span class="badge">{{ e.signal_type }}</span></td>
+        <td>{{ e.kind }}</td>
+        <td>+{{ e.weight }}</td>
+        <td>{{ e.label }}</td>
+        <td><a href="/api/events/{{ e.event_id }}"><code>{{ e.event_id[:8] }}</code></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Score breakdown</h2>
+  <dl class="kv">
+    <dt>event_risk (Phase 2 rule scores)</dt><dd>+{{ incident.score_breakdown.event_risk }}</dd>
+    <dt>behavioral_deviation (Phase 3 deviation weights)</dt><dd>+{{ incident.score_breakdown.behavioral_deviation }}</dd>
+    <dt>temporal_chain_bonus (this correlation rule)</dt><dd>+{{ incident.score_breakdown.temporal_chain_bonus }}</dd>
+    <dt><strong>total score</strong></dt><dd><strong>{{ incident.score }}</strong> (clamped 0-100)</dd>
+  </dl>
+
+  <h2>Confidence breakdown</h2>
+  <dl class="kv">
+    <dt>correlation_strength</dt><dd>{{ incident.confidence_breakdown.correlation_strength }} (how tightly the chain clustered vs. the {{ incident.window_seconds }}s window)</dd>
+    <dt>evidence_quality</dt><dd>{{ incident.confidence_breakdown.evidence_quality }} (based on the rule's {{ incident.attack_chain|length }}-step sequence)</dd>
+    <dt>telemetry_completeness</dt><dd>{{ incident.confidence_breakdown.telemetry_completeness }} (fraction of evidence with raw source data)</dd>
+    <dt><strong>confidence</strong></dt><dd><strong>{{ incident.confidence }}</strong></dd>
+  </dl>
+
+  <h2>ATT&amp;CK mapping</h2>
+  <p>
+    {% for a in incident.attack_mapping %}<span class="badge">{{ a.id }} {{ a.name }}</span>{% else %}none{% endfor %}
+  </p>
+
+  <h2>Analyst disposition</h2>
+  <p>
+    <label>Status:
+      <select id="status-select">
+        {% for s in allowed_statuses %}
+        <option value="{{ s }}" {% if s == incident.status %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </p>
+  <textarea id="notes-input" rows="3" style="width:100%" placeholder="Analyst notes">{{ incident.notes or "" }}</textarea>
+  <p>
+    <button class="btn" id="save-disposition">Save disposition</button>
+    <span id="save-status" style="color:#9aa3bd"></span>
+  </p>
+  <script>
+    document.getElementById('save-disposition').addEventListener('click', async () => {
+      const status = document.getElementById('status-select').value;
+      const notes = document.getElementById('notes-input').value;
+      const statusEl = document.getElementById('save-status');
+      statusEl.textContent = 'Saving...';
+      try {
+        const resp = await fetch('/api/incidents/{{ incident.incident_id }}', {
+          method: 'PATCH',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({status, notes}),
+        });
+        statusEl.textContent = resp.ok ? 'Saved.' : 'Failed to save.';
+      } catch (err) {
+        statusEl.textContent = 'Failed to save.';
+      }
+    });
+  </script>
+{% endblock %}

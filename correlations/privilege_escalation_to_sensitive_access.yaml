@@ -1,0 +1,14 @@
+id: IDT-CORR-003
+title: Privilege escalation followed by sensitive resource access
+description: >
+  A compromised identity grants itself (or is granted) elevated privilege,
+  then uses that privilege to reach a sensitive resource within 30 minutes -
+  the escalate-then-collect pattern (A5 into A6).
+window_seconds: 1800
+enabled: true
+sequence: [privilege_escalation, sensitive_resource_access]
+score_bonus: 30
+scenario: A5
+attack:
+  - id: T1098
+    name: Account Manipulation

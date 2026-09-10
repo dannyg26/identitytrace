@@ -1,0 +1,24 @@
+id: IDT-XDOMAIN-002
+title: Successful access to a sensitive resource type
+description: >
+  Flags successful access to resource types that are inherently sensitive
+  (secrets, mailboxes, role/privilege objects) regardless of which source
+  reported the event. Intentionally broad and low-scoring on its own - it's
+  meant to contribute context that Phase 4 correlation combines with other
+  signals, not to stand alone as a high-confidence alert.
+severity: medium
+version: 1
+enabled: true
+match:
+  - op: in
+    field: resource_type
+    values: [secret, mailbox, role]
+  - op: equals
+    field: result
+    value: success
+score: 30
+scenario: A6
+signal: sensitive_resource_access
+attack:
+  - id: T1552
+    name: Unsecured Credentials

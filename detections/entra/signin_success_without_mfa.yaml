@@ -1,0 +1,27 @@
+id: IDT-ENTRA-004
+title: Interactive sign-in succeeded without MFA
+description: >
+  A regular interactive sign-in succeeded while MFA was reported absent or
+  failed - the token/session-theft scenario (A3) frequently shows no fresh
+  interactive-auth/MFA challenge at all.
+severity: medium
+version: 1
+enabled: true
+source: entra
+event_type: signin
+match:
+  - op: equals
+    field: auth_protocol
+    value: interactive
+  - op: equals
+    field: result
+    value: success
+  - op: in
+    field: mfa_result
+    values: [not_present, failure]
+score: 30
+scenario: A3
+signal: weak_auth_session
+attack:
+  - id: T1078
+    name: Valid Accounts

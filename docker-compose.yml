@@ -1,0 +1,37 @@
+# Reproducible local deployment (blueprint §5.1, §14.1). Bring up the
+# whole stack - Postgres + the app talking to it - with:
+#   docker compose up --build
+# then open http://localhost:8000
+#
+# SQLite (no Postgres) is still the default for a plain local run without
+# Docker at all - see README.md's Quick Start and .env.example. Compose is
+# for when you want the Postgres path, or a fully containerized demo.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: identitytrace
+      POSTGRES_PASSWORD: identitytrace
+      POSTGRES_DB: identitytrace
+    ports:
+      - "5432:5432"
+    volumes:
+      - identitytrace_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U identitytrace"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://identitytrace:identitytrace@postgres:5432/identitytrace
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  identitytrace_pgdata:

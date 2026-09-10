@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Incidents - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Incident queue</h1>
+  <form class="filters" method="get" action="/incidents">
+    <input type="text" name="severity" placeholder="severity (low/medium/high/critical)" value="{{ severity }}">
+    <input type="text" name="status" placeholder="status (open/investigating/resolved/false_positive)" value="{{ status }}">
+    <button type="submit">Filter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Last event</th><th>Incident</th><th>Scenario</th><th>Severity</th>
+        <th>Score</th><th>Confidence</th><th>Identity</th><th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in incidents %}
+      <tr>
+        <td>{{ i.last_event_at }}</td>
+        <td><a href="/incidents/{{ i.incident_id }}">{{ i.correlation_rule_title }}</a></td>
+        <td>{{ i.scenario or "-" }}</td>
+        <td class="sev-{{ i.severity }}">{{ i.severity }}</td>
+        <td>{{ i.score }}</td>
+        <td>{{ i.confidence }}</td>
+        <td><a href="/identities/{{ i.identity_id }}">{{ i.identity_id }}</a></td>
+        <td>{{ i.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="8">No incidents match.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

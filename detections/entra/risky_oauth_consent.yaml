@@ -1,0 +1,21 @@
+id: IDT-ENTRA-001
+title: Risky OAuth consent scope granted
+description: >
+  An OAuth application received a data-access permission scope (mail,
+  files, or directory read/write) commonly abused for mailbox or file
+  exfiltration once an identity is compromised.
+severity: medium
+version: 1
+enabled: true
+source: entra
+event_type: oauth_consent
+match:
+  - op: any_of
+    field: permissions
+    values: [Mail.Read, Mail.ReadWrite, Files.Read.All, Directory.ReadWrite.All]
+score: 35
+scenario: A2
+signal: risky_oauth_consent
+attack:
+  - id: T1550.001
+    name: "Use Alternate Authentication Material: Application Access Token"

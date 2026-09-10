@@ -1,0 +1,23 @@
+id: IDT-GITHUB-003
+title: Token accessed a sensitive-named repository
+description: >
+  A personal access token accessed a repository whose name suggests secrets,
+  infrastructure, or credential material - the "secret-oriented paths"
+  evidence the blueprint calls out for developer-token compromise (A4).
+severity: high
+version: 1
+enabled: true
+source: github
+match:
+  - op: equals
+    field: actor_type
+    value: token
+  - op: contains_any
+    field: resource_id
+    values: [secret, credential, vault, infra, deploy-keys]
+score: 50
+scenario: A4
+signal: sensitive_resource_access
+attack:
+  - id: T1552
+    name: Unsecured Credentials

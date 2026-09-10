@@ -1,0 +1,30 @@
+{
+  "id": "a7b8c9d0-0007-4000-8000-000000000007",
+  "activityDateTime": "2026-09-10T14:12:00Z",
+  "activityDisplayName": "Add member to role",
+  "category": "RoleManagement",
+  "operationType": "Assign",
+  "result": "success",
+  "correlationId": "b8c9d0e1-0008-4000-8000-000000000008",
+  "loggedByService": "Core Directory",
+  "initiatedBy": {
+    "user": {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "userPrincipalName": "priya.k@contoso-example.test",
+      "displayName": "Priya K."
+    }
+  },
+  "targetResources": [
+    {
+      "id": "c9d0e1f2-0009-4000-8000-000000000009",
+      "displayName": "Global Administrator",
+      "type": "Role"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "displayName": "Priya K.",
+      "type": "User",
+      "userPrincipalName": "priya.k@contoso-example.test"
+    }
+  ]
+}

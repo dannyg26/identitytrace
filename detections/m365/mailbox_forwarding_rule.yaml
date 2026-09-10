@@ -1,0 +1,21 @@
+id: IDT-M365-001
+title: Mailbox forwarding/inbox rule created
+description: >
+  A new inbox rule or mailbox configuration change was made - the classic
+  Business Email Compromise persistence technique (silently forwarding or
+  hiding a victim's mail) that keeps working long after a password reset.
+severity: high
+version: 1
+enabled: true
+source: m365
+event_type: mailbox_rule_change
+match:
+  - op: equals
+    field: result
+    value: success
+score: 45
+scenario: A6
+signal: mailbox_persistence
+attack:
+  - id: T1114.003
+    name: "Email Collection: Email Forwarding Rule"

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Detections - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Detection library</h1>
+  <p style="color:#9aa3bd">
+    {{ rules|length }} atomic (single-event) detection rules loaded. Each is
+    versioned YAML under <code>detections/</code>, evaluated against every
+    ingested event. See <a href="/docs" style="color:#8fb3ff">/docs</a> for
+    the machine-readable form at <code>GET /api/detections</code>.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Title</th><th>Severity</th><th>Score</th><th>Scenario</th>
+        <th>Source</th><th>ATT&CK</th><th>Version</th><th>Enabled</th><th>Last triggered</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rule in rules %}
+      <tr>
+        <td><code>{{ rule.id }}</code></td>
+        <td>{{ rule.title }}</td>
+        <td class="sev-{{ rule.severity.value }}">{{ rule.severity.value }}</td>
+        <td>{{ rule.score }}</td>
+        <td>{{ rule.scenario or "-" }}</td>
+        <td>{{ rule.source or "any" }}</td>
+        <td>
+          {% for a in rule.attack %}
+            <span class="badge">{{ a.id }}</span>
+          {% endfor %}
+        </td>
+        <td>v{{ rule.version }}</td>
+        <td class="{{ 'enabled-yes' if rule.enabled else 'enabled-no' }}">
+          {{ "yes" if rule.enabled else "no" }}
+        </td>
+        <td>{{ last_triggered.get(rule.id) or "never" }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="10">No detection rules loaded.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

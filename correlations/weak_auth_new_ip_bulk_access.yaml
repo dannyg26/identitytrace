@@ -1,0 +1,16 @@
+id: IDT-CORR-004
+title: Weak-auth session from a new IP escalating to bulk data access
+description: >
+  The session/token-theft pattern (A3): a sign-in with no fresh
+  interactive-auth/MFA challenge, from an IP address the identity has
+  never used before, followed quickly (10 minutes) by bulk data movement -
+  CrowdStrike's reported pattern of compromised access moving to data
+  theft within minutes.
+window_seconds: 600
+enabled: true
+sequence: [weak_auth_session, new_ip, bulk_data_access]
+score_bonus: 35
+scenario: A3
+attack:
+  - id: T1550
+    name: Use Alternate Authentication Material

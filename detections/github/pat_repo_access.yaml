@@ -1,0 +1,25 @@
+id: IDT-GITHUB-001
+title: Personal access token used for repository access
+description: >
+  Flags any repository access or clone performed via a personal access
+  token rather than an interactive session, establishing evidence for
+  developer-token compromise (A4). Low severity alone - it's normal
+  developer behavior - but a required building block for the bulk-clone and
+  sensitive-repo rules below and for Phase 4 correlation.
+severity: low
+version: 1
+enabled: true
+source: github
+match:
+  - op: equals
+    field: actor_type
+    value: token
+  - op: in
+    field: event_type
+    values: [repo_access, repo_clone]
+score: 15
+scenario: A4
+signal: repo_access
+attack:
+  - id: T1550
+    name: Use Alternate Authentication Material

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Identities - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Identities</h1>
+  <p style="color:#9aa3bd">Every actor_id seen so far, with a link to its behavioral baseline.</p>
+
+  <table>
+    <thead>
+      <tr><th>Actor</th><th>Events</th><th>Last seen</th></tr>
+    </thead>
+    <tbody>
+      {% for i in identities %}
+      <tr>
+        <td><a href="/identities/{{ i.actor_id }}">{{ i.actor_id }}</a></td>
+        <td>{{ i.event_count }}</td>
+        <td>{{ i.last_seen }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">No identities seen yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

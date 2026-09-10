@@ -1,0 +1,18 @@
+{
+  "_document_id": "gh-a1b2c3d4e5f6",
+  "@timestamp": 1757516531000,
+  "action": "git.clone",
+  "actor": "dev-jsmith",
+  "actor_id": 4829103,
+  "actor_location": {
+    "country_name": "Russian Federation"
+  },
+  "actor_ip": "198.51.100.77",
+  "org": "acme-corp",
+  "repo": "acme-corp/payments-secrets",
+  "user_agent": "git/2.42.0",
+  "hashed_token": "5f4dcc3b5aa765d61d8327deb882cf99",
+  "programmatic_access_type": "Personal access token (classic)",
+  "token_id": "1234567",
+  "token_scopes": ["repo", "read:org"]
+}

@@ -1,0 +1,24 @@
+id: IDT-GITHUB-002
+title: Large repository clone via personal access token
+description: >
+  A token-driven clone transferred an unusually large volume of data in one
+  event - consistent with bulk repository exfiltration rather than routine
+  developer pull/clone activity.
+severity: high
+version: 1
+enabled: true
+source: github
+event_type: repo_clone
+match:
+  - op: equals
+    field: actor_type
+    value: token
+  - op: gt
+    field: bytes_transferred
+    value: 104857600  # 100 MB
+score: 55
+scenario: A4
+signal: bulk_data_access
+attack:
+  - id: T1213
+    name: Data from Information Repositories

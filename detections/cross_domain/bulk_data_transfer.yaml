@@ -1,0 +1,21 @@
+id: IDT-XDOMAIN-001
+title: Bulk data transfer regardless of source
+description: >
+  A single event moved an unusually large amount of data, whether that's a
+  SharePoint/OneDrive download, S3 object read, or repository clone. Volume
+  anomaly is one of the blueprint's core signals for SaaS/cloud data theft
+  (A6) and is deliberately source-agnostic so it covers sources added in
+  Phase 6 without a new rule.
+severity: high
+version: 1
+enabled: true
+match:
+  - op: gt
+    field: bytes_transferred
+    value: 262144000  # 250 MB
+score: 50
+scenario: A6
+signal: bulk_data_access
+attack:
+  - id: T1030
+    name: Data Transfer Size Limits

@@ -1,0 +1,17 @@
+id: IDT-CORR-002
+title: New device and country followed by bulk data access
+description: >
+  An identity authenticates from a device and country it has never used
+  before, then moves a large volume of data - the device-code/session
+  hijacking pattern (A1) escalating straight into exfiltration (A6),
+  within 30 minutes.
+window_seconds: 1800
+enabled: true
+sequence: [new_device, new_country, bulk_data_access]
+score_bonus: 35
+scenario: A1
+attack:
+  - id: T1078
+    name: Valid Accounts
+  - id: T1030
+    name: Data Transfer Size Limits

@@ -1,0 +1,23 @@
+id: IDT-ENTRA-002
+title: OAuth consent grants offline_access (long-lived refresh token)
+description: >
+  offline_access lets an application obtain refresh tokens and keep working
+  long after the user's session ends - a favorite persistence mechanism in
+  malicious-consent attacks (Mandiant M-Trends 2026). Scored separately from
+  the general risky-scope rule because this scope alone is the difference
+  between a one-time grant and durable, silent access.
+severity: high
+version: 1
+enabled: true
+source: entra
+event_type: oauth_consent
+match:
+  - op: any_of
+    field: permissions
+    values: [offline_access]
+score: 45
+scenario: A2
+signal: risky_oauth_consent
+attack:
+  - id: T1528
+    name: Steal Application Access Token

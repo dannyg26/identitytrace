@@ -1,0 +1,21 @@
+id: IDT-GITHUB-004
+title: Personal access token carries admin-level org scope
+description: >
+  A token event (creation or use) carried an org-admin or repo-deletion
+  scope - far more privilege than routine clone/pull activity needs, and
+  disproportionate blast radius if the token is stolen.
+severity: high
+version: 1
+enabled: true
+source: github
+event_type: token_event
+match:
+  - op: any_of
+    field: permissions
+    values: ["admin:org", delete_repo, "admin:enterprise"]
+score: 45
+scenario: A4
+signal: privilege_escalation
+attack:
+  - id: T1098
+    name: Account Manipulation

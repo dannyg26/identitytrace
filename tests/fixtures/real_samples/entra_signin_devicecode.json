@@ -1,0 +1,37 @@
+{
+  "id": "a1b2c3d4-0001-4000-8000-000000000001",
+  "createdDateTime": "2026-09-10T14:02:11Z",
+  "userPrincipalName": "priya.k@contoso-example.test",
+  "userId": "00000000-0000-0000-0000-000000000101",
+  "userDisplayName": "Priya K.",
+  "appId": "1b730954-1685-4b74-9bfd-dac224a7b894",
+  "appDisplayName": "Microsoft Authentication Broker",
+  "ipAddress": "198.51.100.42",
+  "clientAppUsed": "Mobile Apps and Desktop clients",
+  "correlationId": "b2c3d4e5-0002-4000-8000-000000000002",
+  "isInteractive": true,
+  "authenticationProtocol": "deviceCode",
+  "authenticationRequirement": "singleFactorAuthentication",
+  "conditionalAccessStatus": "notApplied",
+  "deviceDetail": {
+    "deviceId": "c3d4e5f6-0003-4000-8000-000000000003",
+    "displayName": "UNKNOWN-DEVICE",
+    "operatingSystem": "Windows10",
+    "browser": "",
+    "isCompliant": false,
+    "isManaged": false,
+    "trustType": ""
+  },
+  "location": {
+    "city": "Unknown",
+    "state": "Unknown",
+    "countryOrRegion": "RU"
+  },
+  "resourceDisplayName": "Microsoft Graph",
+  "resourceId": "00000003-0000-0000-c000-000000000000",
+  "riskLevelDuringSignIn": "hidden",
+  "riskState": "none",
+  "status": {
+    "errorCode": 0
+  }
+}
