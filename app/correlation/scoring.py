@@ -57,6 +57,16 @@ def severity_for_score(score: int) -> str:
     return "low"  # pragma: no cover - unreachable, floor 0 always matches
 
 
+def score_ceiling_for_severity(severity: str) -> int:
+    """Highest score that still maps to `severity` (one below the next band's
+    floor; 100 for the top band)."""
+    floors = [floor for floor, _ in SEVERITY_BANDS]
+    for i, (_, label) in enumerate(SEVERITY_BANDS):
+        if label == severity:
+            return 100 if i == 0 else floors[i - 1] - 1
+    raise ValueError(f"unknown severity {severity!r}")
+
+
 def compute_incident_score(
     event_risk: int, behavioral_deviation: int, temporal_chain_bonus: int
 ) -> int:

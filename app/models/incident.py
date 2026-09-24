@@ -33,6 +33,13 @@ class IncidentRecord(Base):
     score_breakdown: Mapped[dict] = mapped_column(JSON, default=dict)
     confidence_breakdown: Mapped[dict] = mapped_column(JSON, default=dict)
     evidence_reasons: Mapped[list] = mapped_column(JSON, default=list)
+    # "attack_chain" | "workflow_review" (see app/correlation/schema.py).
+    # NULL on incidents stored before this column existed = attack_chain.
+    classification: Mapped[Optional[str]] = mapped_column(String, nullable=True, index=True)
+    # Why the severity is what it is for a workflow_review incident: the cap,
+    # whether it applied, and any independent escalation evidence. NULL for
+    # attack_chain incidents.
+    escalation: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
     status: Mapped[str] = mapped_column(String, default="open", index=True)
     analyst_disposition: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     notes: Mapped[Optional[str]] = mapped_column(String, nullable=True)
@@ -58,6 +65,8 @@ class IncidentRecord(Base):
             "score_breakdown": self.score_breakdown,
             "confidence_breakdown": self.confidence_breakdown,
             "evidence_reasons": self.evidence_reasons,
+            "classification": self.classification or "attack_chain",
+            "escalation": self.escalation,
             "status": self.status,
             "analyst_disposition": self.analyst_disposition,
             "notes": self.notes,
@@ -82,6 +91,8 @@ _MUTABLE_FIELDS = (
     "score_breakdown",
     "confidence_breakdown",
     "evidence_reasons",
+    "classification",
+    "escalation",
 )
 
 

@@ -1,0 +1,71 @@
+{
+  "claim": "Both IDT-CORR-006 incidents (real attack + benign twin) are unchanged after ingesting the revocation experiment - byte-identical scores, severities and evidence to the pre-experiment snapshot.",
+  "incidents": [
+    {
+      "incident_id": "IDT-CORR-006:evt-demo-twin-block",
+      "identity_id": "idt-test-user1@yourtenant.onmicrosoft.com",
+      "severity": "high",
+      "score": 75,
+      "confidence": 0.81,
+      "classification": "workflow_review",
+      "score_breakdown": {
+        "event_risk": 65,
+        "behavioral_deviation": 0,
+        "temporal_chain_bonus": 10
+      },
+      "escalation": {
+        "severity_cap": "high",
+        "escalated": false,
+        "cap_applied": false,
+        "qualifying_deviation_types": [
+          "new_country",
+          "new_device"
+        ],
+        "evidence": []
+      },
+      "evidence_ids": [
+        "evt-demo-twin-block",
+        "evt-demo-twin-grant",
+        "evt-demo-twin-success"
+      ],
+      "attack_chain": [
+        "admin_consent_required",
+        "risky_oauth_consent",
+        "new_session_context"
+      ]
+    },
+    {
+      "incident_id": "IDT-CORR-006:evt-demo-attack-block",
+      "identity_id": "idt-test-user3@yourtenant.onmicrosoft.com",
+      "severity": "high",
+      "score": 75,
+      "confidence": 0.85,
+      "classification": "workflow_review",
+      "score_breakdown": {
+        "event_risk": 65,
+        "behavioral_deviation": 0,
+        "temporal_chain_bonus": 10
+      },
+      "escalation": {
+        "severity_cap": "high",
+        "escalated": false,
+        "cap_applied": false,
+        "qualifying_deviation_types": [
+          "new_country",
+          "new_device"
+        ],
+        "evidence": []
+      },
+      "evidence_ids": [
+        "evt-demo-attack-block",
+        "evt-demo-attack-grant",
+        "evt-demo-attack-success"
+      ],
+      "attack_chain": [
+        "admin_consent_required",
+        "risky_oauth_consent",
+        "new_session_context"
+      ]
+    }
+  ]
+}

@@ -8,8 +8,10 @@ from app.correlation.engine import CorrelationHit
 from app.correlation.scoring import (
     compute_confidence,
     compute_incident_score,
+    score_ceiling_for_severity,
     severity_for_score,
 )
+from app.models.baseline import BaselineDeviationRecord
 from app.models.event import EventRecord
 
 
@@ -23,13 +25,65 @@ def _dedupe_preserve_order(items: list[str]) -> list[str]:
     return out
 
 
+def _escalation_evidence(db: Session, hit: CorrelationHit, event_ids: list[str]) -> list[dict]:
+    """Baseline deviations on the chain's own events whose type the rule
+    names as independent escalation evidence. Deviations already part of the
+    matched sequence are skipped - they are scored as chain signals."""
+    rule = hit.rule
+    if not rule.escalation_deviations:
+        return []
+    in_chain = {(s.event_id, s.signal_type) for s in hit.matched_signals if s.kind == "deviation"}
+    rows = (
+        db.query(BaselineDeviationRecord)
+        .filter(BaselineDeviationRecord.event_id.in_(event_ids))
+        .filter(BaselineDeviationRecord.deviation_type.in_(rule.escalation_deviations))
+        .order_by(BaselineDeviationRecord.timestamp, BaselineDeviationRecord.deviation_type)
+        .all()
+    )
+    return [
+        {
+            "event_id": r.event_id,
+            "actor_id": r.actor_id,
+            "deviation_type": r.deviation_type,
+            "weight": r.weight,
+            "reason": r.reason,
+        }
+        for r in rows
+        if (r.event_id, r.deviation_type) not in in_chain
+    ]
+
+
 def build_incident_payload(db: Session, hit: CorrelationHit) -> dict:
     chain = hit.matched_signals
     rule = hit.rule
 
     event_risk = sum(s.weight for s in chain if s.kind == "detection")
     behavioral_deviation = sum(s.weight for s in chain if s.kind == "deviation")
-    score = compute_incident_score(event_risk, behavioral_deviation, rule.score_bonus)
+    event_ids = _dedupe_preserve_order([s.event_id for s in chain])
+
+    escalation: dict | None = None
+    score_breakdown_extra: dict = {}
+    if rule.classification == "workflow_review":
+        evidence = _escalation_evidence(db, hit, event_ids)
+        behavioral_deviation += sum(e["weight"] for e in evidence)
+        score = compute_incident_score(event_risk, behavioral_deviation, rule.score_bonus)
+        escalated = bool(evidence)
+        cap_applied = False
+        if not escalated:
+            ceiling = score_ceiling_for_severity(rule.severity_cap)
+            if score > ceiling:
+                score_breakdown_extra["uncapped_score"] = score
+                score = ceiling
+                cap_applied = True
+        escalation = {
+            "severity_cap": rule.severity_cap,
+            "escalated": escalated,
+            "cap_applied": cap_applied,
+            "qualifying_deviation_types": list(rule.escalation_deviations),
+            "evidence": evidence,
+        }
+    else:
+        score = compute_incident_score(event_risk, behavioral_deviation, rule.score_bonus)
     severity = severity_for_score(score)
 
     span_seconds = (chain[-1].timestamp - chain[0].timestamp).total_seconds()
@@ -38,7 +92,6 @@ def build_incident_payload(db: Session, hit: CorrelationHit) -> dict:
     )
     evidence_quality = min(1.0, len(rule.sequence) / 4)
 
-    event_ids = _dedupe_preserve_order([s.event_id for s in chain])
     records = {
         r.event_id: r
         for r in db.query(EventRecord).filter(EventRecord.event_id.in_(event_ids)).all()
@@ -67,7 +120,10 @@ def build_incident_payload(db: Session, hit: CorrelationHit) -> dict:
             "event_risk": event_risk,
             "behavioral_deviation": behavioral_deviation,
             "temporal_chain_bonus": rule.score_bonus,
+            **score_breakdown_extra,
         },
+        "classification": rule.classification,
+        "escalation": escalation,
         "confidence_breakdown": {
             "correlation_strength": round(correlation_strength, 2),
             "evidence_quality": round(evidence_quality, 2),
@@ -77,6 +133,10 @@ def build_incident_payload(db: Session, hit: CorrelationHit) -> dict:
             {
                 "signal_type": s.signal_type,
                 "event_id": s.event_id,
+                # Who performed this step - essential on cross-identity
+                # chains, where the consent step belongs to the admin, not
+                # to the incident's requesting identity.
+                "actor_id": s.actor_id,
                 "kind": s.kind,
                 "label": s.label,
                 "weight": s.weight,
@@ -84,6 +144,7 @@ def build_incident_payload(db: Session, hit: CorrelationHit) -> dict:
                 # column (stdlib json.dumps, no datetime support), unlike
                 # first_event_at/last_event_at which are real DateTime columns.
                 "timestamp": s.timestamp.isoformat(),
+                **({"entity": s.entity} if s.entity else {}),
             }
             for s in chain
         ],

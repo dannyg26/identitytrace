@@ -21,8 +21,8 @@ def _write(tmp_path, name, content):
 
 def test_loads_the_real_shipped_rule_set_without_error():
     rules = load_rules()
-    assert len(rules) == 13
-    assert len({r.id for r in rules}) == 13  # all ids unique
+    assert len(rules) == 14
+    assert len({r.id for r in rules}) == 14  # all ids unique
 
 
 def test_load_valid_rule_from_temp_dir(tmp_path):

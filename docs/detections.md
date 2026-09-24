@@ -28,10 +28,11 @@ have a human-readable reason").
 |---|---|---|---|---|---|
 | IDT-ENTRA-001 | Risky OAuth consent scope granted | medium | 35 | A2 | T1550.001 |
 | IDT-ENTRA-002 | OAuth consent grants offline_access | high | 45 | A2 | T1528 |
-| IDT-ENTRA-003 | Successful device-code authentication | low | 15 | A1 | T1621 |
+| IDT-ENTRA-003 | Successful native-client (non-browser) sign-in - `nativeClient` (derived from `clientAppUsed`) or legacy `deviceCode`; v3, see evaluation.md | low | 15 | A1 | T1621 |
 | IDT-ENTRA-004 | Interactive sign-in succeeded without MFA | medium | 30 | A3 | T1078 |
 | IDT-ENTRA-005 | Legacy/basic authentication protocol used | medium | 25 | A3 | T1110 |
 | IDT-ENTRA-006 | Privileged role assignment | high | 50 | A5 | T1098 |
+| IDT-ENTRA-007 | Sign-in blocked pending admin consent (`errorCode 90094` only) | low | 15 | A2 | T1550.001 |
 | IDT-GITHUB-001 | PAT used for repository access | low | 15 | A4 | T1550 |
 | IDT-GITHUB-002 | Large repository clone via PAT | high | 55 | A4 | T1213 |
 | IDT-GITHUB-003 | Token accessed a sensitive-named repository | high | 50 | A4 | T1552 |
@@ -42,7 +43,7 @@ have a human-readable reason").
 
 Every scenario in the threat-model catalog (A1-A6, see
 [`threat-model.md`](threat-model.md)) has at least one rule feeding it - the
-foundation Phase 4 correlation will chain into multi-signal incidents.
+foundation used by temporal correlation to form multi-signal incidents.
 
 ## Testing
 
@@ -65,6 +66,21 @@ foundation Phase 4 correlation will chain into multi-signal incidents.
 3. Restart the app (rules load once at startup, by design - see
    `app/api/detections.py`).
 
+## Consent scopes are scored on what the grant added
+
+`IDT-ENTRA-001` and `IDT-ENTRA-002` read `permissions`. For a real
+`DelegatedPermissionGrant.Scope` change, that list is the scopes the event
+*added* (`newValue` minus `oldValue`), not the cumulative scope the grant now
+holds - otherwise every later grant would re-fire on permissions granted in
+earlier events (e.g. `offline_access`). The cumulative value remains in the
+event's `raw_event_ref`. See docs/evaluation.md, "A2 Benign Twin — Detection
+vs Intent".
+
+An Entra `Remove delegated permission grant` record (the bookkeeping half of an
+update, logged ~1 ms after its `Add` with identical values) grants nothing and carries no
+permissions, so one consent action is scored once. See docs/evaluation.md, "`Remove
+delegated permission grant`: an update artifact, not a revocation".
+
 ## Signal tagging for correlation
 
 Each rule carries an optional `signal:` field naming the semantic event
@@ -77,4 +93,4 @@ the rule's own id if untagged. See [`correlation.md`](correlation.md).
 Rules still score independently at the atomic level - correlation (Phase 4)
 chains matches across events into incidents, but nothing here suppresses
 duplicate/expected noise at the rule level itself. Documented
-false-positive exceptions are a Phase 8 concern.
+false-positive exceptions remain an accepted v1.0 limitation.

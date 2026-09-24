@@ -76,7 +76,7 @@ def test_ingest_query_trace_and_detect(client):
         "location": {"countryOrRegion": "US"},
         "deviceDetail": {"deviceId": "device-1", "browser": "Chrome 120"},
         "status": {"errorCode": 0},
-        "authenticationProtocol": "deviceCode",
+        "clientAppUsed": "Mobile Apps and Desktop clients",  # real shape - authenticationProtocol is never populated
         "sessionId": "sess-1",
     }
     github_raw = {
@@ -161,7 +161,7 @@ def test_replaying_the_same_event_does_not_duplicate_matches(client):
         "userPrincipalName": "bob@example.test",
         "appId": "app-1",
         "status": {"errorCode": 0},
-        "authenticationProtocol": "deviceCode",
+        "clientAppUsed": "Mobile Apps and Desktop clients",  # real shape - authenticationProtocol is never populated
     }
     payload = {"source": "entra", "raw": raw}
 
@@ -201,7 +201,7 @@ def test_detection_library_is_listed(client):
     resp = client.get("/api/detections")
     assert resp.status_code == 200
     rules = resp.json()
-    assert len(rules) == 13
+    assert len(rules) == 14
     ids = {r["id"] for r in rules}
     assert "IDT-ENTRA-001" in ids
     assert all(r["last_triggered"] is None for r in rules)  # nothing ingested yet
@@ -258,3 +258,52 @@ def test_evaluation_api_and_dashboard(client):
 
     live_events_after = client.get("/api/events").json()
     assert live_events_before == live_events_after
+
+
+def test_alerts_api_and_dashboard(client):
+    # IDT-XDOMAIN-001 (bulk transfer) is "high" severity - qualifies as an alert.
+    high_sev = client.post(
+        "/api/events",
+        json={
+            "timestamp": "2026-09-09T09:00:00Z",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "actor_id": "alerts-test@example.test",
+            "actor_type": "user",
+            "bytes_transferred": 500_000_000,
+        },
+    )
+    assert high_sev.status_code == 201
+
+    # IDT-ENTRA-003 (device-code signin) is "low" severity - must NOT
+    # appear in /alerts even though it's a real, correctly-fired match.
+    low_sev = client.post(
+        "/api/events",
+        json={
+            "source": "entra",
+            "raw": {
+                "id": "alerts-low-sev",
+                "createdDateTime": "2026-09-09T09:05:00Z",
+                "userPrincipalName": "alerts-test@example.test",
+                "status": {"errorCode": 0},
+                "clientAppUsed": "Mobile Apps and Desktop clients",  # real shape - authenticationProtocol is never populated
+            },
+        },
+    )
+    assert low_sev.status_code == 201
+
+    alerts = client.get("/api/alerts").json()
+    rule_ids = {a["rule_id"] for a in alerts}
+    assert "IDT-XDOMAIN-001" in rule_ids
+    assert "IDT-ENTRA-003" not in rule_ids
+    assert all(a["severity"] in ("high", "critical") for a in alerts)
+
+    filtered = client.get("/api/alerts", params={"actor_id": "alerts-test@example.test"}).json()
+    assert len(filtered) == 1
+
+    page = client.get("/alerts")
+    assert page.status_code == 200
+    assert "IDT-XDOMAIN-001" in page.text
+    assert "IDT-ENTRA-003" not in page.text

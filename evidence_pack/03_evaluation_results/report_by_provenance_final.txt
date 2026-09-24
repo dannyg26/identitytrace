@@ -1,0 +1,25 @@
+======================================================================
+REAL VENDOR TELEMETRY RESULTS (not synthetic - see docs/evaluation.md
+for the always-synthetic harness numbers; these are kept separate)
+======================================================================
+
+real_benign exports: 7
+  real_data\entra_benign_day1_audits.json: 144 events, 4 false-positive alerts, 0 false-positive incidents
+  real_data\entra_benign_day1_signins.json: 34 events, 5 false-positive alerts, 0 false-positive incidents
+  real_data\entra_revocation_audits.json: 9 events, 0 false-positive alerts, 0 false-positive incidents
+  real_data\entra_revocation_signins.json: 2 events, 1 false-positive alerts, 0 false-positive incidents
+  real_data\entra_twin_audits.json: 3 events, 1 false-positive alerts, 1 false-positive incidents
+  real_data\entra_twin_signins.json: 6 events, 4 false-positive alerts, 1 false-positive incidents
+  real_data\github_benign.json: 11 events, 2 false-positive alerts, 0 false-positive incidents
+  TOTAL: 209 events, 17 FP alerts, 2 FP incidents (FP incident rate: 0.286 per export)
+
+real_controlled_attack exports: 7
+  real_data\entra_a2_attack2_signins.json (A2): isolated=detected, correlated=not correlated
+  real_data\entra_a2_attack_audits.json (A2): isolated=detected, correlated=not correlated
+  real_data\entra_a2_attack_signins.json (A2): isolated=detected, correlated=not correlated
+  real_data\entra_a2_user3_audits.json (A2): isolated=detected, correlated=detected
+  real_data\entra_a2_user3_signins.json (A2): isolated=detected, correlated=detected
+  real_data\github_a4_attack.json (A4): isolated=detected, correlated=not correlated
+  real_data\github_a4_attack2.json (A4): isolated=detected, correlated=not correlated
+  Isolated-rule recall on real attacks:    100.0% (7 runs)
+  Correlation-engine recall on real attacks: 28.6% (7 runs)

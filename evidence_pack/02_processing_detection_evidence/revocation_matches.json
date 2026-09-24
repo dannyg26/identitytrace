@@ -1,0 +1,68 @@
+{
+  "experiment": "real revocation of Mail.ReadWrite, 2026-09-21",
+  "grant_related_event_ids": [
+    "Directory_corr-demo-a_QQ8HW_69993632",
+    "Directory_corr-demo-a_QQ8HW_69993645",
+    "Directory_corr-demo-b_SU6R0_73607247",
+    "Directory_corr-demo-b_SU6R0_73607260",
+    "Directory_corr-demo-c_JN5C4_9841864",
+    "Directory_corr-demo-c_JN5C4_9841877",
+    "Directory_corr-demo-d_SU6R0_73616025",
+    "Directory_corr-demo-d_SU6R0_73616038"
+  ],
+  "events_processed": [
+    {
+      "event_id": "Directory_corr-demo-a_QQ8HW_69993632",
+      "timestamp": "2026-09-21 17:45:15.705697",
+      "action": "Add delegated permission grant",
+      "permissions_extracted": [
+        "DelegatedPermissionGrant.ReadWrite.All"
+      ]
+    },
+    {
+      "event_id": "Directory_corr-demo-a_QQ8HW_69993645",
+      "timestamp": "2026-09-21 17:45:15.706698",
+      "action": "Remove delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-b_SU6R0_73607247",
+      "timestamp": "2026-09-21 17:45:19.430017",
+      "action": "Add delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-b_SU6R0_73607260",
+      "timestamp": "2026-09-21 17:45:19.432016",
+      "action": "Remove delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-c_JN5C4_9841864",
+      "timestamp": "2026-09-21 17:46:19.565472",
+      "action": "Add delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-c_JN5C4_9841877",
+      "timestamp": "2026-09-21 17:46:19.567471",
+      "action": "Remove delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-d_SU6R0_73616025",
+      "timestamp": "2026-09-21 17:46:20.365398",
+      "action": "Add delegated permission grant",
+      "permissions_extracted": []
+    },
+    {
+      "event_id": "Directory_corr-demo-d_SU6R0_73616038",
+      "timestamp": "2026-09-21 17:46:20.367399",
+      "action": "Remove delegated permission grant",
+      "permissions_extracted": []
+    }
+  ],
+  "detection_matches_produced": [],
+  "detection_matches_count": 0,
+  "claim": "IdentityTrace processed all 8 grant Add/Remove events (4 pairs: 1 helper-scope growth, 1 Mail.ReadWrite reduction, 1 helper-scope reduction) and produced ZERO consent alerts, despite the grant still holding Files.Read.All, Mail.Read and offline_access after the reduction."
+}

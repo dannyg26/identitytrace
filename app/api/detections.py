@@ -1,8 +1,15 @@
 """Detection library and match query API.
 
 - GET /detections    - the loaded rule library (blueprint §9.2/§9.1 "Detection library").
-- GET /matches       - detection matches, filterable/paginated.
+- GET /matches       - every detection match, filterable/paginated.
 - GET /matches/{id}  - a single match.
+- GET /alerts        - Phase 9 #9: high/critical-severity matches as their
+  own actionable queue - a standalone atomic signal (e.g. A6's bulk
+  transfer, with no correlation rule by design - see
+  docs/evaluation.md) is still analyst-actionable on its own. Not a
+  replacement for /matches (which stays the complete record) or
+  /incidents (correlated, multi-signal evidence) - a third, narrower view
+  for "what, by itself, is already worth a look."
 
 Rules are loaded once at startup (see app/main.py) and passed in via a small
 module-level registry rather than re-reading YAML on every request - rule
@@ -101,3 +108,34 @@ def get_match(match_id: str, db: Session = Depends(get_db)) -> dict:
     if record is None:
         raise HTTPException(status_code=404, detail=f"match '{match_id}' not found")
     return record.to_dict()
+
+
+@router.get("/alerts")
+def list_alerts(
+    actor_id: Optional[str] = None,
+    since: Optional[datetime] = None,
+    until: Optional[datetime] = None,
+    limit: int = 50,
+    offset: int = 0,
+    db: Session = Depends(get_db),
+) -> list[dict]:
+    """High/critical-severity atomic matches - standalone signals worth an
+    analyst's attention on their own, independent of whether a
+    correlation rule ever chains them into an incident."""
+    limit = max(1, min(limit, 1000))
+    query = db.query(DetectionMatchRecord).filter(
+        DetectionMatchRecord.severity.in_(["high", "critical"])
+    )
+    if actor_id:
+        query = query.filter(DetectionMatchRecord.actor_id == actor_id)
+    if since:
+        query = query.filter(DetectionMatchRecord.timestamp >= since)
+    if until:
+        query = query.filter(DetectionMatchRecord.timestamp <= until)
+    records = (
+        query.order_by(DetectionMatchRecord.timestamp.desc())
+        .offset(offset)
+        .limit(limit)
+        .all()
+    )
+    return [r.to_dict() for r in records]

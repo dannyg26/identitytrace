@@ -1,0 +1,34 @@
+id: IDT-ENTRA-007
+title: Sign-in blocked pending admin consent
+description: >
+  Added 2026-09 from real Phase 9B telemetry (see
+  docs/evaluation.md's "A2 End-to-End Real Validation" section for the
+  full investigation). A sign-in failing with AADSTS90094 ("Admin
+  consent is required for the permissions requested by this
+  application") occurred in the one real controlled attack attempt that
+  requested a scope needing approval, and in exactly 0 of 34 real benign
+  sign-ins inspected - not sampled, all of them. Deliberately narrow:
+  this matches only that specific error code, surfaced by the normalizer
+  into `action` (see app/normalizers/entra.py), not any generic sign-in
+  failure. Scored low on its own on purpose - Entra correctly blocking
+  an unapproved request is the system working as intended, not itself
+  malicious. The real evidence is in what happens next: does an admin
+  grant the same service principal consent shortly after, and does this
+  same requesting identity then succeed. This rule only establishes that
+  the block happened; it is the anchor a future cross-identity
+  correlation design (proposed, not yet implemented) would chain from.
+severity: low
+version: 1
+enabled: true
+source: entra
+event_type: signin
+match:
+  - op: equals
+    field: action
+    value: admin_consent_required
+score: 15
+scenario: A2
+signal: admin_consent_required
+attack:
+  - id: T1550.001
+    name: "Use Alternate Authentication Material: Application Access Token"

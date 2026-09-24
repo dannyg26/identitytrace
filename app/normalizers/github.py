@@ -35,6 +35,10 @@ def _event_id(raw: dict[str, Any]) -> str:
     return str(doc_id) if doc_id else str(uuid.uuid4())
 
 
+def _stringify(value: Any) -> str | None:
+    return str(value) if value is not None else None
+
+
 def _parse_ts(raw: dict[str, Any]) -> datetime:
     if "created_at" in raw:
         value = raw["created_at"]
@@ -53,8 +57,16 @@ def _event_type(action: str) -> str:
         return "repo_clone"
     if action.startswith(_TOKEN_ACTIONS_PREFIX) or action.startswith("oauth_"):
         return "token_event"
-    if action.startswith("repo."):
+    if action == "repo.access":
         return "repo_access"
+    # Real telemetry (Phase 9B): GitHub's real audit action namespace has
+    # ~20 distinct repo.* actions (create, destroy, change_merge_setting,
+    # set_default_workflow_permissions, add_topic, rename, ...) - only
+    # "repo.access" itself is a genuine read/view action. Classifying
+    # every repo.* action as repo_access made IDT-GITHUB-001 (PAT used for
+    # repository access) fire on every token-authenticated repo config
+    # change, not just actual access - confirmed by a real false-positive
+    # run: 8 of 8 real repo.* events matched, only 1 was a real access.
     return "audit"
 
 
@@ -79,7 +91,10 @@ def normalize(raw: dict[str, Any]) -> NormalizedEvent:
         user_agent=raw.get("user_agent"),
         auth_protocol="PAT" if is_token_actor else None,
         mfa_result=None,
-        app_id=raw.get("token_id") or raw.get("oauth_application_id"),
+        # Real telemetry (Phase 9B): oauth_application_id comes back as a
+        # real int (e.g. 5479418713) in GitHub's own security-log export,
+        # not a string - NormalizedEvent.app_id requires str.
+        app_id=_stringify(raw.get("token_id") or raw.get("oauth_application_id")),
         permissions=list(raw.get("token_scopes") or []),
         resource_id=raw.get("repo") or raw.get("org"),
         resource_type="repo" if raw.get("repo") else ("org" if raw.get("org") else None),

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Atomic Alerts - IdentityTrace{% endblock %}
+{% block content %}
+  <h1>Atomic alerts</h1>
+  <p style="color:#9aa3bd">
+    High/critical-severity single-signal detections, worth a look on their
+    own - independent of whether a correlation rule ever chains them into
+    an incident. Not every meaningful security event belongs to a
+    multi-stage attack chain (see <code>docs/evaluation.md</code>'s A6
+    discussion). This queue is complementary to
+    <a href="/incidents">Incidents</a>, not a replacement for it - see
+    <code>GET /api/alerts</code> for the machine-readable form.
+  </p>
+
+  <form class="filters" method="get" action="/alerts">
+    <input type="text" name="actor_id" placeholder="actor_id" value="{{ actor_id }}">
+    <button type="submit" class="btn">Filter</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>Time</th><th>Rule</th><th>Severity</th><th>Score</th><th>Scenario</th><th>Actor</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      {% for a in alerts %}
+      <tr>
+        <td>{{ a.timestamp }}</td>
+        <td>{{ a.title }} <code>{{ a.rule_id }}</code></td>
+        <td class="sev-{{ a.severity }}">{{ a.severity }}</td>
+        <td>{{ a.score }}</td>
+        <td>{{ a.scenario or "-" }}</td>
+        <td><a href="/identities/{{ a.actor_id }}">{{ a.actor_id }}</a></td>
+        <td>{{ a.reasons|join('; ') }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7">No high/critical atomic alerts yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

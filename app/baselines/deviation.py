@@ -25,6 +25,22 @@ MIN_HISTORY_FOR_BASELINE = 3
 VOLUME_ANOMALY_MULTIPLIER = 3
 
 
+# Every deviation_type evaluate_deviations can emit. Correlation rules that
+# reference a deviation as escalation evidence are validated against this, so
+# a rule can never depend on a signal the deviation layer does not produce.
+DEVIATION_TYPES = frozenset(
+    {
+        "new_device",
+        "new_ip",
+        "new_country",
+        "new_app",
+        "new_auth_protocol",
+        "unusual_login_hour",
+        "volume_anomaly",
+    }
+)
+
+
 @dataclass
 class Deviation:
     deviation_type: str

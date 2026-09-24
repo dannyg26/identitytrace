@@ -1,0 +1,825 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#auditLogs/directoryAudits",
+  "value": [
+    {
+      "id": "Directory_corr-demo-d_SU6R0_73616038",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-d",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Remove delegated permission grant",
+      "activityDateTime": "2026-09-21T17:46:20.3673998Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Unassign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read DelegatedPermissionGrant.ReadWrite.All\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-d_SU6R0_73616025",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-d",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Add delegated permission grant",
+      "activityDateTime": "2026-09-21T17:46:20.3653981Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Assign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read DelegatedPermissionGrant.ReadWrite.All\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-c_JN5C4_9841877",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-c",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Remove delegated permission grant",
+      "activityDateTime": "2026-09-21T17:46:19.5674716Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Unassign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite DelegatedPermissionGrant.ReadWrite.All\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read DelegatedPermissionGrant.ReadWrite.All\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-c_JN5C4_9841864",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-c",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Add delegated permission grant",
+      "activityDateTime": "2026-09-21T17:46:19.565472Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Assign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite DelegatedPermissionGrant.ReadWrite.All\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read DelegatedPermissionGrant.ReadWrite.All\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-b_SU6R0_73607260",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-b",
+      "result": "failure",
+      "resultReason": "Microsoft.Online.DirectoryServices.DirectoryValueNotFoundException",
+      "activityDisplayName": "Remove delegated permission grant",
+      "activityDateTime": "2026-09-21T17:45:19.4320168Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Unassign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "MethodExecutionResult.",
+              "oldValue": null,
+              "newValue": "\"Microsoft.Online.DirectoryServices.DirectoryValueNotFoundException\""
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-b_SU6R0_73607247",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-b",
+      "result": "failure",
+      "resultReason": "Microsoft.Online.DirectoryServices.DirectoryValueNotFoundException",
+      "activityDisplayName": "Add delegated permission grant",
+      "activityDateTime": "2026-09-21T17:45:19.4300176Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Assign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite\"",
+              "newValue": "\"AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "MethodExecutionResult.",
+              "oldValue": null,
+              "newValue": "\"Microsoft.Online.DirectoryServices.DirectoryValueNotFoundException\""
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "python-requests/2.34.2"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-a_QQ8HW_69993666",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-a",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Consent to application",
+      "activityDateTime": "2026-09-21T17:45:15.7257036Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Assign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Azure ESTS Service",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-001",
+          "displayName": "Microsoft Graph Command Line Tools",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "ConsentContext.IsAdminConsent",
+              "oldValue": null,
+              "newValue": "\"True\""
+            },
+            {
+              "displayName": "ConsentContext.IsAppOnly",
+              "oldValue": null,
+              "newValue": "\"False\""
+            },
+            {
+              "displayName": "ConsentContext.OnBehalfOfAll",
+              "oldValue": null,
+              "newValue": "\"True\""
+            },
+            {
+              "displayName": "ConsentContext.Tags",
+              "oldValue": null,
+              "newValue": "\"WindowsAzureActiveDirectoryIntegratedApp\""
+            },
+            {
+              "displayName": "ConsentAction.Permissions",
+              "oldValue": null,
+              "newValue": "\"[[Id: grant-demo-001, ClientId: sp-demo-001, PrincipalId: , ResourceId: sp-demo-graph, ConsentType: AllPrincipals, Scope:  AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite, CreatedDateTime: , LastModifiedDateTime ]] => [[Id: grant-demo-001, ClientId: sp-demo-001, PrincipalId: , ResourceId: sp-demo-graph, ConsentType: AllPrincipals, Scope:  AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite, CreatedDateTime: , LastModifiedDateTime ]]; \""
+            }
+          ]
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "EvoSTS"
+        },
+        {
+          "key": "AppId",
+          "value": "14d82eec-204b-4c2f-b7e8-296a70dab67e"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-a_QQ8HW_69993645",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-a",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Remove delegated permission grant",
+      "activityDateTime": "2026-09-21T17:45:15.7066985Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Unassign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Azure ESTS Service",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite\"",
+              "newValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite DelegatedPermissionGrant.ReadWrite.All\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "EvoSTS"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "id": "Directory_corr-demo-a_QQ8HW_69993632",
+      "category": "ApplicationManagement",
+      "correlationId": "corr-demo-a",
+      "result": "success",
+      "resultReason": "",
+      "activityDisplayName": "Add delegated permission grant",
+      "activityDateTime": "2026-09-21T17:45:15.7056977Z",
+      "loggedByService": "Core Directory",
+      "operationType": "Assign",
+      "initiatedBy": {
+        "app": null,
+        "user": {
+          "id": "evt-demo-001",
+          "displayName": "Azure ESTS Service",
+          "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+          "ipAddress": "203.0.113.0",
+          "userType": null,
+          "agentType": "notAgentic",
+          "homeTenantId": null,
+          "homeTenantName": null
+        }
+      },
+      "targetResources": [
+        {
+          "id": "sp-demo-graph",
+          "displayName": "Microsoft Graph",
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": [
+            {
+              "displayName": "DelegatedPermissionGrant.Scope",
+              "oldValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite\"",
+              "newValue": "\" AppRegistration.Create AuditLog.Read.All RoleManagement.ReadWrite.Directory User.Create User.ReadUpdate.All offline_access openid profile User.Read Files.Read.All Mail.Read Mail.ReadWrite DelegatedPermissionGrant.ReadWrite.All\""
+            },
+            {
+              "displayName": "DelegatedPermissionGrant.ConsentType",
+              "oldValue": "\"AllPrincipals\"",
+              "newValue": "\"AllPrincipals\""
+            },
+            {
+              "displayName": "ServicePrincipal.ObjectID",
+              "oldValue": null,
+              "newValue": "\"sp-demo-001\""
+            },
+            {
+              "displayName": "ServicePrincipal.DisplayName",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.AppId",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "ServicePrincipal.Name",
+              "oldValue": null,
+              "newValue": null
+            },
+            {
+              "displayName": "TargetId.ServicePrincipalNames",
+              "oldValue": null,
+              "newValue": "\"00000003-0000-0000-c000-000000000000/ags.windows.net;00000003-0000-0000-c000-000000000000;https://canary.graph.microsoft.com;https://graph.microsoft.com;https://ags.windows.net;https://graph.microsoft.us;https://graph.microsoft.com/;https://dod-graph.microsoft.us;https://canary.graph.microsoft.com/;https://graph.microsoft.us/;https://dod-graph.microsoft.us/\""
+            }
+          ]
+        },
+        {
+          "id": "sp-demo-001",
+          "displayName": null,
+          "type": "ServicePrincipal",
+          "userPrincipalName": null,
+          "groupType": null,
+          "modifiedProperties": []
+        }
+      ],
+      "additionalDetails": [
+        {
+          "key": "User-Agent",
+          "value": "EvoSTS"
+        },
+        {
+          "key": "AppId",
+          "value": "00000003-0000-0000-c000-000000000000"
+        },
+        {
+          "key": "ServicePrincipalProvisioningType",
+          "value": "Other"
+        }
+      ]
+    }
+  ]
+}

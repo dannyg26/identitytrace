@@ -64,7 +64,7 @@ async def _lifespan(_: FastAPI) -> AsyncIterator[None]:
 app = FastAPI(
     title="IdentityTrace",
     description="Cross-SaaS identity attack detection platform (research/lab build).",
-    version="0.1.0",
+    version="1.0.0",
     lifespan=_lifespan,
 )
 
@@ -314,4 +314,26 @@ def evaluation_page(
             "seed": seed,
             "scenarios_per_type": scenarios_per_type,
         },
+    )
+
+
+@app.get("/alerts")
+def alerts_page(request: Request, actor_id: str | None = None) -> Any:  # noqa: ANN401
+    """Phase 9 #9: high/critical atomic matches as their own queue,
+    alongside (not instead of) /incidents - see app/api/detections.py's
+    list_alerts() docstring."""
+    db: Session = SessionLocal()
+    try:
+        query = db.query(DetectionMatchRecord).filter(
+            DetectionMatchRecord.severity.in_(["high", "critical"])
+        )
+        if actor_id:
+            query = query.filter(DetectionMatchRecord.actor_id == actor_id)
+        records = query.order_by(DetectionMatchRecord.timestamp.desc()).limit(200).all()
+    finally:
+        db.close()
+    return templates.TemplateResponse(
+        request,
+        "alerts.html",
+        {"alerts": [r.to_dict() for r in records], "actor_id": actor_id or ""},
     )

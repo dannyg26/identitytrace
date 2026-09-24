@@ -17,8 +17,8 @@ def _write(tmp_path, name, content):
 
 def test_loads_the_real_shipped_correlation_rules_without_error():
     rules = load_correlation_rules()
-    assert len(rules) == 5
-    assert len({r.id for r in rules}) == 5
+    assert len(rules) == 6
+    assert len({r.id for r in rules}) == 6
 
 
 def test_load_valid_rule_from_temp_dir(tmp_path):

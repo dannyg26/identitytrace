@@ -42,9 +42,12 @@ def main() -> None:
 
     rng = random.Random(args.seed)
 
-    generated = list(scen.generate_benign_population(rng, DEFAULT_BASE_TIME, args.benign_identities))
-    generated += scen.generate_benign_edge_cases(rng, DEFAULT_BASE_TIME)
+    benign_sequences = scen.generate_benign_population(rng, DEFAULT_BASE_TIME, args.benign_identities)
+    benign_sequences += scen.generate_benign_edge_cases(rng, DEFAULT_BASE_TIME)
+    benign_sequences += scen.generate_ambiguous_singletons(rng, DEFAULT_BASE_TIME)
     instances = scen.generate_attack_scenarios(rng, DEFAULT_BASE_TIME, args.scenarios_per_type)
+
+    generated = [e for seq in benign_sequences for e in seq.events]
     for instance in instances:
         generated.extend(instance.events)
     generated.sort(key=lambda e: e.timestamp)
@@ -62,7 +65,10 @@ def main() -> None:
         db.close()
 
     n_malicious = sum(1 for i in instances for e in i.events if e.label == "malicious")
-    print(f"Seeded {len(generated)} events ({n_malicious} malicious across {len(instances)} scenarios).")
+    print(
+        f"Seeded {len(generated)} events ({n_malicious} malicious across {len(instances)} "
+        f"attack scenarios, {len(benign_sequences)} benign sequences)."
+    )
     print("Start the app and open http://127.0.0.1:8000/incidents to explore.")
 
 

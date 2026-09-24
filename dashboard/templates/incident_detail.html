@@ -7,7 +7,25 @@
     <span class="badge">score {{ incident.score }}</span>
     <span class="badge">confidence {{ incident.confidence }}</span>
     <span class="badge">{{ incident.scenario or "no scenario" }}</span>
+    {% if incident.classification == "workflow_review" %}<span class="badge">workflow review</span>{% endif %}
   </p>
+
+  {% if incident.classification == "workflow_review" %}
+  <p id="workflow-review-note" style="border-left:3px solid #d9a441;padding:0.4rem 0.8rem">
+    <strong>Workflow review - not a compromise finding.</strong>
+    This chain is a high-risk workflow that a legitimate approval produces
+    identically; the telemetry cannot tell intent. Severity is capped at
+    <strong>{{ incident.escalation.severity_cap }}</strong> unless independent
+    evidence exists
+    ({{ incident.escalation.qualifying_deviation_types|join(", ") }}).
+    {% if incident.escalation.escalated %}
+      <strong>Escalated:</strong> independent evidence present -
+      {% for e in incident.escalation.evidence %}{{ e.deviation_type }} on {{ e.actor_id }}{% if not loop.last %}; {% endif %}{% endfor %}.
+    {% else %}
+      No independent escalation evidence found{% if incident.escalation.cap_applied %} (score capped from {{ incident.score_breakdown.uncapped_score }}){% endif %}.
+    {% endif %}
+  </p>
+  {% endif %}
 
   <p style="color:#9aa3bd">
     {{ incident.evidence_reasons|length }} related signal(s) for
@@ -36,7 +54,13 @@
         <td><span class="badge">{{ e.signal_type }}</span></td>
         <td>{{ e.kind }}</td>
         <td>+{{ e.weight }}</td>
-        <td>{{ e.label }}</td>
+        <td>{{ e.label }}
+          {# Cross-identity chains (entity-bridged rules): say WHO did a step when it
+             isn't the incident's own identity - otherwise an admin's consent reads as
+             the requesting user's. Older stored incidents have no actor_id: no badge. #}
+          {% if e.actor_id and e.actor_id != incident.identity_id %}
+            <br><span class="badge">performed by {{ e.actor_id }}</span>
+          {% endif %}</td>
         <td><a href="/api/events/{{ e.event_id }}"><code>{{ e.event_id[:8] }}</code></a></td>
       </tr>
       {% endfor %}

@@ -19,7 +19,7 @@ def _ingest_full_chain(client, actor_id="mallory@example.test"):
                 "appId": "app-999",
                 "ipAddress": "203.0.113.50",
                 "status": {"errorCode": 0},
-                "authenticationProtocol": "deviceCode",
+                "clientAppUsed": "Mobile Apps and Desktop clients",  # real shape - authenticationProtocol is never populated
             },
         },
     )
@@ -73,7 +73,7 @@ def _ingest_full_chain(client, actor_id="mallory@example.test"):
 
 def test_correlation_rules_are_loaded(client):
     rules = client.get("/api/correlation-rules").json()
-    assert len(rules) == 5
+    assert len(rules) == 6
     assert "IDT-CORR-001" in {r["id"] for r in rules}
 
 
@@ -88,7 +88,7 @@ def test_no_incident_until_the_full_chain_is_present(client):
                 "userPrincipalName": "partial@example.test",
                 "appId": "app-1",
                 "status": {"errorCode": 0},
-                "authenticationProtocol": "deviceCode",
+                "clientAppUsed": "Mobile Apps and Desktop clients",  # real shape - authenticationProtocol is never populated
             },
         },
     )

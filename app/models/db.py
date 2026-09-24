@@ -10,7 +10,7 @@ from __future__ import annotations
 import os
 from collections.abc import Generator
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 
@@ -43,6 +43,32 @@ def init_db() -> None:
     )
 
     Base.metadata.create_all(bind=engine)
+    _add_missing_nullable_columns()
+
+
+# create_all() creates missing *tables* but never alters an existing one, so
+# a column added to a model after a dev database was first created would
+# raise "no such column" on the next query. These are additive, nullable,
+# derived-data columns only - a full migration tool remains a Phase 8
+# concern - so a plain idempotent ADD COLUMN is enough (valid on both
+# SQLite and Postgres).
+_ADDITIVE_COLUMNS: list[tuple[str, str, str]] = [
+    ("events", "service_principal_id", "VARCHAR"),
+    ("incidents", "classification", "VARCHAR"),
+    ("incidents", "escalation", "JSON"),
+]
+
+
+def _add_missing_nullable_columns() -> None:
+    inspector = inspect(engine)
+    for table, column, ddl_type in _ADDITIVE_COLUMNS:
+        if not inspector.has_table(table):
+            continue
+        existing = {c["name"] for c in inspector.get_columns(table)}
+        if column in existing:
+            continue
+        with engine.begin() as conn:
+            conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {column} {ddl_type}"))
 
 
 def get_db() -> Generator[Session, None, None]:

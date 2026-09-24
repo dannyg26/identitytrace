@@ -5,16 +5,21 @@ project). Normalizes authentication, OAuth, developer-platform, privilege,
 and data-access telemetry into one schema and correlates it into
 evidence-backed incidents.
 
-**Current status: every phase in the blueprint's roadmap is built,
-Phase 0 through Phase 8.** Normalized telemetry (three sources: Entra,
-GitHub, M365), tested atomic detections, behavioral baselines, temporal
-correlation into real scored/explainable incidents, a per-incident
-identity graph, a reproducible evaluation harness answering the
-project's core research question, CI, Docker, a demo-data seed script,
-and two real incident case studies - see
-[`docs/architecture.md`](docs/architecture.md) for the full module map,
-and the blueprint ([`docs/blueprint.pdf`](docs/blueprint.pdf)) for the
-complete design this project builds against.
+**Current status: every phase in the blueprint's roadmap is built
+(Phase 0-8), plus a post-blueprint Phase 9 hardening the evaluation
+itself** - noisy benign personas, a frozen out-of-sample holdout set,
+multi-seed statistics, F1/false-positive-rate reporting, a standalone
+atomic-alerts queue alongside incidents, and the real-vendor-telemetry
+ingestion path - since exercised against a real Microsoft 365 developer
+tenant and real GitHub personal security-log exports (see [`docs/evaluation.md`](docs/evaluation.md)'s
+real-data sections and the [Evidence & results](#evidence--results) below;
+[`docs/phase9-external-evaluation.md`](docs/phase9-external-evaluation.md)
+covers the original infrastructure work).
+See [`docs/architecture.md`](docs/architecture.md) for the full module
+map, [`docs/evaluation.md`](docs/evaluation.md) for what all of that
+actually found, and the blueprint
+([`docs/blueprint.pdf`](docs/blueprint.pdf)) for the complete design this
+project builds against.
 
 ## What's working right now
 
@@ -27,7 +32,7 @@ complete design this project builds against.
 - A FastAPI ingestion/query API under `/api` (`POST /api/events`,
   `GET /api/events`, `GET /api/events/{id}`) backed by SQLAlchemy (SQLite by
   default, Postgres via `DATABASE_URL`).
-- 13 versioned atomic detection rules (`detections/`), evaluated against
+- 14 versioned atomic detection rules (`detections/`), evaluated against
   every ingested event, covering all six attack scenarios (A1-A6). See
   [`docs/detections.md`](docs/detections.md). Results: `GET /api/detections`
   (rule library), `GET /api/matches[/{id}]`, `GET /api/events/{id}/matches`.
@@ -37,10 +42,16 @@ complete design this project builds against.
   identity's history at ingestion time. See
   [`docs/baselines.md`](docs/baselines.md). Results:
   `GET /api/identities[/{actor_id}]`, `GET /api/events/{id}/deviations`.
-- **Temporal correlation into incidents** - 5 correlation rules chain
-  detection matches and baseline deviations for one identity, in order,
-  within a time window, into a scored incident with a fully explainable
-  score and confidence breakdown. Analyst disposition (status/notes)
+- **Temporal correlation into incidents** - 6 correlation rules chain
+  detection matches and baseline deviations, in order, within a time
+  window, into a scored incident with a fully explainable score and
+  confidence breakdown. Five chain signals for one identity; one
+  (`IDT-CORR-006`) is *entity-bridged* - it lets an admin's consent step
+  sit between a user's blocked and successful sign-ins, linked only by an
+  exact shared service principal, and is classified `workflow_review`: a legitimate
+  admin approval produces the same chain, so it is surfaced for analyst review with
+  severity capped at `high` unless independent evidence exists, never asserted as
+  compromise. Analyst disposition (status/notes)
   survives re-correlation. See [`docs/correlation.md`](docs/correlation.md).
   Results: `GET /api/incidents[/{id}]`, `PATCH /api/incidents/{id}`,
   `GET /api/events/{id}/incidents`, `GET /api/correlation-rules`.
@@ -63,14 +74,26 @@ complete design this project builds against.
   `/rules` detection library, `/identities[/{id}]` profile pages,
   `/evaluation` metrics) - deliberately on separate paths from the JSON
   API, see `app/main.py`'s docstring for why.
-- 212 unit + integration tests, ~97% line coverage: schema validation,
-  all three normalizers, the detection engine and all 13 rules (positive +
+- 412 unit + integration tests, ~98% line coverage: schema validation,
+  all three normalizers, the detection engine and all 14 rules (positive +
   negative cases each), the baseline profile builder and deviation
   evaluator, the correlation engine/scoring, the identity graph builder/
-  renderer, the evaluation harness's generators/metrics, the demo-seed
-  script (run as a real subprocess), and a full ingest -> detect ->
-  baseline -> correlate -> incident -> graph path with hand-verified
-  score/confidence math.
+  renderer, the evaluation harness's generators/metrics (including the
+  frozen holdout set and multi-seed statistics), the demo-seed and
+  real-export-ingestion scripts (run as real subprocesses), and a full
+  ingest -> detect -> baseline -> correlate -> incident -> graph path with
+  hand-verified score/confidence math.
+- **Phase 9 evaluation hardening** - 6 noisy benign personas + 4 ambiguous
+  singletons (an isolated new-device/OAuth-consent/repo-access/bulk-
+  download signal each), which is what makes the correlation-vs-isolated
+  comparison actually mean something: isolated-rule precision drops to
+  0.596 under this realistic noise while correlation holds 1.0 on the
+  identical dataset. Plus a frozen out-of-sample holdout set (including an
+  attack combination none of the six correlation rules were written
+  around - caught anyway), multi-seed mean±stdev reporting, F1 scores, and
+  a standalone high-severity `/alerts` queue alongside `/incidents`. See
+  [`docs/evaluation.md`](docs/evaluation.md) and
+  [`docs/phase9-external-evaluation.md`](docs/phase9-external-evaluation.md).
 - **Normalizer fidelity check** - every normalizer validated against
   fixtures shaped like each source's real, officially-published API
   schema (Microsoft Graph, GitHub's audit log, the O365 Management
@@ -95,6 +118,89 @@ complete design this project builds against.
   so a fresh clone has real incidents to explore immediately.
 - **[`docs/case-studies.md`](docs/case-studies.md)** - two full
   investigation walkthroughs (A2, A4) using real, unedited system output.
+
+## Evidence & results
+
+<img src="docs/evidence/architecture-diagram.png" alt="Ingestion through normalizers, common event schema, atomic detections, alerts, correlation, incidents/workflow review, and the analyst dashboard, with a parallel evaluation/provenance path" width="900">
+
+Real Microsoft 365 tenant + real GitHub personal security-log telemetry, captured end-to-end
+through the live pipeline (screenshots below have every identifier -
+tenant domain, IPs, service-principal/object IDs - replaced with stable
+placeholders; nothing else is edited - see
+[`docs/evidence-pack.md`](docs/evidence-pack.md)):
+
+| Real A2 workflow | Benign twin (same rule, same score) |
+|---|---|
+| ![Real A2 admin-consent workflow incident](docs/evidence/01-real-a2-workflow.png) | ![Benign twin triggering the identical workflow](docs/evidence/02-a2-benign-twin.png) |
+
+Same rule (`IDT-CORR-006`), same three-step chain, same score (`75 / high`)
+for both a real attack sequence and a real legitimate admin approval - the
+finding the rule is now classified around: it detects the *workflow*, not
+intent. See [`docs/evaluation.md`](docs/evaluation.md), "A2 Benign Twin —
+Detection vs Intent", for the full analysis, and
+[`docs/evidence/raw-to-detection-proof.md`](docs/evidence/raw-to-detection-proof.md)
+for one real event traced raw -> normalized -> detected end to end.
+
+More: [atomic alert queue](docs/evidence/03-real-atomic-alerts.png) ·
+[final real-data metrics](docs/evidence/04-final-real-metrics.png) ·
+[provenance breakdown](docs/evidence/05-provenance-breakdown.png) ·
+[tests & lint](docs/evidence/06-tests-and-lint.png)
+
+**Headline numbers** (real data, `scripts/real_metrics_report.py`; full
+detail and every caveat in [`docs/evaluation.md`](docs/evaluation.md)):
+
+| | Isolated rules | Correlation |
+|---|---|---|
+| Recall (attack-export denominator) | 1.000 (7/7) | 0.286 (2/7) |
+| Precision | 0.575 | 0.500 |
+| False-positive rate | 0.081 | 0.143 |
+
+The two correlated attack exports belong to one of three A2 attempts.
+The real-data 20.0 alert/incident ratio is not evidence of useful noise
+reduction; GitHub observability is incomplete.
+
+Correlation precision of 0.500 is **not hidden** - it's the benign twin
+above, kept as evidence that a correlation rule can detect a workflow
+without being able to infer intent. Machine-readable versions of all of
+this: [`evidence_pack/`](evidence_pack/) (raw redacted vendor events,
+IdentityTrace's own processing/detection output, and the evaluation
+results, kept as three separate tiers).
+
+## v1.0 dataset and limitations
+
+v1.0 evaluates real Entra and real GitHub telemetry separately from the
+synthetic benchmark and frozen synthetic holdout. The labeled real corpus
+contains 238 events (213 Entra across four sparse calendar dates, 25 GitHub
+on one date), including one benign A2 twin
+and an 11-event revocation experiment. Seven attack-labeled export files
+represent three A2 attempts and two A4 attempts, not seven independent
+workflows. The evaluated provenance files define the corpus; other rows
+in a local development database are not additional evaluation evidence.
+
+- Real users, collection duration, and fully observed workflows are limited;
+  the corpus is not a longitudinal enterprise sample.
+- GitHub telemetry did not expose the full A4 chain, including the required
+  clone/content-access evidence.
+- Sparse baseline history limits conclusions about behavioral deviations.
+- Workflow detection does not establish malicious intent: the benign twin
+  and controlled A2 workflow both produce the same review finding.
+- These results should not be generalized across enterprises. A6 remains
+  undetected by correlation in the frozen holdout, though atomic rules fire.
+
+No public external dataset was integrated: the candidates considered did
+not provide a sufficiently clean, practical fit to the core identity/SaaS
+logic. LANL authentication could at most provide a narrow device-baseline
+check; it was not downloaded or integrated. These are accepted v1.0 limits.
+
+### Possible v1.1 work
+
+Future work may include 7-14 days of Entra collection, more identities,
+repeated controlled A2 and benign-twin workflows, richer baseline
+validation, and more GitHub activity if suitable telemetry becomes
+available. None is required to complete v1.0.
+
+See the [final release review](docs/release-readiness-v1.0.md) for verified
+results, the release file manifest, and manual commit/tag instructions.
 
 ## Quick start
 
@@ -129,7 +235,7 @@ curl -X POST http://127.0.0.1:8000/api/events \
 # -> normalized event, plus a fired IDT-ENTRA-003 (device-code auth) match
 
 curl http://127.0.0.1:8000/api/events
-curl http://127.0.0.1:8000/api/detections           # the 13-rule library
+curl http://127.0.0.1:8000/api/detections           # the 14-rule library
 curl http://127.0.0.1:8000/api/matches              # everything that's fired so far
 curl http://127.0.0.1:8000/api/identities/alice@example.test  # her baseline
 curl http://127.0.0.1:8000/api/incidents             # correlated incidents, if any chain completed

@@ -1,23 +1,27 @@
-"""Compute the blueprint's required evaluation metrics (§10.3) from a
+"""Compute the blueprint's required evaluation metrics (§10.3, extended by
+Phase 9 #12: F1, a proper correlation-layer false-positive *rate*) from a
 completed evaluation run's database - comparing the isolated-rule baseline
 (every Phase 2 atomic match, treated as its own alert) against the full
 correlation engine (Phase 4 incidents), which is this project's actual
-research question (§2.1): does correlation improve precision and reduce
-analyst alert volume versus isolated rules alone?
+research question: does correlation improve precision and reduce analyst
+alert volume versus isolated rules alone, while distinguishing malicious
+identity chains from isolated legitimate events more effectively than
+atomic rules alone?
 """
 
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from typing import Optional
 
 from sqlalchemy.orm import Session
 
-from app.evaluation.scenarios import ScenarioInstance
+from app.evaluation.scenarios import BenignSequence, ScenarioInstance
 from app.models.detection import DetectionMatchRecord
 from app.models.incident import IncidentRecord
 
 
-def _avg(values: list[float]) -> float | None:
+def _avg(values: list[float]) -> Optional[float]:
     return round(sum(values) / len(values), 1) if values else None
 
 
@@ -29,11 +33,18 @@ def _aware(dt: datetime) -> datetime:
     return dt if dt.tzinfo is not None else dt.replace(tzinfo=timezone.utc)
 
 
+def _f1(precision: Optional[float], recall: Optional[float]) -> Optional[float]:
+    if precision is None or recall is None or (precision + recall) == 0:
+        return None
+    return round(2 * precision * recall / (precision + recall), 3)
+
+
 def compute_metrics(
     db: Session,
     scenarios: list[ScenarioInstance],
     malicious_event_ids: set[str],
     benign_event_ids: set[str],
+    benign_sequences: Optional[list[BenignSequence]] = None,
 ) -> dict:
     all_matches = db.query(DetectionMatchRecord).all()
     all_incidents = db.query(IncidentRecord).all()
@@ -82,6 +93,16 @@ def compute_metrics(
     precision_correlated = len(tp_incidents) / len(all_incidents) if all_incidents else None
 
     fp_rate_isolated = len(fp_alerts) / len(benign_event_ids) if benign_event_ids else None
+    # The correlation layer's false-positive rate needs a denominator that
+    # means something at the identity/activity level, not the raw event
+    # level (one incident spans several events; "per event" isn't the
+    # right unit to ask "how often did this false-alarm"). Phase 9 #12:
+    # rate = false-positive incidents / benign *sequences* (one persona's
+    # full activity = one trial), falling back to None if the caller
+    # didn't pass sequences (e.g. a hand-built metrics test).
+    fp_rate_correlated = (
+        len(fp_incidents) / len(benign_sequences) if benign_sequences else None
+    )
 
     alert_reduction_ratio = (
         round(len(all_matches) / len(all_incidents), 2) if all_incidents else None
@@ -99,17 +120,24 @@ def compute_metrics(
         for attack_type, items in sorted(by_type.items())
     }
 
+    precision_isolated_r = round(precision_isolated, 3) if precision_isolated is not None else None
+    precision_correlated_r = round(precision_correlated, 3) if precision_correlated is not None else None
+    recall_isolated_r = round(recall_isolated, 3)
+    recall_correlated_r = round(recall_correlated, 3)
+
     return {
         "totals": {
             "attack_scenarios": len(scenarios),
             "benign_events": len(benign_event_ids),
+            "benign_sequences": len(benign_sequences) if benign_sequences else None,
             "malicious_events": len(malicious_event_ids),
             "atomic_alerts": len(all_matches),
             "incidents": len(all_incidents),
         },
         "isolated_rule_baseline": {
-            "recall": round(recall_isolated, 3),
-            "precision": round(precision_isolated, 3) if precision_isolated is not None else None,
+            "recall": recall_isolated_r,
+            "precision": precision_isolated_r,
+            "f1": _f1(precision_isolated_r, recall_isolated_r),
             "false_positive_alerts": len(fp_alerts),
             "false_positive_rate": round(fp_rate_isolated, 3) if fp_rate_isolated is not None else None,
             "avg_detection_latency_seconds": _avg(
@@ -117,9 +145,11 @@ def compute_metrics(
             ),
         },
         "correlation_engine": {
-            "recall": round(recall_correlated, 3),
-            "precision": round(precision_correlated, 3) if precision_correlated is not None else None,
+            "recall": recall_correlated_r,
+            "precision": precision_correlated_r,
+            "f1": _f1(precision_correlated_r, recall_correlated_r),
             "false_positive_incidents": len(fp_incidents),
+            "false_positive_rate": round(fp_rate_correlated, 3) if fp_rate_correlated is not None else None,
             "avg_detection_latency_seconds": _avg(
                 [p["latency_correlated_seconds"] for p in per_scenario if p["latency_correlated_seconds"] is not None]
             ),

@@ -1,20 +1,45 @@
 id: IDT-ENTRA-003
-title: Successful device-code authentication
+title: Successful native-client (non-browser) sign-in
 description: >
-  Device-code flow is legitimate (CLI/IoT sign-in) but is also the mechanism
-  CrowdStrike reports a 15x rise in phishing abuse of (2026 Threat Hunting
-  Report) - a victim approves a code an attacker generated. Scored low on
-  its own; becomes much stronger evidence once Phase 4 correlation chains it
-  with what happens immediately after.
+  Revised 2026-09 from real Phase 9B telemetry (see
+  docs/evaluation.md's Real-World Observability Findings section for the
+  full investigation). Original version matched `authenticationProtocol
+  == "deviceCode"` - device-code flow is legitimate (CLI/IoT sign-in) but
+  is also the mechanism CrowdStrike reports a 15x rise in phishing abuse
+  of (2026 Threat Hunting Report), a victim approves a code an attacker
+  generated. That field turned out to be absent from every one of 37 real
+  sign-in events inspected (benign and attack, success and failure alike)
+  - not a propagation delay, confirmed directly. `clientAppUsed ==
+  "Mobile Apps and Desktop clients"` is the field that's actually
+  populated in practice, and reliably separates native/desktop/CLI
+  sign-ins from browser ones - but it is honestly a broader category than
+  device-code specifically (it also covers other native flows: mobile
+  apps, Windows-integrated auth, ROPC), and in a real tenant with normal
+  mobile Outlook/Teams/OneDrive usage this would fire far more often than
+  the original, narrower claim implied. Severity stays low for exactly
+  that reason - unchanged from the original design's own philosophy: weak
+  alone, meant to be chained by correlation with what happens after, not
+  read as attacker-specific on its own.
+
+  v3 (compatibility restoration, not a new detection): v2 matched ONLY the
+  derived `nativeClient` value and so silently stopped honoring
+  `authenticationProtocol == "deviceCode"` - a documented Graph value that
+  a tenant/API version may populate, and that the frozen holdout dataset
+  still carries. It is at least as strong evidence as the fallback bucket.
+  The rule now accepts exactly these two equivalent representations and
+  nothing else (`interactive`, `basic`, browser sign-ins, and any other
+  value still do not match). Caught when the holdout, never re-run after
+  v2, was found to have dropped from 0.857 to 0.714 correlation recall;
+  see docs/holdout.md and docs/evaluation.md.
 severity: low
-version: 1
+version: 3
 enabled: true
 source: entra
 event_type: signin
 match:
-  - op: equals
+  - op: in
     field: auth_protocol
-    value: deviceCode
+    values: [nativeClient, deviceCode]
   - op: equals
     field: result
     value: success

@@ -1,0 +1,65 @@
+id: IDT-CORR-006
+title: "High-risk OAuth admin-consent workflow - analyst review required (blocked sign-in -> admin grants consent -> same user succeeds)"
+description: >
+  Added 2026-09 from real Phase 9B telemetry - see docs/evaluation.md
+  ("A2 Cross-Identity Correlation Investigation", "A2 End-to-End Real
+  Validation", "A2 Cross-Identity Correlation v2"). IDT-CORR-001 models A2
+  as ONE identity doing sign-in -> consent -> access, which real Entra
+  cannot produce for a scope that needs admin approval: the consent is
+  performed by the admin, so the chain necessarily spans two identities.
+  This rule models exactly the sequence validated end-to-end on real logs:
+  (1) the requesting user's sign-in fails with AADSTS90094 (IDT-ENTRA-007),
+  (2) an admin grants consent for the SAME service principal (risky
+  OAuth consent, IDT-ENTRA-001/002), (3) the SAME original user then
+  signs in successfully (IDT-ENTRA-003), all within one window, strictly in
+  that order. The admin bridges the consent step only; the chain returns
+  to the original user, and the incident is attributed to that user.
+  Deliberately NOT part of the chain: downstream resource access - that
+  signal is not observable in the only tenant we could test (no
+  SharePoint/OneDrive/Exchange workload), so this rule claims no more than
+  the three steps that were actually observed. Deliberately NOT allowed
+  (enforced by the schema/matcher, and tested): linking on app + time
+  alone (the real benign corpus shows routine admin consent and unrelated
+  user sign-ins for the same service principal within minutes of each
+  other), a different user in step 3, a different service principal
+  anywhere, consent before the block, or a generic sign-in failure standing
+  in for the 90094 block.
+
+  v2 (2026-09-21, semantics only - the sequence, window, actor binding and
+  entity link above are UNCHANGED, so exactly the same chains match):
+  reclassified from an attack detection to a HIGH-RISK WORKFLOW requiring
+  analyst review. A benign twin collected on the same tenant and application
+  (legitimate approval of Mail.ReadWrite for a blocked user) triggered this
+  rule identically to the attack: same score, same signals, no telemetry
+  field that differs by intent (docs/evaluation.md, "A2 Benign Twin -
+  Detection vs Intent"). The chain shows that a blocked user's risky-scope
+  request was approved by an admin and the user then signed in - a
+  privilege-expanding event worth a reviewer's time - but a legitimate
+  approval produces the same chain, so this rule must NOT be read as
+  evidence of compromise on its own. Its severity is therefore capped at
+  `high` unless independent evidence exists: a new_country or new_device
+  baseline deviation on one of the chain's own events (the only
+  intent-relevant signals the current telemetry can carry; both are added to
+  the score and lift the cap). new_ip is deliberately excluded (the lab
+  itself showed ordinary ISP address drift on identical activity), and
+  new_app is excluded because a blocked-then-approved app is new to the
+  requester by construction. Escalation signals we do not yet collect
+  (application publisher/age/ownership metadata, downstream resource
+  access, admin-side country/device - audit logs carry neither) are
+  documented in docs/evaluation.md and intentionally NOT implemented here.
+version: 2
+window_seconds: 900
+enabled: true
+sequence: [admin_consent_required, risky_oauth_consent, new_session_context]
+actor_binding: [anchor, any, anchor]
+entity_field: service_principal_id
+score_bonus: 10
+classification: workflow_review
+severity_cap: high
+escalation_deviations: [new_country, new_device]
+scenario: A2
+attack:
+  - id: T1528
+    name: Steal Application Access Token
+  - id: T1550.001
+    name: "Use Alternate Authentication Material: Application Access Token"

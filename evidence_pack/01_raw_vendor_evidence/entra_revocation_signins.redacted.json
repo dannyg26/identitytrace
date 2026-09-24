@@ -1,0 +1,111 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#auditLogs/signIns",
+  "value": [
+    {
+      "id": "evt-demo-003",
+      "createdDateTime": "2026-09-21T17:45:15Z",
+      "userDisplayName": "IdentityTrace Admin",
+      "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+      "userId": "evt-demo-001",
+      "appId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+      "appDisplayName": "Microsoft Graph Command Line Tools",
+      "ipAddress": "203.0.113.0",
+      "clientAppUsed": "Mobile Apps and Desktop clients",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/203.0.113.0 Safari/537.36 Edg/203.0.113.0 OS/10.0.26200",
+      "correlationId": "corr-demo-e",
+      "conditionalAccessStatus": "notApplied",
+      "isInteractive": true,
+      "riskDetail": "none",
+      "riskLevelAggregated": "none",
+      "riskLevelDuringSignIn": "none",
+      "riskState": "none",
+      "riskEventTypes": [],
+      "riskEventTypes_v2": [],
+      "resourceDisplayName": "Microsoft Graph",
+      "resourceId": "00000003-0000-0000-c000-000000000000",
+      "resourceTenantId": "<tenant-id>",
+      "homeTenantId": "<tenant-id>",
+      "servicePrincipalName": null,
+      "servicePrincipalId": "sp-demo-001",
+      "authenticationAppDeviceDetails": null,
+      "status": {
+        "errorCode": 0,
+        "failureReason": "Other.",
+        "additionalDetails": "MFA requirement satisfied by claim in the token"
+      },
+      "deviceDetail": {
+        "deviceId": "",
+        "displayName": "",
+        "operatingSystem": "",
+        "browser": "Edge 153.0.0",
+        "isCompliant": false,
+        "isManaged": false,
+        "trustType": null
+      },
+      "location": {
+        "city": "Union",
+        "state": "New Jersey",
+        "countryOrRegion": "US",
+        "geoCoordinates": {
+          "altitude": null,
+          "latitude": 40.68064,
+          "longitude": -74.23059
+        }
+      },
+      "appliedConditionalAccessPolicies": []
+    },
+    {
+      "id": "evt-demo-002",
+      "createdDateTime": "2026-09-21T17:45:11Z",
+      "userDisplayName": "IdentityTrace Admin",
+      "userPrincipalName": "idt-admin@yourtenant.onmicrosoft.com",
+      "userId": "evt-demo-001",
+      "appId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+      "appDisplayName": "Microsoft Graph Command Line Tools",
+      "ipAddress": "203.0.113.0",
+      "clientAppUsed": "Mobile Apps and Desktop clients",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/203.0.113.0 Safari/537.36 Edg/203.0.113.0 OS/10.0.26200",
+      "correlationId": "corr-demo-e",
+      "conditionalAccessStatus": "notApplied",
+      "isInteractive": true,
+      "riskDetail": "none",
+      "riskLevelAggregated": "none",
+      "riskLevelDuringSignIn": "none",
+      "riskState": "none",
+      "riskEventTypes": [],
+      "riskEventTypes_v2": [],
+      "resourceDisplayName": "Microsoft Graph",
+      "resourceId": "00000003-0000-0000-c000-000000000000",
+      "resourceTenantId": "<tenant-id>",
+      "homeTenantId": "<tenant-id>",
+      "servicePrincipalName": null,
+      "servicePrincipalId": "sp-demo-001",
+      "authenticationAppDeviceDetails": null,
+      "status": {
+        "errorCode": 65001,
+        "failureReason": "The user or administrator has not consented to use the application with ID '{identifier}'{namePhrase}. Send an interactive authorization request for this user and resource.",
+        "additionalDetails": "MFA requirement satisfied by claim in the token"
+      },
+      "deviceDetail": {
+        "deviceId": "",
+        "displayName": "",
+        "operatingSystem": "",
+        "browser": "Edge 153.0.0",
+        "isCompliant": false,
+        "isManaged": false,
+        "trustType": null
+      },
+      "location": {
+        "city": "Union",
+        "state": "New Jersey",
+        "countryOrRegion": "US",
+        "geoCoordinates": {
+          "altitude": null,
+          "latitude": 40.68064,
+          "longitude": -74.23059
+        }
+      },
+      "appliedConditionalAccessPolicies": []
+    }
+  ]
+}

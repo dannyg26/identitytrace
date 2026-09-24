@@ -1,0 +1,97 @@
+{
+  "totals": {
+    "attack_scenarios": 7,
+    "benign_events": 209,
+    "benign_sequences": 7,
+    "malicious_events": 29,
+    "atomic_alerts": 40,
+    "incidents": 2
+  },
+  "isolated_rule_baseline": {
+    "recall": 1.0,
+    "precision": 0.575,
+    "f1": 0.73,
+    "false_positive_alerts": 17,
+    "false_positive_rate": 0.081,
+    "avg_detection_latency_seconds": 0.6
+  },
+  "correlation_engine": {
+    "recall": 0.286,
+    "precision": 0.5,
+    "f1": 0.364,
+    "false_positive_incidents": 1,
+    "false_positive_rate": 0.143,
+    "avg_detection_latency_seconds": 141.9
+  },
+  "alert_reduction_ratio": 20.0,
+  "scenario_coverage": {
+    "A2": {
+      "instances": 5,
+      "recall_isolated": 1.0,
+      "recall_correlated": 0.4
+    },
+    "A4": {
+      "instances": 2,
+      "recall_isolated": 1.0,
+      "recall_correlated": 0.0
+    }
+  },
+  "per_scenario": [
+    {
+      "scenario_id": "entra_a2_attack2_signins",
+      "attack_type": "A2",
+      "detected_isolated_rule": true,
+      "detected_correlation": false,
+      "latency_isolated_seconds": 4.0,
+      "latency_correlated_seconds": null
+    },
+    {
+      "scenario_id": "entra_a2_attack_audits",
+      "attack_type": "A2",
+      "detected_isolated_rule": true,
+      "detected_correlation": false,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": null
+    },
+    {
+      "scenario_id": "entra_a2_attack_signins",
+      "attack_type": "A2",
+      "detected_isolated_rule": true,
+      "detected_correlation": false,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": null
+    },
+    {
+      "scenario_id": "entra_a2_user3_audits",
+      "attack_type": "A2",
+      "detected_isolated_rule": true,
+      "detected_correlation": true,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": 125.791036
+    },
+    {
+      "scenario_id": "entra_a2_user3_signins",
+      "attack_type": "A2",
+      "detected_isolated_rule": true,
+      "detected_correlation": true,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": 158.0
+    },
+    {
+      "scenario_id": "github_a4_attack",
+      "attack_type": "A4",
+      "detected_isolated_rule": true,
+      "detected_correlation": false,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": null
+    },
+    {
+      "scenario_id": "github_a4_attack2",
+      "attack_type": "A4",
+      "detected_isolated_rule": true,
+      "detected_correlation": false,
+      "latency_isolated_seconds": 0.0,
+      "latency_correlated_seconds": null
+    }
+  ]
+}

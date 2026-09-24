@@ -3,7 +3,11 @@
 ## Status
 
 This documents what's actually built - **every phase in the blueprint's
-roadmap, Phase 0 through Phase 8** - versus the full blueprint
+roadmap, Phase 0 through Phase 8**, plus a post-blueprint **Phase 9**
+(see [`phase9-external-evaluation.md`](phase9-external-evaluation.md))
+that hardens the evaluation itself: noisy benign personas, a frozen
+holdout set, multi-seed statistics, and the real-vendor-telemetry
+ingestion path - versus the full blueprint
 ([`blueprint.pdf`](blueprint.pdf), copied into this directory for
 reference), which this project treats as a living reference (§7's
 detection examples, §16's reference rules) rather than a checklist that's
@@ -144,6 +148,45 @@ Every phase in the blueprint's roadmap is now built. Phase 8 added:
   nor installed here - a documented, explicit gap, not a silently skipped
   one.
 
+## Phase 9: evaluation hardening (post-blueprint)
+
+Full detail: [`phase9-external-evaluation.md`](phase9-external-evaluation.md),
+[`evaluation.md`](evaluation.md), [`holdout.md`](holdout.md),
+[`real-lab-collection-guide.md`](real-lab-collection-guide.md). Summary:
+
+- **The dataset stopped being too clean.** `app/evaluation/scenarios.py`
+  gained six noisy benign personas and four ambiguous singletons -
+  legitimate activity that individually looks alarming. This is what
+  turned the isolated-vs-correlation comparison into an actual finding:
+  isolated-rule precision drops to 0.596 under this noise while
+  correlation holds 1.0 on the identical dataset - previously, with a
+  thin benign set, both hit 1.0 and the comparison proved nothing.
+- **`app/evaluation/holdout.py` + `holdout_runner.py`**: a separately-
+  seeded, separately-composed dataset (a new persona, and an attack
+  combination none of the five original correlation rules were written around),
+  frozen once to `tests/fixtures/holdout/holdout_v1.json` via
+  `scripts/freeze_holdout.py` and never edited to improve a score. First
+  run: the novel combination was caught by both detection layers.
+- **`run_multi_seed_evaluation()`**: mean ± stdev across several seeds,
+  not one deterministic run - with an honestly-reported limitation
+  (isolated-rule precision/FPR show zero variance because which specific
+  noisy-persona signals fire is currently structurally fixed, not
+  randomized; only timing varies).
+- **`GET /api/alerts` + `/alerts`**: high/critical atomic matches as their
+  own queue, alongside (not replacing) `/incidents` - A6's standalone
+  bulk-transfer signal is exactly the case this exists for.
+- **`scripts/ingest_real_export.py` + `report_by_provenance.py`**: the
+  real-telemetry path. This environment cannot authenticate to Entra or
+  GitHub itself (no installed `gh` CLI, no credentials) - these scripts
+  are the other half of the division of labor: a user collects a real
+  export from their own lab tenant/org
+  ([`real-lab-collection-guide.md`](real-lab-collection-guide.md)) and
+  hands it over unmodified; results are tagged `real_benign` /
+  `real_controlled_attack` and reported separately from the always-
+  synthetic harness numbers, never blended. Built and tested against this
+  project's own real-schema fixtures; no genuine tenant/org data
+  collected yet - an open, explicitly stated gap.
+
 ## Key modules
 
 - `app/models/event.py` - `NormalizedEvent` (Pydantic, validation) and
@@ -179,10 +222,20 @@ Every phase in the blueprint's roadmap is now built. Phase 8 added:
   detect -> correlate sequence, called by both `app/api/events.py` and
   the evaluation harness.
 - `app/evaluation/scenarios.py`, `metrics.py`, `harness.py` - the labeled
-  dataset generators, metrics computation, and the harness that ties them
-  to `app/pipeline.py` against a throwaway in-memory DB. See
+  dataset generators (including the noisy personas and ambiguous
+  singletons), metrics computation (recall/precision/F1/FPR/latency/
+  alert-reduction), and the harness (single-run and multi-seed) that ties
+  them to `app/pipeline.py` against a throwaway in-memory DB. See
   [`evaluation.md`](evaluation.md).
+- `app/evaluation/holdout.py`, `holdout_runner.py` - the frozen
+  out-of-sample dataset generator and the loader that runs the checked-in
+  file (never regenerates it) through the same pipeline. See
+  [`holdout.md`](holdout.md).
 - `app/api/evaluation.py` - `POST /api/evaluation/run`.
+- `scripts/ingest_real_export.py`, `report_by_provenance.py`,
+  `freeze_holdout.py` - the real-telemetry ingestion path, its
+  provenance-segmented reporting, and the one-time holdout freeze. See
+  [`real-lab-collection-guide.md`](real-lab-collection-guide.md).
 - `app/models/db.py` - `DATABASE_URL`-driven engine/session; SQLite by
   default, Postgres-ready.
 - `dashboard/templates/` - server-rendered overview, incidents (queue +

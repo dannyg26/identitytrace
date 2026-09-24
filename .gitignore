@@ -13,3 +13,12 @@ dashboard/static/.cache/
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Real vendor exports (Phase 9B) - may contain real tenant/org/user
+# identifiers. Never committed - see docs/phase9b-first-collection-checklist.md.
+/real_data/*
+!/real_data/README.md
+
+# Cached Entra device-code token (scripts/collect_entra_telemetry.py) -
+# a real credential for a real tenant, never committed.
+.entra_token_cache.json

@@ -52,7 +52,7 @@ The blueprint's formula also lists `asset_sensitivity`, `privilege_context`,
 and `benign_context_adjustments`. This project folds the first two into
 Phase 2 rule scores themselves (e.g. `IDT-GITHUB-003`'s sensitive-repo-name
 check already *is* an asset-sensitivity signal) and doesn't implement
-context-based suppression yet (a Phase 8 concern) - see
+general context-based suppression in v1.0 - see
 `app/correlation/scoring.py`'s docstring for the full reasoning. Every
 component is stored on the incident (`score_breakdown`,
 `confidence_breakdown`) - never a black box.
@@ -90,9 +90,12 @@ else in this project (low/medium/high/critical), merging "Suspicious"
 
 ## Correlation rules
 
-5 rules under `correlations/`, covering every attack scenario (A1-A6, via
-overlap - e.g. A6's `bulk_data_access`/`sensitive_resource_access` signals
-appear as the terminal step of several chains):
+6 rules under `correlations/`. A6's `bulk_data_access` and
+`sensitive_resource_access` signals appear in several chains, but that
+signal overlap does not provide standalone A6 correlation coverage: A6
+correlated recall is 0.0 in the frozen holdout. Five chain signals for a
+single identity; `IDT-CORR-006` is a different kind - see
+[Entity-bridged rules](#entity-bridged-rules-idt-corr-006):
 
 | ID | Sequence | Window | Scenario |
 |---|---|---|---|
@@ -101,9 +104,75 @@ appear as the terminal step of several chains):
 | IDT-CORR-003 | privilege_escalation &rarr; sensitive_resource_access | 30m | A5 |
 | IDT-CORR-004 | weak_auth_session &rarr; new_ip &rarr; bulk_data_access | 10m | A3 |
 | IDT-CORR-005 | repo_access &rarr; sensitive_resource_access &rarr; bulk_data_access | 20m | A4 |
+| IDT-CORR-006 | admin_consent_required (user) &rarr; risky_oauth_consent (any identity) &rarr; new_session_context (same user), all the same service principal. **Workflow review** (see below), not an attack detection | 15m | A2 |
 
 IDT-CORR-001 is the blueprint's own §16.2 reference example, adapted to
 this project's signal names.
+
+### Entity-bridged rules (IDT-CORR-006)
+
+Every other rule requires one `actor_id` throughout. That model cannot
+express a real Entra flow: when a scope needs admin approval, the consent
+is performed by an *admin*, so the chain necessarily spans two identities.
+`IDT-CORR-006` models exactly the sequence validated end-to-end on real
+logs (docs/evaluation.md, "A2 End-to-End Real Validation"): a user's
+sign-in is blocked (`status.errorCode 90094`), an admin grants consent for
+the same **service principal**, and the *same original user* then signs in
+successfully. Downstream resource access is deliberately not part of it -
+it was not observable in the tested tenant.
+
+Two optional rule fields, set together or not at all (enforced when the
+YAML loads):
+
+- `actor_binding` - one entry per sequence step: `anchor` (must be the same
+  actor as step 1) or `any`. The first and last steps must be `anchor`:
+  bridging through another identity is only ever for the middle.
+- `entity_field` - the shared entity every step must reference exactly
+  (currently only `service_principal_id`, a closed set - each entity must
+  be justified by real telemetry carrying it verbatim on every side).
+
+What the matcher refuses, all tested: linking on app + time alone, a
+different service principal on any step, a different user in the last
+step, steps out of order or simultaneous (each must be strictly after the
+previous), the whole chain not fitting inside the window, a step with no
+entity (a missing entity is never a wildcard - `None` never equals `None`;
+nil/placeholder GUIDs are normalized to `None`), and any failure other than
+the narrow 90094 standing in for the first step.
+
+**Ingestion-order behavior differs from the single-identity rules, on
+purpose.** Those look only *backward* from the triggering event. This type
+looks a full window in *both* directions, so whichever event of the chain
+arrives last completes it - on real telemetry the audit and sign-in logs
+come from different endpoints and audit events landed minutes before the
+matching sign-ins. Re-detection is idempotent (the incident id derives from
+the chain's first event). The single-identity rules' known out-of-order
+limitation above is unchanged.
+
+### Workflow-review rules (detection vs escalation)
+
+A rule can declare `classification: workflow_review` when its chain is a
+risky *workflow* that legitimate use produces identically, so the telemetry
+cannot say whether it is malicious. `IDT-CORR-006` is the first: a benign
+twin on the same tenant matched it with the same signals and score as the
+attack (docs/evaluation.md, "A2 Benign Twin — Detection vs Intent"). Three
+optional fields, validated at load:
+
+- `classification` - `attack_chain` (default) or `workflow_review`. A
+  workflow-review incident is surfaced for analyst review and never asserts
+  compromise; the dashboard says so.
+- `severity_cap` - required for `workflow_review`; the highest severity the
+  rule may reach *without* independent evidence. The score is capped to that
+  band's ceiling and the pre-cap value is kept as `score_breakdown.uncapped_score`.
+- `escalation_deviations` - baseline deviation types that, when present on
+  one of the chain's own events, count as independent evidence: their weights
+  join `behavioral_deviation` and the cap is lifted. Only types the deviation
+  layer can produce are accepted, so a rule cannot depend on telemetry we do
+  not collect. `IDT-CORR-006` accepts `new_country` and `new_device`.
+
+The match itself is unaffected - classification changes what an incident
+means and how it is scored, never which chains fire. Incidents store
+`classification` and an `escalation` record (cap, whether it applied,
+evidence).
 
 ## API & dashboard
 

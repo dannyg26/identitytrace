@@ -1,0 +1,2708 @@
+{
+  "holdout_v1": {
+    "alert_reduction_ratio": 4.06,
+    "correlation_engine": {
+      "avg_detection_latency_seconds": 570.0,
+      "f1": 0.923,
+      "false_positive_incidents": 0,
+      "false_positive_rate": 0.0,
+      "precision": 1.0,
+      "recall": 0.857
+    },
+    "isolated_rule_baseline": {
+      "avg_detection_latency_seconds": 154.3,
+      "f1": 0.832,
+      "false_positive_alerts": 21,
+      "false_positive_rate": 0.198,
+      "precision": 0.712,
+      "recall": 1.0
+    },
+    "per_scenario": [
+      {
+        "attack_type": "A1",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 480.0,
+        "latency_isolated_seconds": 480.0,
+        "scenario_id": "A1-0"
+      },
+      {
+        "attack_type": "A1",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 720.0,
+        "latency_isolated_seconds": 720.0,
+        "scenario_id": "A1-1"
+      },
+      {
+        "attack_type": "A1",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 780.0,
+        "latency_isolated_seconds": 780.0,
+        "scenario_id": "A1-2"
+      },
+      {
+        "attack_type": "A2",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 840.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A2-0"
+      },
+      {
+        "attack_type": "A2",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 360.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A2-1"
+      },
+      {
+        "attack_type": "A2",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 660.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A2-2"
+      },
+      {
+        "attack_type": "A3",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 240.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A3-0"
+      },
+      {
+        "attack_type": "A3",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 60.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A3-1"
+      },
+      {
+        "attack_type": "A3",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 240.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A3-2"
+      },
+      {
+        "attack_type": "A4",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 840.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A4-0"
+      },
+      {
+        "attack_type": "A4",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 360.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A4-1"
+      },
+      {
+        "attack_type": "A4",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 300.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A4-2"
+      },
+      {
+        "attack_type": "A5",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 180.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A5-0"
+      },
+      {
+        "attack_type": "A5",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 660.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A5-1"
+      },
+      {
+        "attack_type": "A5",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 780.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A5-2"
+      },
+      {
+        "attack_type": "A6",
+        "detected_correlation": false,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": null,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A6-0"
+      },
+      {
+        "attack_type": "A6",
+        "detected_correlation": false,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": null,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A6-1"
+      },
+      {
+        "attack_type": "A6",
+        "detected_correlation": false,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": null,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A6-2"
+      },
+      {
+        "attack_type": "COMBO",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 720.0,
+        "latency_isolated_seconds": 420.0,
+        "scenario_id": "HOLD-COMBO-0"
+      },
+      {
+        "attack_type": "COMBO",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 960.0,
+        "latency_isolated_seconds": 360.0,
+        "scenario_id": "HOLD-COMBO-1"
+      },
+      {
+        "attack_type": "COMBO",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 1080.0,
+        "latency_isolated_seconds": 480.0,
+        "scenario_id": "HOLD-COMBO-2"
+      }
+    ],
+    "scenario_coverage": {
+      "A1": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A2": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A3": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A4": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A5": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A6": {
+        "instances": 3,
+        "recall_correlated": 0.0,
+        "recall_isolated": 1.0
+      },
+      "COMBO": {
+        "instances": 3,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      }
+    },
+    "totals": {
+      "atomic_alerts": 73,
+      "attack_scenarios": 21,
+      "benign_events": 106,
+      "benign_sequences": 17,
+      "incidents": 18,
+      "malicious_events": 48
+    }
+  },
+  "multi_seed": {
+    "aggregated": {
+      "alert_reduction_ratio": {
+        "max": 3.72,
+        "mean": 3.64,
+        "min": 3.62,
+        "n": 5,
+        "stdev": 0.0447
+      },
+      "correlation_engine.avg_detection_latency_seconds": {
+        "max": 535.5,
+        "mean": 519.7,
+        "min": 498.5,
+        "n": 5,
+        "stdev": 14.9566
+      },
+      "correlation_engine.f1": {
+        "max": 0.909,
+        "mean": 0.9064,
+        "min": 0.896,
+        "n": 5,
+        "stdev": 0.0058
+      },
+      "correlation_engine.false_positive_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 5,
+        "stdev": 0.0
+      },
+      "correlation_engine.precision": {
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 5,
+        "stdev": 0.0
+      },
+      "correlation_engine.recall": {
+        "max": 0.833,
+        "mean": 0.8288,
+        "min": 0.812,
+        "n": 5,
+        "stdev": 0.0094
+      },
+      "isolated_rule_baseline.avg_detection_latency_seconds": {
+        "max": 142.5,
+        "mean": 132.5,
+        "min": 123.8,
+        "n": 5,
+        "stdev": 7.7521
+      },
+      "isolated_rule_baseline.f1": {
+        "max": 0.922,
+        "mean": 0.922,
+        "min": 0.922,
+        "n": 5,
+        "stdev": 0.0
+      },
+      "isolated_rule_baseline.false_positive_rate": {
+        "max": 0.169,
+        "mean": 0.169,
+        "min": 0.169,
+        "n": 5,
+        "stdev": 0.0
+      },
+      "isolated_rule_baseline.precision": {
+        "max": 0.855,
+        "mean": 0.855,
+        "min": 0.855,
+        "n": 5,
+        "stdev": 0.0
+      },
+      "isolated_rule_baseline.recall": {
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 5,
+        "stdev": 0.0
+      }
+    },
+    "per_seed": {
+      "10": {
+        "alert_reduction_ratio": 3.72,
+        "correlation_engine": {
+          "avg_detection_latency_seconds": 498.5,
+          "f1": 0.896,
+          "false_positive_incidents": 0,
+          "false_positive_rate": 0.0,
+          "precision": 1.0,
+          "recall": 0.812
+        },
+        "isolated_rule_baseline": {
+          "avg_detection_latency_seconds": 126.2,
+          "f1": 0.922,
+          "false_positive_alerts": 21,
+          "false_positive_rate": 0.169,
+          "precision": 0.855,
+          "recall": 1.0
+        },
+        "per_scenario": [
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1080.0,
+            "latency_isolated_seconds": 1080.0,
+            "scenario_id": "A1-0"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 420.0,
+            "scenario_id": "A1-1"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 900.0,
+            "scenario_id": "A1-2"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 600.0,
+            "scenario_id": "A1-3"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1080.0,
+            "latency_isolated_seconds": 1080.0,
+            "scenario_id": "A1-4"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 360.0,
+            "scenario_id": "A1-5"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1200.0,
+            "latency_isolated_seconds": 1200.0,
+            "scenario_id": "A1-6"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 420.0,
+            "scenario_id": "A1-7"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-0"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-1"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-2"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-3"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-4"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-5"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-6"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-7"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-0"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-1"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-2"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-3"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-4"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-5"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-6"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-7"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-0"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-1"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-2"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-3"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-4"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-5"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-6"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-7"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-0"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-1"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-2"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-3"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-4"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-5"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-6"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-7"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-0"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-1"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-2"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-3"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-4"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-5"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-6"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-7"
+          }
+        ],
+        "scenario_coverage": {
+          "A1": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A2": {
+            "instances": 8,
+            "recall_correlated": 0.88,
+            "recall_isolated": 1.0
+          },
+          "A3": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A4": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A5": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A6": {
+            "instances": 8,
+            "recall_correlated": 0.0,
+            "recall_isolated": 1.0
+          }
+        },
+        "totals": {
+          "atomic_alerts": 145,
+          "attack_scenarios": 48,
+          "benign_events": 124,
+          "benign_sequences": 15,
+          "incidents": 39,
+          "malicious_events": 104
+        }
+      },
+      "20": {
+        "alert_reduction_ratio": 3.62,
+        "correlation_engine": {
+          "avg_detection_latency_seconds": 517.5,
+          "f1": 0.909,
+          "false_positive_incidents": 0,
+          "false_positive_rate": 0.0,
+          "precision": 1.0,
+          "recall": 0.833
+        },
+        "isolated_rule_baseline": {
+          "avg_detection_latency_seconds": 123.8,
+          "f1": 0.922,
+          "false_positive_alerts": 21,
+          "false_positive_rate": 0.169,
+          "precision": 0.855,
+          "recall": 1.0
+        },
+        "per_scenario": [
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 720.0,
+            "scenario_id": "A1-0"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 720.0,
+            "scenario_id": "A1-1"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 300.0,
+            "scenario_id": "A1-2"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 840.0,
+            "scenario_id": "A1-3"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 540.0,
+            "scenario_id": "A1-4"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 900.0,
+            "scenario_id": "A1-5"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1140.0,
+            "latency_isolated_seconds": 1140.0,
+            "scenario_id": "A1-6"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 780.0,
+            "scenario_id": "A1-7"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-0"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-1"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-2"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-3"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-4"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-5"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-6"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-7"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-0"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-1"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-2"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-3"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-4"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-5"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-6"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-7"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-0"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-1"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-2"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-3"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-4"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-5"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-6"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-7"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-0"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-1"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-2"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-3"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-4"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-5"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-6"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-7"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-0"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-1"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-2"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-3"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-4"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-5"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-6"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-7"
+          }
+        ],
+        "scenario_coverage": {
+          "A1": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A2": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A3": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A4": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A5": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A6": {
+            "instances": 8,
+            "recall_correlated": 0.0,
+            "recall_isolated": 1.0
+          }
+        },
+        "totals": {
+          "atomic_alerts": 145,
+          "attack_scenarios": 48,
+          "benign_events": 124,
+          "benign_sequences": 15,
+          "incidents": 40,
+          "malicious_events": 104
+        }
+      },
+      "30": {
+        "alert_reduction_ratio": 3.62,
+        "correlation_engine": {
+          "avg_detection_latency_seconds": 532.5,
+          "f1": 0.909,
+          "false_positive_incidents": 0,
+          "false_positive_rate": 0.0,
+          "precision": 1.0,
+          "recall": 0.833
+        },
+        "isolated_rule_baseline": {
+          "avg_detection_latency_seconds": 142.5,
+          "f1": 0.922,
+          "false_positive_alerts": 21,
+          "false_positive_rate": 0.169,
+          "precision": 0.855,
+          "recall": 1.0
+        },
+        "per_scenario": [
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 480.0,
+            "scenario_id": "A1-0"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1080.0,
+            "latency_isolated_seconds": 1080.0,
+            "scenario_id": "A1-1"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 840.0,
+            "scenario_id": "A1-2"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 600.0,
+            "scenario_id": "A1-3"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 900.0,
+            "scenario_id": "A1-4"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1140.0,
+            "latency_isolated_seconds": 1140.0,
+            "scenario_id": "A1-5"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 900.0,
+            "scenario_id": "A1-6"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 900.0,
+            "scenario_id": "A1-7"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-0"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-1"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-2"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-3"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-4"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-5"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-6"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-7"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-0"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-1"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-2"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-3"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-4"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-5"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-6"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-7"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-0"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-1"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-2"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-3"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-4"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-5"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-6"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-7"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-0"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-1"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-2"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-3"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-4"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-5"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-6"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-7"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-0"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-1"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-2"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-3"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-4"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-5"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-6"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-7"
+          }
+        ],
+        "scenario_coverage": {
+          "A1": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A2": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A3": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A4": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A5": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A6": {
+            "instances": 8,
+            "recall_correlated": 0.0,
+            "recall_isolated": 1.0
+          }
+        },
+        "totals": {
+          "atomic_alerts": 145,
+          "attack_scenarios": 48,
+          "benign_events": 124,
+          "benign_sequences": 15,
+          "incidents": 40,
+          "malicious_events": 104
+        }
+      },
+      "40": {
+        "alert_reduction_ratio": 3.62,
+        "correlation_engine": {
+          "avg_detection_latency_seconds": 514.5,
+          "f1": 0.909,
+          "false_positive_incidents": 0,
+          "false_positive_rate": 0.0,
+          "precision": 1.0,
+          "recall": 0.833
+        },
+        "isolated_rule_baseline": {
+          "avg_detection_latency_seconds": 132.5,
+          "f1": 0.922,
+          "false_positive_alerts": 21,
+          "false_positive_rate": 0.169,
+          "precision": 0.855,
+          "recall": 1.0
+        },
+        "per_scenario": [
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1200.0,
+            "latency_isolated_seconds": 1200.0,
+            "scenario_id": "A1-0"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 420.0,
+            "scenario_id": "A1-1"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 660.0,
+            "scenario_id": "A1-2"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 300.0,
+            "scenario_id": "A1-3"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1140.0,
+            "latency_isolated_seconds": 1140.0,
+            "scenario_id": "A1-4"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 840.0,
+            "scenario_id": "A1-5"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 660.0,
+            "scenario_id": "A1-6"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1140.0,
+            "latency_isolated_seconds": 1140.0,
+            "scenario_id": "A1-7"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-0"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-1"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-2"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-3"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-4"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-5"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-6"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-7"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-0"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-1"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-2"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-3"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-4"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-5"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-6"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-7"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-0"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-1"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-2"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-3"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-4"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-5"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-6"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-7"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-0"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-1"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-2"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-3"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-4"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-5"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-6"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-7"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-0"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-1"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-2"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-3"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-4"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-5"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-6"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-7"
+          }
+        ],
+        "scenario_coverage": {
+          "A1": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A2": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A3": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A4": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A5": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A6": {
+            "instances": 8,
+            "recall_correlated": 0.0,
+            "recall_isolated": 1.0
+          }
+        },
+        "totals": {
+          "atomic_alerts": 145,
+          "attack_scenarios": 48,
+          "benign_events": 124,
+          "benign_sequences": 15,
+          "incidents": 40,
+          "malicious_events": 104
+        }
+      },
+      "50": {
+        "alert_reduction_ratio": 3.62,
+        "correlation_engine": {
+          "avg_detection_latency_seconds": 535.5,
+          "f1": 0.909,
+          "false_positive_incidents": 0,
+          "false_positive_rate": 0.0,
+          "precision": 1.0,
+          "recall": 0.833
+        },
+        "isolated_rule_baseline": {
+          "avg_detection_latency_seconds": 137.5,
+          "f1": 0.922,
+          "false_positive_alerts": 21,
+          "false_positive_rate": 0.169,
+          "precision": 0.855,
+          "recall": 1.0
+        },
+        "per_scenario": [
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 480.0,
+            "scenario_id": "A1-0"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1200.0,
+            "latency_isolated_seconds": 1200.0,
+            "scenario_id": "A1-1"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 540.0,
+            "scenario_id": "A1-2"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 840.0,
+            "scenario_id": "A1-3"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 960.0,
+            "latency_isolated_seconds": 960.0,
+            "scenario_id": "A1-4"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 540.0,
+            "scenario_id": "A1-5"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 960.0,
+            "latency_isolated_seconds": 960.0,
+            "scenario_id": "A1-6"
+          },
+          {
+            "attack_type": "A1",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 1080.0,
+            "latency_isolated_seconds": 1080.0,
+            "scenario_id": "A1-7"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-0"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 900.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-1"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 840.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-2"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-3"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-4"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-5"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-6"
+          },
+          {
+            "attack_type": "A2",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A2-7"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-0"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-1"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-2"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-3"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-4"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 60.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-5"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 120.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-6"
+          },
+          {
+            "attack_type": "A3",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 180.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A3-7"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-0"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-1"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-2"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-3"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-4"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 480.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-5"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 720.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-6"
+          },
+          {
+            "attack_type": "A4",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A4-7"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 780.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-0"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 660.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-1"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 600.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-2"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 240.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-3"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 420.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-4"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 300.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-5"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 540.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-6"
+          },
+          {
+            "attack_type": "A5",
+            "detected_correlation": true,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": 360.0,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A5-7"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-0"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-1"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-2"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-3"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-4"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-5"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-6"
+          },
+          {
+            "attack_type": "A6",
+            "detected_correlation": false,
+            "detected_isolated_rule": true,
+            "latency_correlated_seconds": null,
+            "latency_isolated_seconds": 0.0,
+            "scenario_id": "A6-7"
+          }
+        ],
+        "scenario_coverage": {
+          "A1": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A2": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A3": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A4": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A5": {
+            "instances": 8,
+            "recall_correlated": 1.0,
+            "recall_isolated": 1.0
+          },
+          "A6": {
+            "instances": 8,
+            "recall_correlated": 0.0,
+            "recall_isolated": 1.0
+          }
+        },
+        "totals": {
+          "atomic_alerts": 145,
+          "attack_scenarios": 48,
+          "benign_events": 124,
+          "benign_sequences": 15,
+          "incidents": 40,
+          "malicious_events": 104
+        }
+      }
+    },
+    "seeds": [
+      10,
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  "single_run_seed42": {
+    "alert_reduction_ratio": 5.2,
+    "correlation_engine": {
+      "avg_detection_latency_seconds": 510.0,
+      "f1": 0.909,
+      "false_positive_incidents": 0,
+      "false_positive_rate": 0.0,
+      "precision": 1.0,
+      "recall": 0.833
+    },
+    "isolated_rule_baseline": {
+      "avg_detection_latency_seconds": 150.0,
+      "f1": 0.747,
+      "false_positive_alerts": 21,
+      "false_positive_rate": 0.239,
+      "precision": 0.596,
+      "recall": 1.0
+    },
+    "per_scenario": [
+      {
+        "attack_type": "A1",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 840.0,
+        "latency_isolated_seconds": 840.0,
+        "scenario_id": "A1-0"
+      },
+      {
+        "attack_type": "A1",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 960.0,
+        "latency_isolated_seconds": 960.0,
+        "scenario_id": "A1-1"
+      },
+      {
+        "attack_type": "A2",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 540.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A2-0"
+      },
+      {
+        "attack_type": "A2",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 540.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A2-1"
+      },
+      {
+        "attack_type": "A3",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 60.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A3-0"
+      },
+      {
+        "attack_type": "A3",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 120.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A3-1"
+      },
+      {
+        "attack_type": "A4",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 600.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A4-0"
+      },
+      {
+        "attack_type": "A4",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 420.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A4-1"
+      },
+      {
+        "attack_type": "A5",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 420.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A5-0"
+      },
+      {
+        "attack_type": "A5",
+        "detected_correlation": true,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": 600.0,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A5-1"
+      },
+      {
+        "attack_type": "A6",
+        "detected_correlation": false,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": null,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A6-0"
+      },
+      {
+        "attack_type": "A6",
+        "detected_correlation": false,
+        "detected_isolated_rule": true,
+        "latency_correlated_seconds": null,
+        "latency_isolated_seconds": 0.0,
+        "scenario_id": "A6-1"
+      }
+    ],
+    "scenario_coverage": {
+      "A1": {
+        "instances": 2,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A2": {
+        "instances": 2,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A3": {
+        "instances": 2,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A4": {
+        "instances": 2,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A5": {
+        "instances": 2,
+        "recall_correlated": 1.0,
+        "recall_isolated": 1.0
+      },
+      "A6": {
+        "instances": 2,
+        "recall_correlated": 0.0,
+        "recall_isolated": 1.0
+      }
+    },
+    "totals": {
+      "atomic_alerts": 52,
+      "attack_scenarios": 12,
+      "benign_events": 88,
+      "benign_sequences": 15,
+      "incidents": 10,
+      "malicious_events": 26
+    }
+  }
+}

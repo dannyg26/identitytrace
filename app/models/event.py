@@ -45,6 +45,15 @@ class NormalizedEvent(BaseModel):
     auth_protocol: Optional[str] = None
     mfa_result: Optional[str] = None
     app_id: Optional[str] = None
+    # The application's service-principal object ID in the tenant - the one
+    # identifier that appeared verbatim on BOTH sides of the real A2
+    # admin-consent flow (the requesting user's sign-in and the admin's
+    # consent grant). Populated only where the source genuinely carries it
+    # (Entra); None otherwise. Nil/empty GUIDs are normalized to None by the
+    # normalizer - a placeholder is not a shared entity. Used by
+    # entity-bridged correlation rules (app/correlation/), never as a
+    # standalone detection field.
+    service_principal_id: Optional[str] = None
     permissions: list[str] = Field(default_factory=list)
     resource_id: Optional[str] = None
     resource_type: Optional[str] = None
@@ -103,6 +112,7 @@ class EventRecord(Base):
     auth_protocol: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     mfa_result: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     app_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    service_principal_id: Mapped[Optional[str]] = mapped_column(String, nullable=True, index=True)
     permissions: Mapped[list] = mapped_column(JSON, default=list)
     resource_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     resource_type: Mapped[Optional[str]] = mapped_column(String, nullable=True)
@@ -127,6 +137,7 @@ class EventRecord(Base):
             auth_protocol=self.auth_protocol,
             mfa_result=self.mfa_result,
             app_id=self.app_id,
+            service_principal_id=self.service_principal_id,
             permissions=self.permissions or [],
             resource_id=self.resource_id,
             resource_type=self.resource_type,

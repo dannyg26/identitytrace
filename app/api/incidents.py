@@ -57,6 +57,9 @@ def list_correlation_rules() -> list[dict]:
             "window_seconds": rule.window_seconds,
             "sequence": rule.sequence,
             "score_bonus": rule.score_bonus,
+            "classification": rule.classification,
+            "severity_cap": rule.severity_cap,
+            "escalation_deviations": rule.escalation_deviations,
             "scenario": rule.scenario,
             "attack": [a.model_dump() for a in rule.attack],
         }

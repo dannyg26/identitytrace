@@ -1,0 +1,4043 @@
+{
+  "seed": 999,
+  "base_time": "2027-01-05T00:00:00+00:00",
+  "benign_sequences": [
+    {
+      "sequence_id": "routine-0",
+      "persona": "routine_employee",
+      "identity": "benign-user-0@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "ef396987-2ac4-48e9-9330-b48247324931",
+              "createdDateTime": "2027-01-05T09:21:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "ef396987-2ac4-48e9-9330-b48247324931",
+          "timestamp": "2027-01-05T09:21:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "98f26a8b-f2fe-43bc-b4f4-f45181e7a176",
+              "createdDateTime": "2027-01-06T09:02:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "98f26a8b-f2fe-43bc-b4f4-f45181e7a176",
+          "timestamp": "2027-01-06T09:02:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "3c5f182d-f08b-4f46-8961-0dfe4b789040",
+              "createdDateTime": "2027-01-07T09:28:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "3c5f182d-f08b-4f46-8961-0dfe4b789040",
+          "timestamp": "2027-01-07T09:28:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "d8cf8cd8-9481-41bf-9fb4-a5968f552734",
+              "createdDateTime": "2027-01-08T09:27:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "d8cf8cd8-9481-41bf-9fb4-a5968f552734",
+          "timestamp": "2027-01-08T09:27:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "d8b32957-5545-46f7-822a-0866542dab72",
+              "createdDateTime": "2027-01-09T09:18:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "d8b32957-5545-46f7-822a-0866542dab72",
+          "timestamp": "2027-01-09T09:18:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "3ee9e30e-79b4-4e0b-9c27-6f03a27536b5",
+              "createdDateTime": "2027-01-10T09:18:00Z",
+              "userPrincipalName": "benign-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.0.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-0"
+              }
+            }
+          },
+          "event_id": "3ee9e30e-79b4-4e0b-9c27-6f03a27536b5",
+          "timestamp": "2027-01-10T09:18:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "routine-1",
+      "persona": "routine_employee",
+      "identity": "benign-user-1@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "4d40027b-14c3-413b-9785-2ebdc4c9fc5c",
+              "createdDateTime": "2027-01-05T09:15:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "4d40027b-14c3-413b-9785-2ebdc4c9fc5c",
+          "timestamp": "2027-01-05T09:15:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "81d0e5f2-8829-4aa9-a33d-1f7644a134f3",
+              "createdDateTime": "2027-01-06T09:15:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "81d0e5f2-8829-4aa9-a33d-1f7644a134f3",
+          "timestamp": "2027-01-06T09:15:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "811dd55d-8a15-4cd7-bd50-7de64300acb8",
+              "createdDateTime": "2027-01-07T09:04:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "811dd55d-8a15-4cd7-bd50-7de64300acb8",
+          "timestamp": "2027-01-07T09:04:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "48e6db14-6fa2-41e9-9c88-ee1e84105647",
+              "createdDateTime": "2027-01-08T09:28:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "48e6db14-6fa2-41e9-9c88-ee1e84105647",
+          "timestamp": "2027-01-08T09:28:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a109b006-2f7b-4145-8ba6-e40ba9673bb4",
+              "createdDateTime": "2027-01-09T09:25:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "a109b006-2f7b-4145-8ba6-e40ba9673bb4",
+          "timestamp": "2027-01-09T09:25:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "6782764f-5e9c-4130-a553-8efe667a3775",
+              "createdDateTime": "2027-01-10T09:20:00Z",
+              "userPrincipalName": "benign-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.1.137",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-1"
+              }
+            }
+          },
+          "event_id": "6782764f-5e9c-4130-a553-8efe667a3775",
+          "timestamp": "2027-01-10T09:20:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "routine-2",
+      "persona": "routine_employee",
+      "identity": "benign-user-2@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "9ffc7fc9-9c53-493f-8f2d-8add8e74b43c",
+              "createdDateTime": "2027-01-05T09:20:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "9ffc7fc9-9c53-493f-8f2d-8add8e74b43c",
+          "timestamp": "2027-01-05T09:20:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "132d8c40-81b4-4184-8429-1da18716f68a",
+              "createdDateTime": "2027-01-06T09:25:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "132d8c40-81b4-4184-8429-1da18716f68a",
+          "timestamp": "2027-01-06T09:25:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "75d76dca-1501-4a03-b5ec-c89b691f838e",
+              "createdDateTime": "2027-01-07T09:20:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "75d76dca-1501-4a03-b5ec-c89b691f838e",
+          "timestamp": "2027-01-07T09:20:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "ff92fae1-60b0-4ddd-afa7-30474e4f3d80",
+              "createdDateTime": "2027-01-08T09:27:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "ff92fae1-60b0-4ddd-afa7-30474e4f3d80",
+          "timestamp": "2027-01-08T09:27:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "53207d3a-40b1-49ba-82f8-a6c16605663f",
+              "createdDateTime": "2027-01-09T09:26:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "53207d3a-40b1-49ba-82f8-a6c16605663f",
+          "timestamp": "2027-01-09T09:26:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "7186baf3-6276-4039-96aa-53e39e27ed97",
+              "createdDateTime": "2027-01-10T09:03:00Z",
+              "userPrincipalName": "benign-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.2.82",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-2"
+              }
+            }
+          },
+          "event_id": "7186baf3-6276-4039-96aa-53e39e27ed97",
+          "timestamp": "2027-01-10T09:03:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "routine-3",
+      "persona": "routine_employee",
+      "identity": "benign-user-3@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "79dc7767-9b27-4339-bac9-5c43ecabe22e",
+              "createdDateTime": "2027-01-05T09:26:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "79dc7767-9b27-4339-bac9-5c43ecabe22e",
+          "timestamp": "2027-01-05T09:26:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a4a2509a-2de2-433e-87d5-5dd8b4b3746d",
+              "createdDateTime": "2027-01-06T09:06:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "a4a2509a-2de2-433e-87d5-5dd8b4b3746d",
+          "timestamp": "2027-01-06T09:06:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "356a7594-79fd-4148-8577-7c3e626ec65c",
+              "createdDateTime": "2027-01-07T09:04:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "356a7594-79fd-4148-8577-7c3e626ec65c",
+          "timestamp": "2027-01-07T09:04:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "9d7b12d9-deb9-4bbc-9709-e9ceddff5963",
+              "createdDateTime": "2027-01-08T09:08:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "9d7b12d9-deb9-4bbc-9709-e9ceddff5963",
+          "timestamp": "2027-01-08T09:08:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a372210c-a288-43fa-b7e4-f8442eb697e4",
+              "createdDateTime": "2027-01-09T09:18:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "a372210c-a288-43fa-b7e4-f8442eb697e4",
+          "timestamp": "2027-01-09T09:18:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "4261b421-62f0-4cfa-b7de-2a1a2175fe6d",
+              "createdDateTime": "2027-01-10T09:01:00Z",
+              "userPrincipalName": "benign-user-3@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.3.166",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-benign-3"
+              }
+            }
+          },
+          "event_id": "4261b421-62f0-4cfa-b7de-2a1a2175fe6d",
+          "timestamp": "2027-01-10T09:01:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "traveling-user",
+      "persona": "traveling_user",
+      "identity": "traveling-employee@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "e16678af-9653-4c26-a470-46ae4a9fc79c",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "traveling-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.9.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-traveler-home"
+              }
+            }
+          },
+          "event_id": "e16678af-9653-4c26-a470-46ae4a9fc79c",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "60d46d1f-24fe-4674-b6bd-1f3a4dbcff3d",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "traveling-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.9.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-traveler-home"
+              }
+            }
+          },
+          "event_id": "60d46d1f-24fe-4674-b6bd-1f3a4dbcff3d",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "ccf82d31-335d-4f29-b5a3-5696f80dc501",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "traveling-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.9.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-traveler-home"
+              }
+            }
+          },
+          "event_id": "ccf82d31-335d-4f29-b5a3-5696f80dc501",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "63d65a55-e653-431d-8835-188842a9e986",
+              "createdDateTime": "2027-01-08T09:00:00Z",
+              "userPrincipalName": "traveling-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.9.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-traveler-home"
+              }
+            }
+          },
+          "event_id": "63d65a55-e653-431d-8835-188842a9e986",
+          "timestamp": "2027-01-08T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "365ed661-5c8e-4f65-ab90-a753222e2a35",
+              "createdDateTime": "2027-01-10T14:00:00Z",
+              "userPrincipalName": "traveling-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.100.201",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-traveler-home"
+              }
+            }
+          },
+          "event_id": "365ed661-5c8e-4f65-ab90-a753222e2a35",
+          "timestamp": "2027-01-10T14:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "legitimate-admin",
+      "persona": "legitimate_admin",
+      "identity": "admin-user@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "157fca58-237d-47f8-8624-f4c87363fab8",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "admin-user@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.20.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-admin-workstation"
+              }
+            }
+          },
+          "event_id": "157fca58-237d-47f8-8624-f4c87363fab8",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "074d5dc4-870f-456e-b5ca-874be579b0f5",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "admin-user@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.20.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-admin-workstation"
+              }
+            }
+          },
+          "event_id": "074d5dc4-870f-456e-b5ca-874be579b0f5",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1d68ac53-a1b4-4ad7-88ac-409c78ea777a",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "admin-user@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.20.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-admin-workstation"
+              }
+            }
+          },
+          "event_id": "1d68ac53-a1b4-4ad7-88ac-409c78ea777a",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "9ff230fc-9387-4416-9dcb-692bae6c3bed",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-08T22:00:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "admin-user@eval.test-id",
+                  "userPrincipalName": "admin-user@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "9ff230fc-9387-4416-9dcb-692bae6c3bed",
+          "timestamp": "2027-01-08T22:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "bac795a4-eb83-4498-a624-1414305ab485",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-09T22:00:00Z",
+              "activityDisplayName": "Add eligible member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "admin-user@eval.test-id",
+                  "userPrincipalName": "admin-user@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "bac795a4-eb83-4498-a624-1414305ab485",
+          "timestamp": "2027-01-09T22:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "c4824924-7010-455f-b516-05942f3b474a",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-10T22:00:00Z",
+              "activityDisplayName": "Update role",
+              "initiatedBy": {
+                "user": {
+                  "id": "admin-user@eval.test-id",
+                  "userPrincipalName": "admin-user@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "c4824924-7010-455f-b516-05942f3b474a",
+          "timestamp": "2027-01-10T22:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "developer-burst",
+      "persona": "developer_burst",
+      "identity": "burst-dev",
+      "events": [
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "95368c31-da59-4586-a6d2-a54731bcf4c2",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-05T10:00:00Z"
+            }
+          },
+          "event_id": "95368c31-da59-4586-a6d2-a54731bcf4c2",
+          "timestamp": "2027-01-05T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "5c7965b7-e635-4b7a-aa69-c1e896a1467d",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-06T10:00:00Z"
+            }
+          },
+          "event_id": "5c7965b7-e635-4b7a-aa69-c1e896a1467d",
+          "timestamp": "2027-01-06T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "86193e37-bd80-4d9b-b955-29106ca3d289",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-07T10:00:00Z"
+            }
+          },
+          "event_id": "86193e37-bd80-4d9b-b955-29106ca3d289",
+          "timestamp": "2027-01-07T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "db12149a-8a9c-4c16-a0fe-b2fc5a13a45c",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/docs",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:00:00Z"
+            }
+          },
+          "event_id": "db12149a-8a9c-4c16-a0fe-b2fc5a13a45c",
+          "timestamp": "2027-01-08T11:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "42662dee-8cde-4a2d-b5d8-a56d19b2ba32",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/ci-config",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:02:00Z"
+            }
+          },
+          "event_id": "42662dee-8cde-4a2d-b5d8-a56d19b2ba32",
+          "timestamp": "2027-01-08T11:02:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "6c07b129-441f-432c-8c62-806179461e7e",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/internal-tools",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:04:00Z"
+            }
+          },
+          "event_id": "6c07b129-441f-432c-8c62-806179461e7e",
+          "timestamp": "2027-01-08T11:04:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "b14a8411-f31a-4bdf-a392-6bdaa48ba958",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/ci-config",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:06:00Z"
+            }
+          },
+          "event_id": "b14a8411-f31a-4bdf-a392-6bdaa48ba958",
+          "timestamp": "2027-01-08T11:06:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "0dbc92a5-8a6e-4b6a-9858-615e27bbf639",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/website",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:08:00Z"
+            }
+          },
+          "event_id": "0dbc92a5-8a6e-4b6a-9858-615e27bbf639",
+          "timestamp": "2027-01-08T11:08:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "438446a2-408c-402b-b682-f7012786eaed",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/docs",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:10:00Z"
+            }
+          },
+          "event_id": "438446a2-408c-402b-b682-f7012786eaed",
+          "timestamp": "2027-01-08T11:10:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "4d9b2af1-ffa4-42af-bec0-236ba4320ca1",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/website",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:12:00Z"
+            }
+          },
+          "event_id": "4d9b2af1-ffa4-42af-bec0-236ba4320ca1",
+          "timestamp": "2027-01-08T11:12:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "55f720d4-e160-45de-b276-1a6efc259290",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/internal-tools",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:14:00Z"
+            }
+          },
+          "event_id": "55f720d4-e160-45de-b276-1a6efc259290",
+          "timestamp": "2027-01-08T11:14:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "2aaad6e3-e19e-449e-925b-9b187721f63b",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:16:00Z"
+            }
+          },
+          "event_id": "2aaad6e3-e19e-449e-925b-9b187721f63b",
+          "timestamp": "2027-01-08T11:16:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "a7637ade-c6b3-44f6-9183-440f9c741f3f",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/internal-tools",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:18:00Z"
+            }
+          },
+          "event_id": "a7637ade-c6b3-44f6-9183-440f9c741f3f",
+          "timestamp": "2027-01-08T11:18:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "20a5b3b9-468f-4a62-bc03-a1ce79b7e6b7",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/internal-tools",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:20:00Z"
+            }
+          },
+          "event_id": "20a5b3b9-468f-4a62-bc03-a1ce79b7e6b7",
+          "timestamp": "2027-01-08T11:20:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "07140146-7d99-41e0-9ed1-1e7eca554b97",
+              "action": "repo.access",
+              "actor": "burst-dev",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/docs",
+              "token_id": "pat-burst-dev",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-08T11:22:00Z"
+            }
+          },
+          "event_id": "07140146-7d99-41e0-9ed1-1e7eca554b97",
+          "timestamp": "2027-01-08T11:22:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "new-laptop",
+      "persona": "new_corporate_laptop",
+      "identity": "new-laptop-employee@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "aa09f032-e481-4fe6-87f0-88a963778129",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "new-laptop-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.30.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-old-laptop"
+              }
+            }
+          },
+          "event_id": "aa09f032-e481-4fe6-87f0-88a963778129",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "69b6a260-861f-49d0-bc97-6b54c2072435",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "new-laptop-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.30.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-old-laptop"
+              }
+            }
+          },
+          "event_id": "69b6a260-861f-49d0-bc97-6b54c2072435",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "6d100afc-6271-4439-b739-ca73ac9429f9",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "new-laptop-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.30.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-old-laptop"
+              }
+            }
+          },
+          "event_id": "6d100afc-6271-4439-b739-ca73ac9429f9",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "d17e94a7-e033-4ee8-bd4e-ff4f8f46f521",
+              "createdDateTime": "2027-01-08T09:00:00Z",
+              "userPrincipalName": "new-laptop-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.30.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-old-laptop"
+              }
+            }
+          },
+          "event_id": "d17e94a7-e033-4ee8-bd4e-ff4f8f46f521",
+          "timestamp": "2027-01-08T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "47d363ee-220d-4284-bac1-a09822637fa4",
+              "createdDateTime": "2027-01-10T09:00:00Z",
+              "userPrincipalName": "new-laptop-employee@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.30.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-new-laptop"
+              },
+              "mfaDetail": {
+                "result": "success"
+              }
+            }
+          },
+          "event_id": "47d363ee-220d-4284-bac1-a09822637fa4",
+          "timestamp": "2027-01-10T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "service-account",
+      "persona": "service_account",
+      "identity": "svc-automation@eval.test",
+      "events": [
+        {
+          "payload": {
+            "event_id": "21e4ee17-7f56-4add-a283-331af0ab92d5",
+            "timestamp": "2027-01-05T03:02:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "21e4ee17-7f56-4add-a283-331af0ab92d5",
+          "timestamp": "2027-01-05T03:02:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "357e7de1-ffa4-4010-8e89-b75516fd7c6a",
+            "timestamp": "2027-01-06T03:01:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "357e7de1-ffa4-4010-8e89-b75516fd7c6a",
+          "timestamp": "2027-01-06T03:01:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "66f9fea7-5c09-4d7e-ba4e-7e2e0024c95c",
+            "timestamp": "2027-01-07T03:08:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "66f9fea7-5c09-4d7e-ba4e-7e2e0024c95c",
+          "timestamp": "2027-01-07T03:08:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "300cb50a-bf77-4b8d-a45b-98410149027c",
+            "timestamp": "2027-01-08T03:09:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "300cb50a-bf77-4b8d-a45b-98410149027c",
+          "timestamp": "2027-01-08T03:09:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "d3827342-7772-44d6-b020-e3f6b2348231",
+            "timestamp": "2027-01-09T03:07:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "d3827342-7772-44d6-b020-e3f6b2348231",
+          "timestamp": "2027-01-09T03:07:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "d3041d28-cdb8-4031-8254-9a8855a501e3",
+            "timestamp": "2027-01-10T03:05:00+00:00",
+            "actor_id": "svc-automation@eval.test",
+            "source": "m365",
+            "event_type": "file_access",
+            "action": "AutomatedSync",
+            "result": "success",
+            "actor_type": "service_principal",
+            "ip_address": "10.0.40.5",
+            "app_id": "svc-automation-app"
+          },
+          "event_id": "d3041d28-cdb8-4031-8254-9a8855a501e3",
+          "timestamp": "2027-01-10T03:05:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "bulk-download-analyst",
+      "persona": "legitimate_bulk_download",
+      "identity": "data-analyst@eval.test",
+      "events": [
+        {
+          "payload": {
+            "event_id": "c59c53a9-aaf5-4c4e-b15f-a2c7785e984c",
+            "timestamp": "2027-01-05T10:00:00+00:00",
+            "actor_id": "data-analyst@eval.test",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "export",
+            "result": "success",
+            "bytes_transferred": 51088052,
+            "actor_type": "user"
+          },
+          "event_id": "c59c53a9-aaf5-4c4e-b15f-a2c7785e984c",
+          "timestamp": "2027-01-05T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "261212e6-96e8-4e41-84fc-b3130d52b93b",
+            "timestamp": "2027-01-06T10:00:00+00:00",
+            "actor_id": "data-analyst@eval.test",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "export",
+            "result": "success",
+            "bytes_transferred": 54191465,
+            "actor_type": "user"
+          },
+          "event_id": "261212e6-96e8-4e41-84fc-b3130d52b93b",
+          "timestamp": "2027-01-06T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "67b0da33-51bc-4fc7-9ccc-a1495649e7b1",
+            "timestamp": "2027-01-07T10:00:00+00:00",
+            "actor_id": "data-analyst@eval.test",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "export",
+            "result": "success",
+            "bytes_transferred": 53900287,
+            "actor_type": "user"
+          },
+          "event_id": "67b0da33-51bc-4fc7-9ccc-a1495649e7b1",
+          "timestamp": "2027-01-07T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "48152d58-ffc4-47ee-886f-f301cd8ac694",
+            "timestamp": "2027-01-08T10:00:00+00:00",
+            "actor_id": "data-analyst@eval.test",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "export",
+            "result": "success",
+            "bytes_transferred": 50123207,
+            "actor_type": "user"
+          },
+          "event_id": "48152d58-ffc4-47ee-886f-f301cd8ac694",
+          "timestamp": "2027-01-08T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "event_id": "7d16cd09-5829-429d-b93f-851d5ee95c8d",
+            "timestamp": "2027-01-09T10:00:00+00:00",
+            "actor_id": "data-analyst@eval.test",
+            "source": "synthetic",
+            "event_type": "file_download",
+            "action": "export",
+            "result": "success",
+            "bytes_transferred": 50461944,
+            "actor_type": "user"
+          },
+          "event_id": "7d16cd09-5829-429d-b93f-851d5ee95c8d",
+          "timestamp": "2027-01-09T10:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "singleton-new-device",
+      "persona": "ambiguous_singleton",
+      "identity": "singleton-device@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "bcf0b67f-1985-469f-a2f3-c97abe8a7bf2",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "singleton-device@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.50.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-singleton"
+              }
+            }
+          },
+          "event_id": "bcf0b67f-1985-469f-a2f3-c97abe8a7bf2",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "singleton-oauth-consent",
+      "persona": "ambiguous_singleton",
+      "identity": "singleton-consent@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "46bb08ce-3030-4eb3-ba44-aa7c1d775131",
+              "category": "ApplicationManagement",
+              "activityDateTime": "2027-01-05T09:00:00Z",
+              "activityDisplayName": "Consent to application",
+              "initiatedBy": {
+                "user": {
+                  "id": "singleton-consent@eval.test-id",
+                  "userPrincipalName": "singleton-consent@eval.test"
+                }
+              },
+              "targetResources": [
+                {
+                  "type": "Application",
+                  "id": "teamcalendarsync",
+                  "displayName": "TeamCalendarSync",
+                  "modifiedProperties": [
+                    {
+                      "displayName": "ConsentAction.Permissions",
+                      "newValue": "[\"Files.Read.All\"]"
+                    }
+                  ]
+                }
+              ],
+              "result": "success"
+            }
+          },
+          "event_id": "46bb08ce-3030-4eb3-ba44-aa7c1d775131",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "singleton-repo-access",
+      "persona": "ambiguous_singleton",
+      "identity": "singleton-repo-user",
+      "events": [
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "8db9ff4c-357f-41d6-82b3-c1cb189119f4",
+              "action": "repo.access",
+              "actor": "singleton-repo-user",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-singleton",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-05T09:00:00Z"
+            }
+          },
+          "event_id": "8db9ff4c-357f-41d6-82b3-c1cb189119f4",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "singleton-bulk-download",
+      "persona": "ambiguous_singleton",
+      "identity": "singleton-bulk@eval.test",
+      "events": [
+        {
+          "payload": {
+            "event_id": "3c52b9c7-6c9f-4170-ba54-6c08ca637dd0",
+            "timestamp": "2027-01-05T09:00:00+00:00",
+            "actor_id": "singleton-bulk@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 300000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "3c52b9c7-6c9f-4170-ba54-6c08ca637dd0",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "shared-workstation-0",
+      "persona": "shared_workstation",
+      "identity": "kiosk-user-0@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "029bcb18-f85e-4e92-9c7a-9edf35a80cda",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "kiosk-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "029bcb18-f85e-4e92-9c7a-9edf35a80cda",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "291ba116-1497-47c8-9582-688d4c807dfe",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "kiosk-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "291ba116-1497-47c8-9582-688d4c807dfe",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a798bde8-3641-4acd-967b-cae04068072c",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "kiosk-user-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "a798bde8-3641-4acd-967b-cae04068072c",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "shared-workstation-1",
+      "persona": "shared_workstation",
+      "identity": "kiosk-user-1@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "23ddd699-d09e-490b-9079-71e7bd769862",
+              "createdDateTime": "2027-01-05T09:05:00Z",
+              "userPrincipalName": "kiosk-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "23ddd699-d09e-490b-9079-71e7bd769862",
+          "timestamp": "2027-01-05T09:05:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "095f1f82-b5ac-46b8-b1b5-ab71ea5c8411",
+              "createdDateTime": "2027-01-06T09:05:00Z",
+              "userPrincipalName": "kiosk-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "095f1f82-b5ac-46b8-b1b5-ab71ea5c8411",
+          "timestamp": "2027-01-06T09:05:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "316e48e2-07d6-47d1-a828-b3c8347a6916",
+              "createdDateTime": "2027-01-07T09:05:00Z",
+              "userPrincipalName": "kiosk-user-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "316e48e2-07d6-47d1-a828-b3c8347a6916",
+          "timestamp": "2027-01-07T09:05:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    },
+    {
+      "sequence_id": "shared-workstation-2",
+      "persona": "shared_workstation",
+      "identity": "kiosk-user-2@eval.test",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "13f993f2-db60-42a1-abb1-46e14c4b3822",
+              "createdDateTime": "2027-01-05T09:10:00Z",
+              "userPrincipalName": "kiosk-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "13f993f2-db60-42a1-abb1-46e14c4b3822",
+          "timestamp": "2027-01-05T09:10:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "6ec25157-3339-40ec-8493-0976aca203a1",
+              "createdDateTime": "2027-01-06T09:10:00Z",
+              "userPrincipalName": "kiosk-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "6ec25157-3339-40ec-8493-0976aca203a1",
+          "timestamp": "2027-01-06T09:10:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "6b3b97a6-40b5-43a9-b6b8-971caa53c364",
+              "createdDateTime": "2027-01-07T09:10:00Z",
+              "userPrincipalName": "kiosk-user-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.0.60.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-shared-kiosk"
+              }
+            }
+          },
+          "event_id": "6b3b97a6-40b5-43a9-b6b8-971caa53c364",
+          "timestamp": "2027-01-07T09:10:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        }
+      ]
+    }
+  ],
+  "attack_scenarios": [
+    {
+      "scenario_id": "A1-0",
+      "attack_type": "A1",
+      "identity": "a1-victim-0@eval.test",
+      "start_time": "2027-01-09T03:03:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1770b161-129a-44f3-9217-13cd6c1e7ae0",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "a1-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-0"
+              }
+            }
+          },
+          "event_id": "1770b161-129a-44f3-9217-13cd6c1e7ae0",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "990c919e-badd-4d05-a4be-3459f19342f7",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "a1-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-0"
+              }
+            }
+          },
+          "event_id": "990c919e-badd-4d05-a4be-3459f19342f7",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a7cc4880-6e0b-4b67-83ba-51e847b01205",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "a1-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-0"
+              }
+            }
+          },
+          "event_id": "a7cc4880-6e0b-4b67-83ba-51e847b01205",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a7bdce3c-49a9-4457-9cd2-807f42d53c64",
+              "createdDateTime": "2027-01-09T03:03:00Z",
+              "userPrincipalName": "a1-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.0.99",
+              "location": {
+                "countryOrRegion": "RU"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-attacker-0"
+              }
+            }
+          },
+          "event_id": "a7bdce3c-49a9-4457-9cd2-807f42d53c64",
+          "timestamp": "2027-01-09T03:03:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-0",
+          "attack_type": "A1"
+        },
+        {
+          "payload": {
+            "event_id": "08e960ee-54d2-46e2-ab61-b0bd38039eb1",
+            "timestamp": "2027-01-09T03:11:00+00:00",
+            "actor_id": "a1-victim-0@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 400000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "08e960ee-54d2-46e2-ab61-b0bd38039eb1",
+          "timestamp": "2027-01-09T03:11:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-0",
+          "attack_type": "A1"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A1-1",
+      "attack_type": "A1",
+      "identity": "a1-victim-1@eval.test",
+      "start_time": "2027-01-09T03:10:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "3ae97f43-97a5-41e4-a987-c0d21353834a",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "a1-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-1"
+              }
+            }
+          },
+          "event_id": "3ae97f43-97a5-41e4-a987-c0d21353834a",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "f33fc6c9-1387-48f6-b9a5-6f8d9fbe39a9",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "a1-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-1"
+              }
+            }
+          },
+          "event_id": "f33fc6c9-1387-48f6-b9a5-6f8d9fbe39a9",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "b5e63aca-6e38-459a-8788-1366e261d9e9",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "a1-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-1"
+              }
+            }
+          },
+          "event_id": "b5e63aca-6e38-459a-8788-1366e261d9e9",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "face6486-3976-42ca-97c1-c76fb52071f1",
+              "createdDateTime": "2027-01-09T03:10:00Z",
+              "userPrincipalName": "a1-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.1.99",
+              "location": {
+                "countryOrRegion": "RU"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-attacker-1"
+              }
+            }
+          },
+          "event_id": "face6486-3976-42ca-97c1-c76fb52071f1",
+          "timestamp": "2027-01-09T03:10:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-1",
+          "attack_type": "A1"
+        },
+        {
+          "payload": {
+            "event_id": "e64319dc-4380-41d8-a1ce-eba29ed341f6",
+            "timestamp": "2027-01-09T03:22:00+00:00",
+            "actor_id": "a1-victim-1@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 400000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "e64319dc-4380-41d8-a1ce-eba29ed341f6",
+          "timestamp": "2027-01-09T03:22:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-1",
+          "attack_type": "A1"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A1-2",
+      "attack_type": "A1",
+      "identity": "a1-victim-2@eval.test",
+      "start_time": "2027-01-09T03:06:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "c48cf648-a68e-4b2c-87f7-6d3e7f8dc9e7",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "a1-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-2"
+              }
+            }
+          },
+          "event_id": "c48cf648-a68e-4b2c-87f7-6d3e7f8dc9e7",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "83963dc4-31f0-48c2-8c24-6f83fbdbfd69",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "a1-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-2"
+              }
+            }
+          },
+          "event_id": "83963dc4-31f0-48c2-8c24-6f83fbdbfd69",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "f7e0dd5c-4b46-4f5e-89e0-7b42144e3ce5",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "a1-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.1.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-home-2"
+              }
+            }
+          },
+          "event_id": "f7e0dd5c-4b46-4f5e-89e0-7b42144e3ce5",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "2f8e5bac-d471-4f0e-a528-8ba9b55c05dd",
+              "createdDateTime": "2027-01-09T03:06:00Z",
+              "userPrincipalName": "a1-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.2.99",
+              "location": {
+                "countryOrRegion": "RU"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-a1-attacker-2"
+              }
+            }
+          },
+          "event_id": "2f8e5bac-d471-4f0e-a528-8ba9b55c05dd",
+          "timestamp": "2027-01-09T03:06:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-2",
+          "attack_type": "A1"
+        },
+        {
+          "payload": {
+            "event_id": "e200dcc9-a44f-4682-b5d8-cc8963c90dee",
+            "timestamp": "2027-01-09T03:19:00+00:00",
+            "actor_id": "a1-victim-2@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 400000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "e200dcc9-a44f-4682-b5d8-cc8963c90dee",
+          "timestamp": "2027-01-09T03:19:00+00:00",
+          "label": "malicious",
+          "attack_id": "A1-2",
+          "attack_type": "A1"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A2-0",
+      "attack_type": "A2",
+      "identity": "a2-victim-0@eval.test",
+      "start_time": "2027-01-15T09:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "5ffcff1a-40f3-49b6-a7b4-753f911afade",
+              "createdDateTime": "2027-01-15T09:00:00Z",
+              "userPrincipalName": "a2-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.0.10",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "deviceCode"
+            }
+          },
+          "event_id": "5ffcff1a-40f3-49b6-a7b4-753f911afade",
+          "timestamp": "2027-01-15T09:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-0",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "4292ce09-f2ac-48e8-86f5-151cde15333b",
+              "category": "ApplicationManagement",
+              "activityDateTime": "2027-01-15T09:08:00Z",
+              "activityDisplayName": "Consent to application",
+              "initiatedBy": {
+                "user": {
+                  "id": "a2-victim-0@eval.test-id",
+                  "userPrincipalName": "a2-victim-0@eval.test"
+                }
+              },
+              "targetResources": [
+                {
+                  "type": "Application",
+                  "id": "evilreportingapp",
+                  "displayName": "EvilReportingApp",
+                  "modifiedProperties": [
+                    {
+                      "displayName": "ConsentAction.Permissions",
+                      "newValue": "[\"Files.Read.All\"]"
+                    }
+                  ]
+                }
+              ],
+              "result": "success"
+            }
+          },
+          "event_id": "4292ce09-f2ac-48e8-86f5-151cde15333b",
+          "timestamp": "2027-01-15T09:08:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-0",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "event_id": "db940921-299c-4fed-b25a-889f75c73597",
+            "timestamp": "2027-01-15T09:14:00+00:00",
+            "actor_id": "a2-victim-0@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "mailbox",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "db940921-299c-4fed-b25a-889f75c73597",
+          "timestamp": "2027-01-15T09:14:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-0",
+          "attack_type": "A2"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A2-1",
+      "attack_type": "A2",
+      "identity": "a2-victim-1@eval.test",
+      "start_time": "2027-01-15T09:12:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "b021a388-98eb-47b9-8c3d-41b17bc65770",
+              "createdDateTime": "2027-01-15T09:12:00Z",
+              "userPrincipalName": "a2-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.1.10",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "deviceCode"
+            }
+          },
+          "event_id": "b021a388-98eb-47b9-8c3d-41b17bc65770",
+          "timestamp": "2027-01-15T09:12:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-1",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "b164231f-6e90-47c9-a26b-6171401165d8",
+              "category": "ApplicationManagement",
+              "activityDateTime": "2027-01-15T09:16:00Z",
+              "activityDisplayName": "Consent to application",
+              "initiatedBy": {
+                "user": {
+                  "id": "a2-victim-1@eval.test-id",
+                  "userPrincipalName": "a2-victim-1@eval.test"
+                }
+              },
+              "targetResources": [
+                {
+                  "type": "Application",
+                  "id": "quickbookssync",
+                  "displayName": "QuickBooksSync",
+                  "modifiedProperties": [
+                    {
+                      "displayName": "ConsentAction.Permissions",
+                      "newValue": "[\"Mail.Read\", \"offline_access\"]"
+                    }
+                  ]
+                }
+              ],
+              "result": "success"
+            }
+          },
+          "event_id": "b164231f-6e90-47c9-a26b-6171401165d8",
+          "timestamp": "2027-01-15T09:16:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-1",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "event_id": "1ea984f8-db9a-4d7c-bc39-79b5a2fb0cf5",
+            "timestamp": "2027-01-15T09:18:00+00:00",
+            "actor_id": "a2-victim-1@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "1ea984f8-db9a-4d7c-bc39-79b5a2fb0cf5",
+          "timestamp": "2027-01-15T09:18:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-1",
+          "attack_type": "A2"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A2-2",
+      "attack_type": "A2",
+      "identity": "a2-victim-2@eval.test",
+      "start_time": "2027-01-15T09:24:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "b74c460f-e8d6-47f9-9b82-97771664423c",
+              "createdDateTime": "2027-01-15T09:24:00Z",
+              "userPrincipalName": "a2-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.2.10",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "deviceCode"
+            }
+          },
+          "event_id": "b74c460f-e8d6-47f9-9b82-97771664423c",
+          "timestamp": "2027-01-15T09:24:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-2",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1b4df402-c474-4976-814a-15f99d3f64a4",
+              "category": "ApplicationManagement",
+              "activityDateTime": "2027-01-15T09:32:00Z",
+              "activityDisplayName": "Consent to application",
+              "initiatedBy": {
+                "user": {
+                  "id": "a2-victim-2@eval.test-id",
+                  "userPrincipalName": "a2-victim-2@eval.test"
+                }
+              },
+              "targetResources": [
+                {
+                  "type": "Application",
+                  "id": "salesdashboardconnector",
+                  "displayName": "SalesDashboardConnector",
+                  "modifiedProperties": [
+                    {
+                      "displayName": "ConsentAction.Permissions",
+                      "newValue": "[\"Directory.ReadWrite.All\"]"
+                    }
+                  ]
+                }
+              ],
+              "result": "success"
+            }
+          },
+          "event_id": "1b4df402-c474-4976-814a-15f99d3f64a4",
+          "timestamp": "2027-01-15T09:32:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-2",
+          "attack_type": "A2"
+        },
+        {
+          "payload": {
+            "event_id": "a91745fd-5754-4207-8614-f178fb54364f",
+            "timestamp": "2027-01-15T09:35:00+00:00",
+            "actor_id": "a2-victim-2@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "role",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "a91745fd-5754-4207-8614-f178fb54364f",
+          "timestamp": "2027-01-15T09:35:00+00:00",
+          "label": "malicious",
+          "attack_id": "A2-2",
+          "attack_type": "A2"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A3-0",
+      "attack_type": "A3",
+      "identity": "a3-victim-0@eval.test",
+      "start_time": "2027-01-20T11:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "c3126fc9-b36d-41ad-874c-d5f3d3555b57",
+              "createdDateTime": "2027-01-05T08:00:00Z",
+              "userPrincipalName": "a3-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "c3126fc9-b36d-41ad-874c-d5f3d3555b57",
+          "timestamp": "2027-01-05T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "c2252a39-fd44-4372-9cf3-1a8f542872e9",
+              "createdDateTime": "2027-01-06T08:00:00Z",
+              "userPrincipalName": "a3-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "c2252a39-fd44-4372-9cf3-1a8f542872e9",
+          "timestamp": "2027-01-06T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "13847d27-d76d-4d32-b684-764a3bf85f5c",
+              "createdDateTime": "2027-01-07T08:00:00Z",
+              "userPrincipalName": "a3-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "13847d27-d76d-4d32-b684-764a3bf85f5c",
+          "timestamp": "2027-01-07T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1083e4e1-f5fb-4304-9417-171d1572798f",
+              "createdDateTime": "2027-01-20T11:00:00Z",
+              "userPrincipalName": "a3-victim-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.0.20",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "mfaDetail": {
+                "result": "not_present"
+              }
+            }
+          },
+          "event_id": "1083e4e1-f5fb-4304-9417-171d1572798f",
+          "timestamp": "2027-01-20T11:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-0",
+          "attack_type": "A3"
+        },
+        {
+          "payload": {
+            "event_id": "ccd9f39e-92ec-4724-a661-f4b3f894e668",
+            "timestamp": "2027-01-20T11:04:00+00:00",
+            "actor_id": "a3-victim-0@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 350000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "ccd9f39e-92ec-4724-a661-f4b3f894e668",
+          "timestamp": "2027-01-20T11:04:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-0",
+          "attack_type": "A3"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A3-1",
+      "attack_type": "A3",
+      "identity": "a3-victim-1@eval.test",
+      "start_time": "2027-01-21T11:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "ea241441-1202-4968-a35f-bc691f9941d7",
+              "createdDateTime": "2027-01-05T08:00:00Z",
+              "userPrincipalName": "a3-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "ea241441-1202-4968-a35f-bc691f9941d7",
+          "timestamp": "2027-01-05T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "ee67daf2-ee74-48a8-afb2-52bbad21640b",
+              "createdDateTime": "2027-01-06T08:00:00Z",
+              "userPrincipalName": "a3-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "ee67daf2-ee74-48a8-afb2-52bbad21640b",
+          "timestamp": "2027-01-06T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "d43c98f5-8d9c-42c6-8da6-93f9d5364acc",
+              "createdDateTime": "2027-01-07T08:00:00Z",
+              "userPrincipalName": "a3-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "d43c98f5-8d9c-42c6-8da6-93f9d5364acc",
+          "timestamp": "2027-01-07T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1f0a2608-d2c3-44e0-bca2-a8a3a7ca69a2",
+              "createdDateTime": "2027-01-21T11:00:00Z",
+              "userPrincipalName": "a3-victim-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.1.20",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "mfaDetail": {
+                "result": "not_present"
+              }
+            }
+          },
+          "event_id": "1f0a2608-d2c3-44e0-bca2-a8a3a7ca69a2",
+          "timestamp": "2027-01-21T11:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-1",
+          "attack_type": "A3"
+        },
+        {
+          "payload": {
+            "event_id": "1cb4f383-b3a8-4616-93c8-f4c82a1e99b7",
+            "timestamp": "2027-01-21T11:01:00+00:00",
+            "actor_id": "a3-victim-1@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 350000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "1cb4f383-b3a8-4616-93c8-f4c82a1e99b7",
+          "timestamp": "2027-01-21T11:01:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-1",
+          "attack_type": "A3"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A3-2",
+      "attack_type": "A3",
+      "identity": "a3-victim-2@eval.test",
+      "start_time": "2027-01-22T11:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "f9c4e837-b5cd-4846-87d4-b13011265ebe",
+              "createdDateTime": "2027-01-05T08:00:00Z",
+              "userPrincipalName": "a3-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "f9c4e837-b5cd-4846-87d4-b13011265ebe",
+          "timestamp": "2027-01-05T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "44cade4a-c748-4008-adec-42e63ec639da",
+              "createdDateTime": "2027-01-06T08:00:00Z",
+              "userPrincipalName": "a3-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "44cade4a-c748-4008-adec-42e63ec639da",
+          "timestamp": "2027-01-06T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "19b225ee-4631-4d90-9ac9-c025c344ea26",
+              "createdDateTime": "2027-01-07T08:00:00Z",
+              "userPrincipalName": "a3-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.3.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive"
+            }
+          },
+          "event_id": "19b225ee-4631-4d90-9ac9-c025c344ea26",
+          "timestamp": "2027-01-07T08:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "689851fd-0e0d-4505-9f29-906f760735b3",
+              "createdDateTime": "2027-01-22T11:00:00Z",
+              "userPrincipalName": "a3-victim-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "198.51.2.20",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "mfaDetail": {
+                "result": "not_present"
+              }
+            }
+          },
+          "event_id": "689851fd-0e0d-4505-9f29-906f760735b3",
+          "timestamp": "2027-01-22T11:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-2",
+          "attack_type": "A3"
+        },
+        {
+          "payload": {
+            "event_id": "9066ed4e-79f2-4087-bb3d-952831925fa8",
+            "timestamp": "2027-01-22T11:04:00+00:00",
+            "actor_id": "a3-victim-2@eval.test",
+            "event_type": "file_download",
+            "action": "download",
+            "result": "success",
+            "bytes_transferred": 350000000,
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "9066ed4e-79f2-4087-bb3d-952831925fa8",
+          "timestamp": "2027-01-22T11:04:00+00:00",
+          "label": "malicious",
+          "attack_id": "A3-2",
+          "attack_type": "A3"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A4-0",
+      "attack_type": "A4",
+      "identity": "a4-dev-0",
+      "start_time": "2027-01-25T02:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "4309336b-26f9-4797-9bfe-cdabc052f9f4",
+              "action": "repo.access",
+              "actor": "a4-dev-0",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/normal-repo",
+              "token_id": "pat-a4-0",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:00:00Z"
+            }
+          },
+          "event_id": "4309336b-26f9-4797-9bfe-cdabc052f9f4",
+          "timestamp": "2027-01-25T02:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-0",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "643c7000-ffc1-4f82-a47d-a04455dab018",
+              "action": "repo.access",
+              "actor": "a4-dev-0",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/secret-infra",
+              "token_id": "pat-a4-0",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:06:00Z"
+            }
+          },
+          "event_id": "643c7000-ffc1-4f82-a47d-a04455dab018",
+          "timestamp": "2027-01-25T02:06:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-0",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "f5c87438-c4bd-41f6-b56c-a7d0929d808e",
+              "action": "git.clone",
+              "actor": "a4-dev-0",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/secret-infra",
+              "token_id": "pat-a4-0",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:14:00Z",
+              "transfer_size_bytes": 232166949
+            }
+          },
+          "event_id": "f5c87438-c4bd-41f6-b56c-a7d0929d808e",
+          "timestamp": "2027-01-25T02:14:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-0",
+          "attack_type": "A4"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A4-1",
+      "attack_type": "A4",
+      "identity": "a4-dev-1",
+      "start_time": "2027-01-25T02:15:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "550aa3f5-b527-4256-b76c-c0e15cd8ccd6",
+              "action": "repo.access",
+              "actor": "a4-dev-1",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/website",
+              "token_id": "pat-a4-1",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:15:00Z"
+            }
+          },
+          "event_id": "550aa3f5-b527-4256-b76c-c0e15cd8ccd6",
+          "timestamp": "2027-01-25T02:15:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-1",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "104df38b-c3d9-4ef1-884d-24d603b14125",
+              "action": "repo.access",
+              "actor": "a4-dev-1",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/prod-credentials",
+              "token_id": "pat-a4-1",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:18:00Z"
+            }
+          },
+          "event_id": "104df38b-c3d9-4ef1-884d-24d603b14125",
+          "timestamp": "2027-01-25T02:18:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-1",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "71264f05-2d2f-41c4-93d0-bc9960708236",
+              "action": "git.clone",
+              "actor": "a4-dev-1",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/prod-credentials",
+              "token_id": "pat-a4-1",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:21:00Z",
+              "transfer_size_bytes": 173031629
+            }
+          },
+          "event_id": "71264f05-2d2f-41c4-93d0-bc9960708236",
+          "timestamp": "2027-01-25T02:21:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-1",
+          "attack_type": "A4"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A4-2",
+      "attack_type": "A4",
+      "identity": "a4-dev-2",
+      "start_time": "2027-01-25T02:30:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "62491e58-3b55-42c0-8db3-6c94b7fe218b",
+              "action": "repo.access",
+              "actor": "a4-dev-2",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/internal-tools",
+              "token_id": "pat-a4-2",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:30:00Z"
+            }
+          },
+          "event_id": "62491e58-3b55-42c0-8db3-6c94b7fe218b",
+          "timestamp": "2027-01-25T02:30:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-2",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "ccb72198-8c13-4e9b-92fd-c2e4787972f8",
+              "action": "repo.access",
+              "actor": "a4-dev-2",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/vault-configs",
+              "token_id": "pat-a4-2",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:32:00Z"
+            }
+          },
+          "event_id": "ccb72198-8c13-4e9b-92fd-c2e4787972f8",
+          "timestamp": "2027-01-25T02:32:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-2",
+          "attack_type": "A4"
+        },
+        {
+          "payload": {
+            "source": "github",
+            "raw": {
+              "_document_id": "12460849-049e-4c7c-8a77-a61de144432c",
+              "action": "git.clone",
+              "actor": "a4-dev-2",
+              "actor_ip": "198.51.100.20",
+              "repo": "acme/vault-configs",
+              "token_id": "pat-a4-2",
+              "token_scopes": [
+                "repo"
+              ],
+              "created_at": "2027-01-25T02:35:00Z",
+              "transfer_size_bytes": 163700520
+            }
+          },
+          "event_id": "12460849-049e-4c7c-8a77-a61de144432c",
+          "timestamp": "2027-01-25T02:35:00+00:00",
+          "label": "malicious",
+          "attack_id": "A4-2",
+          "attack_type": "A4"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A5-0",
+      "attack_type": "A5",
+      "identity": "a5-victim-0@eval.test",
+      "start_time": "2027-01-30T13:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "f8c430ec-cedf-42c7-8358-957da8aa7f79",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-30T13:00:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "a5-victim-0@eval.test-id",
+                  "userPrincipalName": "a5-victim-0@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "f8c430ec-cedf-42c7-8358-957da8aa7f79",
+          "timestamp": "2027-01-30T13:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-0",
+          "attack_type": "A5"
+        },
+        {
+          "payload": {
+            "event_id": "324a2864-59fa-497e-9448-03691ee73bbf",
+            "timestamp": "2027-01-30T13:03:00+00:00",
+            "actor_id": "a5-victim-0@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "324a2864-59fa-497e-9448-03691ee73bbf",
+          "timestamp": "2027-01-30T13:03:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-0",
+          "attack_type": "A5"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A5-1",
+      "attack_type": "A5",
+      "identity": "a5-victim-1@eval.test",
+      "start_time": "2027-01-31T13:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "21bdf673-0e40-4213-82ea-a6cf40b997ad",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-31T13:00:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "a5-victim-1@eval.test-id",
+                  "userPrincipalName": "a5-victim-1@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "21bdf673-0e40-4213-82ea-a6cf40b997ad",
+          "timestamp": "2027-01-31T13:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-1",
+          "attack_type": "A5"
+        },
+        {
+          "payload": {
+            "event_id": "4b147bcc-668e-4c76-9e40-8c2f89618411",
+            "timestamp": "2027-01-31T13:11:00+00:00",
+            "actor_id": "a5-victim-1@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "4b147bcc-668e-4c76-9e40-8c2f89618411",
+          "timestamp": "2027-01-31T13:11:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-1",
+          "attack_type": "A5"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A5-2",
+      "attack_type": "A5",
+      "identity": "a5-victim-2@eval.test",
+      "start_time": "2027-02-01T13:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "15fc7a81-8bf1-4194-a03d-c17e7edeb4b3",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-02-01T13:00:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "a5-victim-2@eval.test-id",
+                  "userPrincipalName": "a5-victim-2@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "15fc7a81-8bf1-4194-a03d-c17e7edeb4b3",
+          "timestamp": "2027-02-01T13:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-2",
+          "attack_type": "A5"
+        },
+        {
+          "payload": {
+            "event_id": "72c064ec-e2d5-4720-b22b-606375533d4e",
+            "timestamp": "2027-02-01T13:13:00+00:00",
+            "actor_id": "a5-victim-2@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "72c064ec-e2d5-4720-b22b-606375533d4e",
+          "timestamp": "2027-02-01T13:13:00+00:00",
+          "label": "malicious",
+          "attack_id": "A5-2",
+          "attack_type": "A5"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A6-0",
+      "attack_type": "A6",
+      "identity": "a6-victim-0@eval.test",
+      "start_time": "2027-02-04T16:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "event_id": "e5176eb7-3a2d-4db4-819d-6de461e4204a",
+            "timestamp": "2027-02-04T16:00:00+00:00",
+            "actor_id": "a6-victim-0@eval.test",
+            "source": "m365",
+            "event_type": "file_download",
+            "action": "FileDownloaded",
+            "result": "success",
+            "bytes_transferred": 600000000,
+            "actor_type": "user"
+          },
+          "event_id": "e5176eb7-3a2d-4db4-819d-6de461e4204a",
+          "timestamp": "2027-02-04T16:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A6-0",
+          "attack_type": "A6"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A6-1",
+      "attack_type": "A6",
+      "identity": "a6-victim-1@eval.test",
+      "start_time": "2027-02-05T16:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "event_id": "9f903237-0d77-4a64-a34f-eee3856c0a56",
+            "timestamp": "2027-02-05T16:00:00+00:00",
+            "actor_id": "a6-victim-1@eval.test",
+            "source": "m365",
+            "event_type": "file_download",
+            "action": "FileDownloaded",
+            "result": "success",
+            "bytes_transferred": 600000000,
+            "actor_type": "user"
+          },
+          "event_id": "9f903237-0d77-4a64-a34f-eee3856c0a56",
+          "timestamp": "2027-02-05T16:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A6-1",
+          "attack_type": "A6"
+        }
+      ]
+    },
+    {
+      "scenario_id": "A6-2",
+      "attack_type": "A6",
+      "identity": "a6-victim-2@eval.test",
+      "start_time": "2027-02-06T16:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "event_id": "14731394-c98d-4a3e-af6e-1768e45aef0e",
+            "timestamp": "2027-02-06T16:00:00+00:00",
+            "actor_id": "a6-victim-2@eval.test",
+            "source": "m365",
+            "event_type": "file_download",
+            "action": "FileDownloaded",
+            "result": "success",
+            "bytes_transferred": 600000000,
+            "actor_type": "user"
+          },
+          "event_id": "14731394-c98d-4a3e-af6e-1768e45aef0e",
+          "timestamp": "2027-02-06T16:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "A6-2",
+          "attack_type": "A6"
+        }
+      ]
+    },
+    {
+      "scenario_id": "HOLD-COMBO-0",
+      "attack_type": "COMBO",
+      "identity": "holdout-combo-0@eval.test",
+      "start_time": "2027-01-09T05:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "b89b6d16-7d6b-4fb6-8e69-f97c9bb46ac9",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "holdout-combo-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-0"
+              }
+            }
+          },
+          "event_id": "b89b6d16-7d6b-4fb6-8e69-f97c9bb46ac9",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "c3460d6c-38d8-4569-a67f-f084a5917af8",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "holdout-combo-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-0"
+              }
+            }
+          },
+          "event_id": "c3460d6c-38d8-4569-a67f-f084a5917af8",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "2e85f2e8-1cd8-4e5d-bb87-a1722fd0e35b",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "holdout-combo-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.0.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-0"
+              }
+            }
+          },
+          "event_id": "2e85f2e8-1cd8-4e5d-bb87-a1722fd0e35b",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "d4893db0-38b2-422d-a1fa-3cc2ee102ffa",
+              "createdDateTime": "2027-01-09T05:00:00Z",
+              "userPrincipalName": "holdout-combo-0@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "203.0.0.50",
+              "location": {
+                "countryOrRegion": "CN"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-new-0"
+              }
+            }
+          },
+          "event_id": "d4893db0-38b2-422d-a1fa-3cc2ee102ffa",
+          "timestamp": "2027-01-09T05:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-0",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "870afe5a-2277-4be9-8f10-f2437d14f34b",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-09T05:07:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "holdout-combo-0@eval.test-id",
+                  "userPrincipalName": "holdout-combo-0@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "870afe5a-2277-4be9-8f10-f2437d14f34b",
+          "timestamp": "2027-01-09T05:07:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-0",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "event_id": "36e382fe-8db1-4dc8-9c24-4c374d0579c7",
+            "timestamp": "2027-01-09T05:12:00+00:00",
+            "actor_id": "holdout-combo-0@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "36e382fe-8db1-4dc8-9c24-4c374d0579c7",
+          "timestamp": "2027-01-09T05:12:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-0",
+          "attack_type": "COMBO"
+        }
+      ]
+    },
+    {
+      "scenario_id": "HOLD-COMBO-1",
+      "attack_type": "COMBO",
+      "identity": "holdout-combo-1@eval.test",
+      "start_time": "2027-01-09T05:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "9b5a9a3d-938c-43a5-b935-a847f7abd49c",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "holdout-combo-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-1"
+              }
+            }
+          },
+          "event_id": "9b5a9a3d-938c-43a5-b935-a847f7abd49c",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1d4e687e-5f39-4735-91b5-7b36d0fcca27",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "holdout-combo-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-1"
+              }
+            }
+          },
+          "event_id": "1d4e687e-5f39-4735-91b5-7b36d0fcca27",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "493ed3c5-697d-486f-970d-ae43d97bed7d",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "holdout-combo-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.1.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-1"
+              }
+            }
+          },
+          "event_id": "493ed3c5-697d-486f-970d-ae43d97bed7d",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "743f0bd6-109c-4250-a25f-b84d3cdddee3",
+              "createdDateTime": "2027-01-09T05:00:00Z",
+              "userPrincipalName": "holdout-combo-1@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "203.0.1.50",
+              "location": {
+                "countryOrRegion": "CN"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-new-1"
+              }
+            }
+          },
+          "event_id": "743f0bd6-109c-4250-a25f-b84d3cdddee3",
+          "timestamp": "2027-01-09T05:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-1",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1801fed8-1e35-4b8b-9b7b-4f9d65e06321",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-09T05:06:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "holdout-combo-1@eval.test-id",
+                  "userPrincipalName": "holdout-combo-1@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "1801fed8-1e35-4b8b-9b7b-4f9d65e06321",
+          "timestamp": "2027-01-09T05:06:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-1",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "event_id": "7c073124-c136-4a01-8214-cb8e95d4fe6d",
+            "timestamp": "2027-01-09T05:16:00+00:00",
+            "actor_id": "holdout-combo-1@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "7c073124-c136-4a01-8214-cb8e95d4fe6d",
+          "timestamp": "2027-01-09T05:16:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-1",
+          "attack_type": "COMBO"
+        }
+      ]
+    },
+    {
+      "scenario_id": "HOLD-COMBO-2",
+      "attack_type": "COMBO",
+      "identity": "holdout-combo-2@eval.test",
+      "start_time": "2027-01-09T05:00:00+00:00",
+      "events": [
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "a0df4fef-2ea3-4a1a-a416-3fb0dd82c60f",
+              "createdDateTime": "2027-01-05T09:00:00Z",
+              "userPrincipalName": "holdout-combo-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-2"
+              }
+            }
+          },
+          "event_id": "a0df4fef-2ea3-4a1a-a416-3fb0dd82c60f",
+          "timestamp": "2027-01-05T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "8c5de620-db6e-4f3d-a0ca-a1152304bc8a",
+              "createdDateTime": "2027-01-06T09:00:00Z",
+              "userPrincipalName": "holdout-combo-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-2"
+              }
+            }
+          },
+          "event_id": "8c5de620-db6e-4f3d-a0ca-a1152304bc8a",
+          "timestamp": "2027-01-06T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "05c96392-b36c-4b8d-846b-c412fce3f9c2",
+              "createdDateTime": "2027-01-07T09:00:00Z",
+              "userPrincipalName": "holdout-combo-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "10.9.2.5",
+              "location": {
+                "countryOrRegion": "US"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-home-2"
+              }
+            }
+          },
+          "event_id": "05c96392-b36c-4b8d-846b-c412fce3f9c2",
+          "timestamp": "2027-01-07T09:00:00+00:00",
+          "label": "benign",
+          "attack_id": null,
+          "attack_type": null
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "1c439b1e-a98d-4902-9c21-4a159fe3c944",
+              "createdDateTime": "2027-01-09T05:00:00Z",
+              "userPrincipalName": "holdout-combo-2@eval.test",
+              "appId": "app-baseline",
+              "ipAddress": "203.0.2.50",
+              "location": {
+                "countryOrRegion": "CN"
+              },
+              "status": {
+                "errorCode": 0
+              },
+              "authenticationProtocol": "interactive",
+              "deviceDetail": {
+                "deviceId": "device-combo-new-2"
+              }
+            }
+          },
+          "event_id": "1c439b1e-a98d-4902-9c21-4a159fe3c944",
+          "timestamp": "2027-01-09T05:00:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-2",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "source": "entra",
+            "raw": {
+              "id": "daab6fd6-c29a-4f3b-a80b-3b77ae76de00",
+              "category": "RoleManagement",
+              "activityDateTime": "2027-01-09T05:08:00Z",
+              "activityDisplayName": "Add member to role",
+              "initiatedBy": {
+                "user": {
+                  "id": "holdout-combo-2@eval.test-id",
+                  "userPrincipalName": "holdout-combo-2@eval.test"
+                }
+              },
+              "targetResources": [],
+              "result": "success"
+            }
+          },
+          "event_id": "daab6fd6-c29a-4f3b-a80b-3b77ae76de00",
+          "timestamp": "2027-01-09T05:08:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-2",
+          "attack_type": "COMBO"
+        },
+        {
+          "payload": {
+            "event_id": "dc11c59a-1ab8-4d18-8658-800ea8345b08",
+            "timestamp": "2027-01-09T05:18:00+00:00",
+            "actor_id": "holdout-combo-2@eval.test",
+            "event_type": "file_access",
+            "action": "read",
+            "result": "success",
+            "resource_type": "secret",
+            "source": "synthetic",
+            "actor_type": "user"
+          },
+          "event_id": "dc11c59a-1ab8-4d18-8658-800ea8345b08",
+          "timestamp": "2027-01-09T05:18:00+00:00",
+          "label": "malicious",
+          "attack_id": "HOLD-COMBO-2",
+          "attack_type": "COMBO"
+        }
+      ]
+    }
+  ]
+}

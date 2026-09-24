@@ -41,7 +41,7 @@ POSITIVE_CASES: dict[str, dict] = {
         permissions=["offline_access"],
     ),
     "IDT-ENTRA-003": dict(
-        source="entra", event_type="signin", auth_protocol="deviceCode", result="success",
+        source="entra", event_type="signin", auth_protocol="nativeClient", result="success",
     ),
     "IDT-ENTRA-004": dict(
         source="entra", event_type="signin", auth_protocol="interactive",
@@ -52,6 +52,9 @@ POSITIVE_CASES: dict[str, dict] = {
     ),
     "IDT-ENTRA-006": dict(
         source="entra", event_type="audit", action="Add member to role", result="success",
+    ),
+    "IDT-ENTRA-007": dict(
+        source="entra", event_type="signin", action="admin_consent_required", result="failure",
     ),
     "IDT-GITHUB-001": dict(
         source="github", event_type="repo_clone", actor_type="token",
@@ -90,7 +93,7 @@ NEGATIVE_CASES: dict[str, list[dict]] = {
         dict(source="entra", event_type="signin", permissions=["offline_access"]),  # wrong event_type
     ],
     "IDT-ENTRA-003": [
-        dict(source="entra", event_type="signin", auth_protocol="deviceCode", result="failure"),
+        dict(source="entra", event_type="signin", auth_protocol="nativeClient", result="failure"),
         dict(source="entra", event_type="signin", auth_protocol="interactive", result="success"),
     ],
     "IDT-ENTRA-004": [
@@ -105,6 +108,10 @@ NEGATIVE_CASES: dict[str, list[dict]] = {
         dict(source="entra", event_type="audit", action="Consent to application", result="success"),
         dict(source="entra", event_type="signin", action="Add member to role", result="success"),
         dict(source="entra", event_type="audit", action="Add member to role", result="failure"),
+    ],
+    "IDT-ENTRA-007": [
+        dict(source="entra", event_type="signin", action="login", result="failure"),  # a different failure reason
+        dict(source="entra", event_type="audit", action="admin_consent_required", result="failure"),  # wrong event_type
     ],
     "IDT-GITHUB-001": [
         dict(source="github", event_type="repo_clone", actor_type="user"),
@@ -163,3 +170,30 @@ def test_rule_negative_cases_do_not_fire(rule_id, case_index):
     event = _evt(**NEGATIVE_CASES[rule_id][case_index])
     match = evaluate_rule(rule, event)
     assert match is None, f"{rule_id} should NOT have fired on negative case #{case_index}"
+
+
+# ---- IDT-ENTRA-003 v3: exactly two equivalent representations ----
+
+@pytest.mark.parametrize("protocol", ["nativeClient", "deviceCode"])
+def test_entra_003_accepts_both_equivalent_representations(protocol):
+    """v2 (telemetry-model change) silently dropped the documented
+    authenticationProtocol == deviceCode; v3 restores it alongside the
+    derived nativeClient value. Compatibility restoration, not a new
+    detection."""
+    event = _evt(auth_protocol=protocol, result="success")
+    assert evaluate_rule(RULES["IDT-ENTRA-003"], event) is not None
+
+
+@pytest.mark.parametrize(
+    "protocol", ["interactive", "basic", "ropc", "nativeclient", "devicecode", "", None]
+)
+def test_entra_003_does_not_broaden_beyond_those_two(protocol):
+    """Case-sensitive, exact: near-misses and every other protocol value
+    still do not match."""
+    event = _evt(auth_protocol=protocol, result="success")
+    assert evaluate_rule(RULES["IDT-ENTRA-003"], event) is None
+
+
+@pytest.mark.parametrize("protocol", ["nativeClient", "deviceCode"])
+def test_entra_003_still_requires_a_successful_sign_in(protocol):
+    assert evaluate_rule(RULES["IDT-ENTRA-003"], _evt(auth_protocol=protocol, result="failure")) is None

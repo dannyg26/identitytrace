@@ -1,0 +1,40 @@
+{
+  "incidents": [
+    {
+      "incident_id": "IDT-CORR-006:evt-demo-attack-block",
+      "identity": "idt-test-user3@yourtenant.onmicrosoft.com",
+      "severity": "high",
+      "score": 75,
+      "provenance": [
+        "real_controlled_attack"
+      ],
+      "attack_labelled": true,
+      "workflow_confirmed_from_raw": true,
+      "escalated": false
+    },
+    {
+      "incident_id": "IDT-CORR-006:evt-demo-twin-block",
+      "identity": "idt-test-user1@yourtenant.onmicrosoft.com",
+      "severity": "high",
+      "score": 75,
+      "provenance": [
+        "real_benign"
+      ],
+      "attack_labelled": false,
+      "workflow_confirmed_from_raw": true,
+      "escalated": false
+    }
+  ],
+  "A_attack_detector": {
+    "true_positive_incidents": 1,
+    "false_positive_incidents": 1,
+    "precision": 0.5
+  },
+  "B_risky_workflow_detector": {
+    "workflow_incidents": 2,
+    "workflow_confirmed_from_raw": 2,
+    "precision": 1.0,
+    "malicious_intent": "unresolved by telemetry; requires analyst/context escalation",
+    "incidents_with_independent_escalation_evidence": 0
+  }
+}
