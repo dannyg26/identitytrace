@@ -1,16 +1,13 @@
-# Detection Library (Phase 2, + Phase 6's m365/ addition)
+# Detection Library
 
-13 versioned, atomic (single-event, L1) detection rules, defined as YAML
+14 versioned, atomic (single-event, L1) detection rules, defined as YAML
 under `detections/{entra,github,m365,cross_domain}/` and validated against
 `app/detections/schema.py`. Live view: `GET /api/detections` (JSON) or the
 `/rules` dashboard page (also shows last-triggered timestamps).
 
-**Deliberately atomic.** Each rule looks only at the fields of the one event
-being evaluated - no lookup of prior events, no per-identity history. That's
-the blueprint's L2 "behavioral baseline" layer (§7), and it's Phase 3, not
-this one. Keeping that boundary honest here means Phase 3 can build a real
-baseline/profile model instead of ad hoc history queries bolted onto rule
-conditions.
+Each rule evaluates one event. Per-identity history is handled by the
+[baseline layer](baselines.md), and cross-event sequences are handled by
+[correlation](correlation.md).
 
 ## Rule engine
 
@@ -84,13 +81,13 @@ delegated permission grant`: an update artifact, not a revocation".
 ## Signal tagging for correlation
 
 Each rule carries an optional `signal:` field naming the semantic event
-category it represents for Phase 4 temporal correlation (e.g. both
+category it represents for temporal correlation (e.g. both
 `IDT-ENTRA-001` and `IDT-ENTRA-002` tag `risky_oauth_consent`). Defaults to
 the rule's own id if untagged. See [`correlation.md`](correlation.md).
 
 ## Known limitation
 
-Rules still score independently at the atomic level - correlation (Phase 4)
+Rules still score independently at the atomic level - correlation
 chains matches across events into incidents, but nothing here suppresses
 duplicate/expected noise at the rule level itself. Documented
-false-positive exceptions remain an accepted v1.0 limitation.
+false-positive exceptions remain a documented limitation.

@@ -1,4 +1,4 @@
-# Frozen Holdout Dataset (Phase 9 #6)
+# Frozen Holdout Dataset
 
 ## Why
 

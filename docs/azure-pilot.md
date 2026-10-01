@@ -5,7 +5,7 @@ and a synthetic ingestion-to-report workflow on 2026-09-29. Hosting was removed
 at the owner's request on 2026-09-30; deletion of the dedicated resource group
 was confirmed on 2026-10-01. This document is a redeployment guide, not a live URL.
 Sustained cloud load, Azure recovery, alert delivery, and broader independent
-detection accuracy have not been verified. See `docs/release-v1.3.md`.
+detection accuracy have not been verified. See [validation record](validation.md).
 
 ## Proposed resources
 

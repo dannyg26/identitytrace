@@ -1,11 +1,9 @@
-# Cross-Domain Expansion (Phase 6)
+# Microsoft 365 telemetry
 
-Adds Microsoft 365 (SharePoint/OneDrive/Exchange) as a third normalized
-telemetry source, per the blueprint's suggested MVP-to-portfolio expansion
-(§3.3, §6.1, §10.1.1) - Entra + GitHub for the MVP, one more SaaS/cloud
-source for "portfolio-grade v1."
+IdentityTrace normalizes SharePoint, OneDrive, and Exchange audit payloads alongside
+Entra and GitHub events. All sources use the same event schema and detection pipeline.
 
-## What's new
+## Components
 
 - `app/normalizers/m365.py` - normalizes the real Office 365 Management
   Activity API audit schema (`CreationTime`, `Operation`, `Workload`,
@@ -17,18 +15,17 @@ source for "portfolio-grade v1."
   technique (forward/hide mail so it keeps working after a password
   reset). Tagged signal `mailbox_persistence` for future correlation rules.
 
-## The point of this phase, demonstrated
+## Shared detection pipeline
 
 Adding a third source required **zero changes** to the detection engine,
 baseline engine, correlation engine, incident model, or any dashboard
 page - only a normalizer and one domain-specific rule. Better still: the
-source-agnostic rules from Phase 2 (`IDT-XDOMAIN-001` bulk transfer,
+source-agnostic rules (`IDT-XDOMAIN-001` bulk transfer,
 `IDT-XDOMAIN-002` sensitive resource type) immediately apply to m365
 telemetry with no new code at all, because they were written against the
 normalized schema, not against any one source's raw shape. This is exactly
 the architectural bet the blueprint's thesis makes (§1: normalize first,
-detect once) - Phase 6 is where that bet gets tested against a source the
-detections were never written with in mind, and it holds.
+detect once): normalized fields let the same checks apply across sources.
 
 One real event even fires two independent rules for a genuinely
 overlapping reason: an Exchange inbox-rule change is tagged

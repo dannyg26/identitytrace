@@ -1,6 +1,6 @@
 # Microsoft Entra deployment
 
-Version 1.3 includes server-side authorization-code sign-in with S256 PKCE. Use
+IdentityTrace includes server-side authorization-code sign-in with S256 PKCE. Use
 two **single-tenant** registrations in your existing workforce tenant: a Web
 browser client and an IdentityTrace API. No registrations are created by the code.
 
@@ -75,8 +75,9 @@ recovered deployment if all prior sessions must remain revoked.
 
 `evidence_pack/production-lab-v1.3-final.json` records a real local PostgreSQL 17.11,
 HTTPS and PKCE exercise against a **local test issuer**. It is not evidence of a
-successful Microsoft Entra login. Real tenant and public-host acceptance remains
-pending until those values and deployment access are available.
+successful Microsoft Entra login. The separate [Azure acceptance exercise](validation.md)
+verified interactive Entra sign-in over public HTTPS. That deployment has been removed;
+a new deployment requires its own tenant configuration and acceptance checks.
 
 Microsoft references: [Expose an API](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-configure-app-expose-web-apis),
 [Web client permissions](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-configure-app-access-web-apis),

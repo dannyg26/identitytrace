@@ -1,7 +1,7 @@
 # Evaluating independent telemetry
 
 The frozen holdout and multi-seed benchmarks are synthetic. Changing a seed or
-adding a replay does not make them independently collected data. Version 1.3 adds
+adding a replay does not make them independently collected data. IdentityTrace includes
 an offline evaluator for externally supplied telemetry and separately reviewed
 workflow annotations. No customer data is uploaded by this tool.
 
@@ -66,6 +66,6 @@ CLI. Protect input and output files according to their data sensitivity.
 5. Keep any dataset used to fix a detection out of the next untouched evaluation.
    Record selection bias, correlated workflows and controlled-lab conditions.
 
-No new independently labeled customer corpus has been supplied or verified in this
-upgrade. The new evaluation path is infrastructure for that study, not a higher
-real-world accuracy claim.
+No broader independently labeled customer corpus has been verified. This evaluator
+provides infrastructure for that study; its availability does not establish
+real-world detection accuracy.

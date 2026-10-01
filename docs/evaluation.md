@@ -8,8 +8,7 @@ assertions:
 > coverage against realistic benign and malicious activity? Can
 > behavioral and temporal correlation distinguish malicious identity
 > chains from isolated legitimate events more effectively than atomic
-> rules alone? (Phase 9's restatement of the blueprint's own §2.1
-> question - same question, sharper framing.)
+> rules alone?
 
 ## Five validation tiers
 
@@ -25,26 +24,21 @@ replacing them.
 | 4. Mixed evaluation | Synthetic attacks/noisy benign, frozen holdout, and real telemetry run through the identical pipeline and reported separately | This document |
 | 5. Public background data | BOTS v2/v3 or similar, as ambient noise | **Not pursued** - both are Splunk-index-only distributions requiring a running Splunk instance; see [`normalizer-fidelity.md`](normalizer-fidelity.md) |
 
-## Final v1.0 scope
+## Study scope
 
-The real vendor round is complete for the accepted v1.0 scope: 238 labeled
-real events (213 Entra, 25 GitHub), including three A2 attempts, two A4
-attempts, one benign twin, and the revocation experiment. Synthetic,
-frozen holdout, and real results remain separate. No public external
-dataset was integrated; BOTS was not practical in this environment and
-LANL did not exercise the core SaaS detection/correlation logic cleanly.
+The controlled real-telemetry study contains 238 labeled events (213 Entra,
+25 GitHub), including three A2 attempts, two A4 attempts, one benign twin,
+and a revocation experiment. Synthetic, frozen holdout, and real results
+remain separate. No public external dataset was integrated.
 
-Collection duration, identity count, fully observed workflows, GitHub
-visibility, and baseline history remain limited. A workflow finding does
-not prove malicious intent; these lab results do not establish enterprise
-generalization. Longitudinal expansion is possible v1.1 work, not a v1.0
-release requirement. See [README](../README.md#v10-dataset-and-limitations)
-and the [final release review](release-readiness-v1.0.md).
+Collection duration, identity count, fully observed workflows, GitHub visibility,
+and baseline history remain limited. A workflow finding does not prove malicious
+intent; these results do not establish enterprise generalization. See the
+[dataset and limitations](../README.md#dataset-and-limitations) and
+[validation record](validation.md).
 
-The sections below retain the sequence of experiments and their historical
-results. Earlier counts and proposed designs describe those stages, not
-outstanding v1.0 work; the final real metric table and final release review
-state the accepted endpoint.
+The sections below preserve the experiment history. Intermediate counts describe
+their observation periods; the final real-metrics table reports the combined corpus.
 
 ## Design (Tier 4, synthetic)
 
@@ -208,7 +202,7 @@ the parsers would survive contact with an actual export. See
   precision" as a bare claim - every number here is qualified by exactly
   which tier and which dataset it came from.
 
-## Real vendor telemetry (Tier 3/4) - Phase 9B experiment history
+## Real vendor telemetry (Tier 3/4) - experiment history
 
 The original Phase 9B plan followed Phase 9A with a first real batch
 (target: 3-5 lab identities, 100-500 real Entra events, 100-500 real
@@ -425,9 +419,9 @@ its benign twin. Under attack-label semantics that is one true positive
 and one false positive; both workflows are confirmed from raw telemetry,
 with malicious intent unresolved and no independent escalation evidence.
 
-This completes the accepted v1.0 real-data round. The original multi-day
+This completes the recorded controlled real-data study. The original multi-day
 volume targets remain unmet; collection duration and baseline depth are
-limitations, and expansion belongs to possible v1.1 work. Earlier counts
+limitations, and expansion remains future research. Earlier counts
 in the experiment history below are retained as dated-stage evidence.
 
 ## Real-World Observability Findings

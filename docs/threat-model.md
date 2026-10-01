@@ -31,10 +31,11 @@ itself appears successful.
 | A5 - Identity privilege escalation | A compromised identity gains or grants elevated permissions. | New role assignment; high privilege; policy/security change; subsequent access to sensitive resources. |
 | A6 - SaaS data theft | A compromised identity uses legitimate APIs or sessions to collect data. | Volume anomaly; unusual resource types; rare API patterns; rapid access after new session/app/token; bulk download/exfil behavior. |
 
-## Status
+## Detection coverage
 
-No detections exist yet (Phase 2). This catalog exists now so the
-normalized event schema (`app/models/event.py`) and normalizers were built
-with these scenarios' evidence requirements in mind - e.g. `auth_protocol`,
-`permissions`, `bytes_transferred`, and `raw_event_ref` all trace directly to
-evidence columns in the table above.
+The detection library and correlation engine implement checks against these scenarios.
+The catalog describes intended evidence requirements; actual coverage depends on the
+available telemetry. Fields such as `auth_protocol`, `permissions`, `bytes_transferred`,
+and `raw_event_ref` connect normalized events to that evidence. See the
+[detection library](detections.md) and [evaluation](evaluation.md) for implemented
+rules, measured coverage, false positives, and missed attacks.

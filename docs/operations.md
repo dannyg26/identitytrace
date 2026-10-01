@@ -2,7 +2,7 @@
 
 ## Deployment boundary
 
-Version 1.3 supports a dedicated organization per application instance and database.
+IdentityTrace supports a dedicated organization per application instance and database.
 Do not put two customers' data in one database. Organization authorization validates
 the configured claim on every access token; it does not partition stored events.
 Collectors must ingest only data from the organization that owns the deployment.
@@ -100,7 +100,7 @@ rest, copy them off the host, restrict access, and choose a retention period and
 frequency appropriate to your recovery objectives. A successful `pg_dump` alone is
 not a tested recovery. No remote backups or schedules are configured by this repository.
 
-Version 1.3's `scripts/production_lab.py` performs a complete dump/restore drill
+`scripts/production_lab.py` performs a complete dump/restore drill
 against two isolated local PostgreSQL databases and a fresh restore database. It
 also checks real HTTPS certificate validation, PKCE sign-in, logout, wrong-tenant
 authorization, database role isolation and concurrent ingestion. Supply the path to
@@ -119,8 +119,9 @@ Its private CA is explicitly trusted by test clients without changing the system
 trust store. `evidence_pack/production-lab-v1.3-final.json` records the final code
 fingerprints, 300/300 requests, 8 workers, and a 2.363-second p95 client latency.
 The host was also running regression tests. This short Windows localhost run does
-not establish sustained throughput. Docker/Caddy and public Entra/TLS deployment
-remain unverified. The earlier v1.3 run is retained for comparison.
+not establish sustained throughput. This lab uses a local test issuer. A separate
+[Azure acceptance exercise](validation.md) verified Entra sign-in and public HTTPS;
+GitHub CI verifies Docker build and startup. Caddy deployment remains unverified.
 Protect lab directories: they contain test credentials, private keys and backup data.
 
 Before serving a recovered deployment, consider clearing `browser_sessions` to
@@ -144,7 +145,7 @@ they include sensitive identity data and inherit the current principal's read pe
 Word evidence hashes cover normalized JSON with sorted keys, compact separators and
 ASCII escaping. They establish an export fingerprint, not a signed chain of custody.
 
-Run `python scripts/benchmark.py --output evidence_pack/benchmark-v1.2.json` to produce
+Run `python scripts/benchmark.py --output evidence_pack/benchmark.json` to produce
 five fixed-seed runs. Results include workflow confusion counts, 95% Wilson intervals,
 per-seed results, dataset/rule/code fingerprints and dependency versions. Intervals are
 descriptive because generated workflows are not independent real-world observations.

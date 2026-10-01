@@ -1,4 +1,4 @@
-# Behavioral Baselines (Phase 3)
+# Behavioral Baselines
 
 Per-identity "normal" profiles, built from event history, used to flag when
 a new event deviates from what's been seen before (blueprint L2, §7.1).
@@ -30,9 +30,8 @@ a new event deviates from what's been seen before (blueprint L2, §7.1).
   | `new_ip` | 10 | `ip_address` not in known IPs |
   | `unusual_login_hour` | 10 | event's UTC hour outside the identity's usual hours |
 
-  These weights are the (currently unused) contribution to
-  `behavioral_deviation` in the blueprint's incident-score formula (§7.2) -
-  nothing sums them into a score yet; that's Phase 4.
+  Deviation weights contribute to the behavioral component of correlated
+  incident scores. See [correlation scoring](correlation.md).
 
 ## What's NOT here
 
@@ -40,18 +39,18 @@ Peer-group baselines (comparing an identity to others with a similar role)
 are a blueprint stretch goal, not built. Volume anomaly detection is a
 simple 3x-prior-max multiplier, not a statistical model (mean/stddev) - a
 reasonable place to improve later if false positives on legitimately bursty
-identities show up in Phase 7 evaluation.
+identities appear in evaluation.
 
 ## API & dashboard
 
 - `GET /api/identities` - every identity seen, with event counts.
 - `GET /api/identities/{actor_id}` - profile (known devices/IPs/countries/
   apps/resources/auth-protocols/login-hours, volume stats), recent events,
-  recent deviations, recent detection matches (Phase 2), recent session ids.
+  recent deviations, recent detection matches, recent session ids.
 - `GET /api/events/{id}/deviations` - deviations flagged for one event.
 - Dashboard: `/identities` (list), `/identities/{actor_id}` (detail) -
   blueprint §9.1's "Identity profile" page. `/events` also shows a
-  per-event Deviations column alongside Phase 2's Detections column.
+  per-event Deviations column alongside the Detections column.
 
 ## Testing
 

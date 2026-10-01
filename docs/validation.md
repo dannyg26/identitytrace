@@ -1,4 +1,4 @@
-# IdentityTrace v1.3 pilot release
+# IdentityTrace validation record
 
 IdentityTrace ingests cloud identity and audit events, applies atomic detection
 rules and per-identity baselines, and correlates related evidence into incidents
@@ -25,20 +25,19 @@ Recorded evidence:
 - [Local PostgreSQL, TLS, load and restore lab](../evidence_pack/production-lab-v1.3-final.json).
 - [Earlier controlled real-telemetry study](evaluation.md).
 
-The earlier v1.0 real-data study is retained with its unfavorable results and
+The controlled real-data study includes its unfavorable results and
 coverage limits. It must not be conflated with the synthetic cloud smoke test.
 Manual Entra/GitHub collection and import scripts exist; a continuously running
-collector is not provisioned or configured by this release.
+collector is not provisioned or configured by installing the application.
 
-## Release cleanup
+## Application safeguards
 
-- Updated the overview to describe implemented functionality.
-- Added an explicit analyst assessment field alongside status and notes.
-- Clarified reports when no separate assessment has been entered.
-- Made the Azure bootstrap command usable from the installed Python package.
-- Excluded private deployment state, environment files, token caches, raw vendor
-  exports and local database files from publication and container contexts.
-- Included CI jobs for lint, tests and coverage, PostgreSQL integration and a
+- Analyst assessment is recorded alongside status and notes.
+- Reports distinguish workflow status from a separate analyst assessment.
+- The Azure bootstrap command is available from the installed Python package.
+- Private deployment state, environment files, token caches, raw vendor
+  exports and local database files are excluded from publication and container contexts.
+- CI jobs cover lint, tests and coverage, PostgreSQL integration and a
   built-container smoke test. CI never deploys Azure infrastructure.
 
 ## Remaining validation

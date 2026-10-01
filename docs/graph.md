@@ -1,4 +1,4 @@
-# Identity Graph (Phase 5)
+# Identity Graph
 
 Per-incident evidence graphs, built with NetworkX per the blueprint's
 explicit MVP stack choice (§5.1: "NetworkX for MVP; Neo4j optional later").
@@ -29,7 +29,7 @@ events table.
 | `(Identity)-[:CONSENTED_TO]->(OAuthApp)` | `event_type == "oauth_consent"` and `app_id` present |
 | `(OAuthApp)-[:GRANTED]->(Permission)` | One edge per scope in the consent event's `permissions` |
 | `(Identity)-[:ACCESSED]->(Resource)` | `resource_id` present on a non-consent event |
-| `(Identity)-[:ASSIGNED]->(Privilege)` | The event's `action` mentions "role" (Phase 2's `IDT-ENTRA-006` heuristic, reused here) |
+| `(Identity)-[:ASSIGNED]->(Privilege)` | The event's `action` mentions "role" (`IDT-ENTRA-006` heuristic, reused here) |
 
 Session isn't yet a modeled entity with its own start/end/auth-method
 (that's a real gap vs. the blueprint's Session entity, §6.3) - it's just

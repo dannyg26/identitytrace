@@ -1,14 +1,12 @@
-# Temporal Correlation & Incidents (Phase 4)
+# Temporal Correlation & Incidents
 
-This is the blueprint's MVP cut line (§11.1): normalized telemetry, tested
-atomic detections, baselines, and now correlated incidents. Everything
-after this phase improves breadth, visualization, and research rigor -
-it doesn't change what a "detection" fundamentally is.
+Correlation combines atomic detections and baseline deviations into incidents
+with traceable evidence and explainable scores.
 
 ## The core idea
 
 A single signal - one detection match, one baseline deviation - is weak
-evidence on its own (the project's thesis, §1). Phase 4 chains related
+evidence on its own (the project's thesis, §1). Correlation chains related
 signals for the *same identity*, in a *time window*, in a *specific order*,
 into one incident with an explainable score and confidence.
 
@@ -19,10 +17,10 @@ IDs - matching the blueprint's own §16.2 example (`new_session_context`,
 `risky_oauth_consent`, `sensitive_resource_access`, ...). Two sources feed
 this vocabulary:
 
-- **Detection rules** (Phase 2) carry an optional `signal:` tag in their
+- **Detection rules** carry an optional `signal:` tag in their
   YAML; several rules can share one signal (e.g. both OAuth-consent rules
   feed `risky_oauth_consent`). Defaults to the rule's own id if untagged.
-- **Baseline deviations** (Phase 3) use their `deviation_type` directly as
+- **Baseline deviations** use their `deviation_type` directly as
   the signal name (`new_device`, `new_country`, `volume_anomaly`, ...) -
   already exactly the vocabulary correlation needs, no tagging required.
 
@@ -50,9 +48,9 @@ confidence = 0.4*correlation_strength + 0.3*evidence_quality + 0.3*telemetry_com
 
 The blueprint's formula also lists `asset_sensitivity`, `privilege_context`,
 and `benign_context_adjustments`. This project folds the first two into
-Phase 2 rule scores themselves (e.g. `IDT-GITHUB-003`'s sensitive-repo-name
+atomic rule scores themselves (e.g. `IDT-GITHUB-003`'s sensitive-repo-name
 check already *is* an asset-sensitivity signal) and doesn't implement
-general context-based suppression in v1.0 - see
+general context-based suppression - see
 `app/correlation/scoring.py`'s docstring for the full reasoning. Every
 component is stored on the incident (`score_breakdown`,
 `confidence_breakdown`) - never a black box.
