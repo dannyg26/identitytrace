@@ -9,6 +9,7 @@ import yaml
 from pydantic import ValidationError
 
 from app.correlation.schema import CorrelationRule
+from app.resources import resource_directory
 
 
 def _default_correlations_dir() -> Path:
@@ -19,7 +20,7 @@ def _default_correlations_dir() -> Path:
     override = os.environ.get("IDENTITYTRACE_CORRELATIONS_DIR")
     if override:
         return Path(override)
-    return Path(__file__).resolve().parent.parent.parent / "correlations"
+    return resource_directory("correlations")
 
 
 DEFAULT_CORRELATIONS_DIR = _default_correlations_dir()

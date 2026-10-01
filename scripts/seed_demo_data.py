@@ -18,6 +18,7 @@ that's the point: give the dashboard something to show.
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -32,6 +33,8 @@ from app.pipeline import normalize_payload, process_event  # noqa: E402
 
 
 def main() -> None:
+    if os.environ.get("IDENTITYTRACE_ENV") == "production":
+        raise SystemExit("Refusing to seed synthetic data in production mode")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--scenarios-per-type", type=int, default=2)

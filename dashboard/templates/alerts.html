@@ -3,13 +3,8 @@
 {% block content %}
   <h1>Atomic alerts</h1>
   <p style="color:#9aa3bd">
-    High/critical-severity single-signal detections, worth a look on their
-    own - independent of whether a correlation rule ever chains them into
-    an incident. Not every meaningful security event belongs to a
-    multi-stage attack chain (see <code>docs/evaluation.md</code>'s A6
-    discussion). This queue is complementary to
-    <a href="/incidents">Incidents</a>, not a replacement for it - see
-    <code>GET /api/alerts</code> for the machine-readable form.
+    High and critical signals requiring review. Open an event to inspect
+    its source evidence, or check <a href="/incidents">Incidents</a> for related activity.
   </p>
 
   <form class="filters" method="get" action="/alerts">
@@ -24,17 +19,18 @@
     <tbody>
       {% for a in alerts %}
       <tr>
-        <td>{{ a.timestamp }}</td>
+        <td><a href="/api/events/{{ a.event_id|urlencode }}">{{ a.timestamp.strftime('%Y-%m-%d %H:%M:%S') if a.timestamp.strftime is defined else a.timestamp }}</a></td>
         <td>{{ a.title }} <code>{{ a.rule_id }}</code></td>
         <td class="sev-{{ a.severity }}">{{ a.severity }}</td>
         <td>{{ a.score }}</td>
         <td>{{ a.scenario or "-" }}</td>
         <td><a href="/identities/{{ a.actor_id }}">{{ a.actor_id }}</a></td>
-        <td>{{ a.reasons|join('; ') }}</td>
+        <td><details><summary>Detection evidence</summary>{{ a.reasons|join('; ') }}</details></td>
       </tr>
       {% else %}
       <tr><td colspan="7">No high/critical atomic alerts yet.</td></tr>
       {% endfor %}
     </tbody>
   </table>
+  {% include "pagination.html" %}
 {% endblock %}

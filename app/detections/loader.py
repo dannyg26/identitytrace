@@ -9,6 +9,7 @@ import yaml
 from pydantic import ValidationError
 
 from app.detections.schema import DetectionRule
+from app.resources import resource_directory
 
 
 def _default_detections_dir() -> Path:
@@ -22,7 +23,7 @@ def _default_detections_dir() -> Path:
     override = os.environ.get("IDENTITYTRACE_DETECTIONS_DIR")
     if override:
         return Path(override)
-    return Path(__file__).resolve().parent.parent.parent / "detections"
+    return resource_directory("detections")
 
 
 DEFAULT_DETECTIONS_DIR = _default_detections_dir()

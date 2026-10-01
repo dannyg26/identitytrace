@@ -71,6 +71,7 @@ def load_identity_context(db: Session, actor_id: str, recent_limit: int = 20) ->
     )
     prior_incidents = (
         db.query(IncidentRecord)
+        .filter(IncidentRecord.superseded_at.is_(None))
         .filter(IncidentRecord.identity_id == actor_id)
         .order_by(IncidentRecord.last_event_at.desc())
         .limit(recent_limit)

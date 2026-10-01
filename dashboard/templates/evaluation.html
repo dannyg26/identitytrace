@@ -25,10 +25,33 @@
     <div class="stat-card"><div class="value">{{ metrics.totals.malicious_events }}</div><div class="label">malicious events</div></div>
     <div class="stat-card"><div class="value">{{ metrics.totals.atomic_alerts }}</div><div class="label">atomic alerts (Phase 2)</div></div>
     <div class="stat-card"><div class="value">{{ metrics.totals.incidents }}</div><div class="label">incidents (Phase 4)</div></div>
-    <div class="stat-card"><div class="value">{{ metrics.alert_reduction_ratio or "-" }}&times;</div><div class="label">alert reduction</div></div>
+    <div class="stat-card"><div class="value">{{ metrics.alert_reduction_ratio or "-" }}&times;</div><div class="label">alert / incident count ratio</div></div>
   </div>
 
   <h2>Isolated rules vs. the correlation engine</h2>
+  <p class="notice">Synthetic benchmark only. A smaller incident count does not establish useful noise reduction. Scores and confidence are heuristics, not probabilities of compromise.</p>
+  <h3>Comparable workflow metrics</h3>
+  <p class="muted">Each labeled attack or benign workflow contributes at most one trial.</p>
+  <table><thead><tr><th>Method</th><th>Precision</th><th>Recall</th><th>F1</th><th>False-positive workflows</th></tr></thead><tbody>
+  {% for name, result in metrics.workflow_metrics.items() %}
+  <tr><td>{{ name|replace('_', ' ') }}</td><td>{{ result.precision|round(3) if result.precision is not none else '—' }}</td><td>{{ result.recall|round(3) if result.recall is not none else '—' }}</td><td>{{ result.f1 if result.f1 is not none else '—' }}</td><td>{{ result.false_positive_workflows }}</td></tr>
+  {% endfor %}</tbody></table>
+  <h3>Uncertainty and missed workflows</h3>
+  <p class="muted">95% Wilson intervals describe uncertainty within this synthetic sample. They do not measure performance on a new organization or an unseen attack.</p>
+  <table><thead><tr><th>Method</th><th>Missed attacks</th><th>Precision interval</th><th>Recall interval</th><th>False-positive rate interval</th></tr></thead><tbody>
+  {% for name, result in metrics.workflow_metrics.items() %}
+    <tr><td>{{ name|replace('_', ' ') }}</td><td>{{ result.false_negative_workflows }}</td>
+    {% for key in ['precision', 'recall', 'false_positive_rate'] %}
+      {% set interval = result.intervals_95[key] %}
+      <td>{% if interval %}{{ interval.lower }}–{{ interval.upper }} (n={{ interval.trials }}){% else %}No trials{% endif %}</td>
+    {% endfor %}</tr>
+  {% endfor %}</tbody></table>
+  <details><summary>Reproducibility information</summary><dl class="kv">
+    <dt>Dataset SHA-256</dt><dd style="overflow-wrap:anywhere">{{ metrics.provenance.dataset_sha256 }}</dd>
+    <dt>Rules SHA-256</dt><dd style="overflow-wrap:anywhere">{{ metrics.provenance.rules_sha256 }}</dd>
+    <dt>Application SHA-256</dt><dd style="overflow-wrap:anywhere">{{ metrics.provenance.application_sha256 }}</dd>
+  </dl></details>
+  <h3>Finding counts and detection coverage</h3>
   <table>
     <thead><tr><th></th><th>Recall</th><th>Precision</th><th>False positives</th><th>Avg. detection latency</th></tr></thead>
     <tbody>

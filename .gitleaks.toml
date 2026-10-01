@@ -1,0 +1,13 @@
+title = "IdentityTrace secret scanning"
+
+[extend]
+useDefault = true
+
+# This exact invented hash appears in a documented synthetic schema fixture.
+# The exception is restricted to this file and value; real tokens remain scanned.
+[[allowlists]]
+description = "Invented GitHub audit hashed_token fixture, not a credential"
+condition = "AND"
+paths = ['''^tests/fixtures/real_samples/github_audit_pat_clone\.json$''']
+regexTarget = "secret"
+regexes = ['''^5f4dcc3b5aa765d61d8327deb882cf99$''']

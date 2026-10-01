@@ -1,0 +1,1536 @@
+{
+  "seeds": [
+    11,
+    29,
+    47,
+    71,
+    101
+  ],
+  "aggregated": {
+    "workflow_metrics.isolated_rule_baseline.precision": {
+      "mean": 0.7059,
+      "stdev": 0.0,
+      "min": 0.7059,
+      "max": 0.7059,
+      "n": 5
+    },
+    "workflow_metrics.isolated_rule_baseline.recall": {
+      "mean": 1.0,
+      "stdev": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 5
+    },
+    "workflow_metrics.isolated_rule_baseline.f1": {
+      "mean": 0.828,
+      "stdev": 0.0,
+      "min": 0.828,
+      "max": 0.828,
+      "n": 5
+    },
+    "workflow_metrics.isolated_rule_baseline.false_positive_rate": {
+      "mean": 0.3333,
+      "stdev": 0.0,
+      "min": 0.3333,
+      "max": 0.3333,
+      "n": 5
+    },
+    "workflow_metrics.correlation_engine.precision": {
+      "mean": 1.0,
+      "stdev": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 5
+    },
+    "workflow_metrics.correlation_engine.recall": {
+      "mean": 0.8333,
+      "stdev": 0.0,
+      "min": 0.8333,
+      "max": 0.8333,
+      "n": 5
+    },
+    "workflow_metrics.correlation_engine.f1": {
+      "mean": 0.909,
+      "stdev": 0.0,
+      "min": 0.909,
+      "max": 0.909,
+      "n": 5
+    },
+    "workflow_metrics.correlation_engine.false_positive_rate": {
+      "mean": 0.0,
+      "stdev": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 5
+    },
+    "isolated_rule_baseline.recall": {
+      "mean": 1.0,
+      "stdev": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 5
+    },
+    "isolated_rule_baseline.precision": {
+      "mean": 0.596,
+      "stdev": 0.0,
+      "min": 0.596,
+      "max": 0.596,
+      "n": 5
+    },
+    "isolated_rule_baseline.f1": {
+      "mean": 0.747,
+      "stdev": 0.0,
+      "min": 0.747,
+      "max": 0.747,
+      "n": 5
+    },
+    "isolated_rule_baseline.false_positive_rate": {
+      "mean": 0.239,
+      "stdev": 0.0,
+      "min": 0.239,
+      "max": 0.239,
+      "n": 5
+    },
+    "isolated_rule_baseline.avg_detection_latency_seconds": {
+      "mean": 119.0,
+      "stdev": 20.4328,
+      "min": 95.0,
+      "max": 140.0,
+      "n": 5
+    },
+    "correlation_engine.recall": {
+      "mean": 0.833,
+      "stdev": 0.0,
+      "min": 0.833,
+      "max": 0.833,
+      "n": 5
+    },
+    "correlation_engine.precision": {
+      "mean": 1.0,
+      "stdev": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "n": 5
+    },
+    "correlation_engine.f1": {
+      "mean": 0.909,
+      "stdev": 0.0,
+      "min": 0.909,
+      "max": 0.909,
+      "n": 5
+    },
+    "correlation_engine.false_positive_rate": {
+      "mean": 0.0,
+      "stdev": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 5
+    },
+    "correlation_engine.avg_detection_latency_seconds": {
+      "mean": 496.8,
+      "stdev": 60.8046,
+      "min": 432.0,
+      "max": 570.0,
+      "n": 5
+    },
+    "alert_reduction_ratio": {
+      "mean": 5.2,
+      "stdev": 0.0,
+      "min": 5.2,
+      "max": 5.2,
+      "n": 5
+    }
+  },
+  "per_seed": {
+    "11": {
+      "metric_version": 2,
+      "workflow_metrics": {
+        "isolated_rule_baseline": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 12,
+          "false_positive_workflows": 5,
+          "precision": 0.7058823529411765,
+          "recall": 1.0,
+          "false_negative_workflows": 0,
+          "true_negative_workflows": 10,
+          "false_positive_rate": 0.3333333333333333,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.4687,
+              "upper": 0.8672,
+              "trials": 17,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.7575,
+              "upper": 1,
+              "trials": 12,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0.1518,
+              "upper": 0.5829,
+              "trials": 15,
+              "successes": 5,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.828
+        },
+        "correlation_engine": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 10,
+          "false_positive_workflows": 0,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "false_negative_workflows": 2,
+          "true_negative_workflows": 15,
+          "false_positive_rate": 0.0,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.7225,
+              "upper": 1.0,
+              "trials": 10,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.552,
+              "upper": 0.953,
+              "trials": 12,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0,
+              "upper": 0.2039,
+              "trials": 15,
+              "successes": 0,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.909
+        }
+      },
+      "metric_definitions": {
+        "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+        "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+        "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1"
+      },
+      "totals": {
+        "attack_scenarios": 12,
+        "benign_events": 88,
+        "benign_sequences": 15,
+        "malicious_events": 26,
+        "atomic_alerts": 52,
+        "incidents": 10
+      },
+      "isolated_rule_baseline": {
+        "recall": 1.0,
+        "precision": 0.596,
+        "f1": 0.747,
+        "false_positive_alerts": 21,
+        "false_positive_rate": 0.239,
+        "avg_detection_latency_seconds": 100.0
+      },
+      "correlation_engine": {
+        "recall": 0.833,
+        "precision": 1.0,
+        "f1": 0.909,
+        "false_positive_incidents": 0,
+        "false_positive_rate": 0.0,
+        "avg_detection_latency_seconds": 432.0
+      },
+      "alert_reduction_ratio": 5.2,
+      "scenario_coverage": {
+        "A1": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A2": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A3": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A4": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A5": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A6": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 0.0
+        }
+      },
+      "per_scenario": [
+        {
+          "scenario_id": "A1-0",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 780.0,
+          "latency_correlated_seconds": 780.0
+        },
+        {
+          "scenario_id": "A1-1",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 420.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A2-0",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 660.0
+        },
+        {
+          "scenario_id": "A2-1",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 720.0
+        },
+        {
+          "scenario_id": "A3-0",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 120.0
+        },
+        {
+          "scenario_id": "A3-1",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 300.0
+        },
+        {
+          "scenario_id": "A4-0",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A4-1",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A5-0",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A5-1",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A6-0",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        },
+        {
+          "scenario_id": "A6-1",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        }
+      ],
+      "provenance": {
+        "seed": 11,
+        "scenarios_per_type": 2,
+        "num_benign_identities": 5,
+        "base_time": "2026-09-01T00:00:00+00:00",
+        "dataset_sha256": "c1c979f05a7a9cada1f2a1280810c0bd92c4c9e85a2ddcf32adb521814ddde1d",
+        "rules_sha256": "0035e33a1492c9e3cfd472186038812777b4e232e3fa1cb79b65d88b80ae53ea",
+        "rule_files": {
+          "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+          "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+          "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+          "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+          "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+          "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+          "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+          "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+          "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+          "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+          "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+          "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+          "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+          "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+          "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+          "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+          "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+          "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+          "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+          "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+        },
+        "application_sha256": "409b4a3ae586f84b8fc190b01cd827976740976a4a413930d1996e72544751b1",
+        "python": "3.12.10",
+        "dependencies": {
+          "identitytrace": "1.2.0",
+          "sqlalchemy": "2.0.52",
+          "pydantic": "2.13.5",
+          "pyyaml": "6.0.3"
+        },
+        "limitations": "Synthetic workflows are correlated and generated from known patterns. Wilson intervals describe sample uncertainty only; they do not establish external validity."
+      }
+    },
+    "29": {
+      "metric_version": 2,
+      "workflow_metrics": {
+        "isolated_rule_baseline": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 12,
+          "false_positive_workflows": 5,
+          "precision": 0.7058823529411765,
+          "recall": 1.0,
+          "false_negative_workflows": 0,
+          "true_negative_workflows": 10,
+          "false_positive_rate": 0.3333333333333333,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.4687,
+              "upper": 0.8672,
+              "trials": 17,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.7575,
+              "upper": 1,
+              "trials": 12,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0.1518,
+              "upper": 0.5829,
+              "trials": 15,
+              "successes": 5,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.828
+        },
+        "correlation_engine": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 10,
+          "false_positive_workflows": 0,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "false_negative_workflows": 2,
+          "true_negative_workflows": 15,
+          "false_positive_rate": 0.0,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.7225,
+              "upper": 1.0,
+              "trials": 10,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.552,
+              "upper": 0.953,
+              "trials": 12,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0,
+              "upper": 0.2039,
+              "trials": 15,
+              "successes": 0,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.909
+        }
+      },
+      "metric_definitions": {
+        "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+        "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+        "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1"
+      },
+      "totals": {
+        "attack_scenarios": 12,
+        "benign_events": 88,
+        "benign_sequences": 15,
+        "malicious_events": 26,
+        "atomic_alerts": 52,
+        "incidents": 10
+      },
+      "isolated_rule_baseline": {
+        "recall": 1.0,
+        "precision": 0.596,
+        "f1": 0.747,
+        "false_positive_alerts": 21,
+        "false_positive_rate": 0.239,
+        "avg_detection_latency_seconds": 140.0
+      },
+      "correlation_engine": {
+        "recall": 0.833,
+        "precision": 1.0,
+        "f1": 0.909,
+        "false_positive_incidents": 0,
+        "false_positive_rate": 0.0,
+        "avg_detection_latency_seconds": 546.0
+      },
+      "alert_reduction_ratio": 5.2,
+      "scenario_coverage": {
+        "A1": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A2": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A3": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A4": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A5": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A6": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 0.0
+        }
+      },
+      "per_scenario": [
+        {
+          "scenario_id": "A1-0",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 780.0,
+          "latency_correlated_seconds": 780.0
+        },
+        {
+          "scenario_id": "A1-1",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 900.0,
+          "latency_correlated_seconds": 900.0
+        },
+        {
+          "scenario_id": "A2-0",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 600.0
+        },
+        {
+          "scenario_id": "A2-1",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 660.0
+        },
+        {
+          "scenario_id": "A3-0",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 120.0
+        },
+        {
+          "scenario_id": "A3-1",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A4-0",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 600.0
+        },
+        {
+          "scenario_id": "A4-1",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 780.0
+        },
+        {
+          "scenario_id": "A5-0",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 300.0
+        },
+        {
+          "scenario_id": "A5-1",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 480.0
+        },
+        {
+          "scenario_id": "A6-0",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        },
+        {
+          "scenario_id": "A6-1",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        }
+      ],
+      "provenance": {
+        "seed": 29,
+        "scenarios_per_type": 2,
+        "num_benign_identities": 5,
+        "base_time": "2026-09-01T00:00:00+00:00",
+        "dataset_sha256": "2ce1b0df59c87e6d83c8fe50a1b8ab38bbced97a2dc53a2d992e2a942b00b9b5",
+        "rules_sha256": "0035e33a1492c9e3cfd472186038812777b4e232e3fa1cb79b65d88b80ae53ea",
+        "rule_files": {
+          "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+          "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+          "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+          "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+          "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+          "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+          "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+          "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+          "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+          "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+          "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+          "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+          "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+          "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+          "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+          "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+          "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+          "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+          "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+          "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+        },
+        "application_sha256": "409b4a3ae586f84b8fc190b01cd827976740976a4a413930d1996e72544751b1",
+        "python": "3.12.10",
+        "dependencies": {
+          "identitytrace": "1.2.0",
+          "sqlalchemy": "2.0.52",
+          "pydantic": "2.13.5",
+          "pyyaml": "6.0.3"
+        },
+        "limitations": "Synthetic workflows are correlated and generated from known patterns. Wilson intervals describe sample uncertainty only; they do not establish external validity."
+      }
+    },
+    "47": {
+      "metric_version": 2,
+      "workflow_metrics": {
+        "isolated_rule_baseline": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 12,
+          "false_positive_workflows": 5,
+          "precision": 0.7058823529411765,
+          "recall": 1.0,
+          "false_negative_workflows": 0,
+          "true_negative_workflows": 10,
+          "false_positive_rate": 0.3333333333333333,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.4687,
+              "upper": 0.8672,
+              "trials": 17,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.7575,
+              "upper": 1,
+              "trials": 12,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0.1518,
+              "upper": 0.5829,
+              "trials": 15,
+              "successes": 5,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.828
+        },
+        "correlation_engine": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 10,
+          "false_positive_workflows": 0,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "false_negative_workflows": 2,
+          "true_negative_workflows": 15,
+          "false_positive_rate": 0.0,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.7225,
+              "upper": 1.0,
+              "trials": 10,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.552,
+              "upper": 0.953,
+              "trials": 12,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0,
+              "upper": 0.2039,
+              "trials": 15,
+              "successes": 0,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.909
+        }
+      },
+      "metric_definitions": {
+        "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+        "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+        "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1"
+      },
+      "totals": {
+        "attack_scenarios": 12,
+        "benign_events": 88,
+        "benign_sequences": 15,
+        "malicious_events": 26,
+        "atomic_alerts": 52,
+        "incidents": 10
+      },
+      "isolated_rule_baseline": {
+        "recall": 1.0,
+        "precision": 0.596,
+        "f1": 0.747,
+        "false_positive_alerts": 21,
+        "false_positive_rate": 0.239,
+        "avg_detection_latency_seconds": 125.0
+      },
+      "correlation_engine": {
+        "recall": 0.833,
+        "precision": 1.0,
+        "f1": 0.909,
+        "false_positive_incidents": 0,
+        "false_positive_rate": 0.0,
+        "avg_detection_latency_seconds": 570.0
+      },
+      "alert_reduction_ratio": 5.2,
+      "scenario_coverage": {
+        "A1": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A2": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A3": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A4": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A5": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A6": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 0.0
+        }
+      },
+      "per_scenario": [
+        {
+          "scenario_id": "A1-0",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 780.0,
+          "latency_correlated_seconds": 780.0
+        },
+        {
+          "scenario_id": "A1-1",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 720.0,
+          "latency_correlated_seconds": 720.0
+        },
+        {
+          "scenario_id": "A2-0",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 900.0
+        },
+        {
+          "scenario_id": "A2-1",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A3-0",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A3-1",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 60.0
+        },
+        {
+          "scenario_id": "A4-0",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 600.0
+        },
+        {
+          "scenario_id": "A4-1",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 720.0
+        },
+        {
+          "scenario_id": "A5-0",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 900.0
+        },
+        {
+          "scenario_id": "A5-1",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 360.0
+        },
+        {
+          "scenario_id": "A6-0",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        },
+        {
+          "scenario_id": "A6-1",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        }
+      ],
+      "provenance": {
+        "seed": 47,
+        "scenarios_per_type": 2,
+        "num_benign_identities": 5,
+        "base_time": "2026-09-01T00:00:00+00:00",
+        "dataset_sha256": "450d2547c082bf83a58431e310c1f3d584b9440189869112d1f7bd13055260c6",
+        "rules_sha256": "0035e33a1492c9e3cfd472186038812777b4e232e3fa1cb79b65d88b80ae53ea",
+        "rule_files": {
+          "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+          "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+          "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+          "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+          "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+          "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+          "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+          "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+          "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+          "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+          "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+          "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+          "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+          "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+          "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+          "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+          "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+          "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+          "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+          "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+        },
+        "application_sha256": "409b4a3ae586f84b8fc190b01cd827976740976a4a413930d1996e72544751b1",
+        "python": "3.12.10",
+        "dependencies": {
+          "identitytrace": "1.2.0",
+          "sqlalchemy": "2.0.52",
+          "pydantic": "2.13.5",
+          "pyyaml": "6.0.3"
+        },
+        "limitations": "Synthetic workflows are correlated and generated from known patterns. Wilson intervals describe sample uncertainty only; they do not establish external validity."
+      }
+    },
+    "71": {
+      "metric_version": 2,
+      "workflow_metrics": {
+        "isolated_rule_baseline": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 12,
+          "false_positive_workflows": 5,
+          "precision": 0.7058823529411765,
+          "recall": 1.0,
+          "false_negative_workflows": 0,
+          "true_negative_workflows": 10,
+          "false_positive_rate": 0.3333333333333333,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.4687,
+              "upper": 0.8672,
+              "trials": 17,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.7575,
+              "upper": 1,
+              "trials": 12,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0.1518,
+              "upper": 0.5829,
+              "trials": 15,
+              "successes": 5,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.828
+        },
+        "correlation_engine": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 10,
+          "false_positive_workflows": 0,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "false_negative_workflows": 2,
+          "true_negative_workflows": 15,
+          "false_positive_rate": 0.0,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.7225,
+              "upper": 1.0,
+              "trials": 10,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.552,
+              "upper": 0.953,
+              "trials": 12,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0,
+              "upper": 0.2039,
+              "trials": 15,
+              "successes": 0,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.909
+        }
+      },
+      "metric_definitions": {
+        "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+        "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+        "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1"
+      },
+      "totals": {
+        "attack_scenarios": 12,
+        "benign_events": 88,
+        "benign_sequences": 15,
+        "malicious_events": 26,
+        "atomic_alerts": 52,
+        "incidents": 10
+      },
+      "isolated_rule_baseline": {
+        "recall": 1.0,
+        "precision": 0.596,
+        "f1": 0.747,
+        "false_positive_alerts": 21,
+        "false_positive_rate": 0.239,
+        "avg_detection_latency_seconds": 95.0
+      },
+      "correlation_engine": {
+        "recall": 0.833,
+        "precision": 1.0,
+        "f1": 0.909,
+        "false_positive_incidents": 0,
+        "false_positive_rate": 0.0,
+        "avg_detection_latency_seconds": 444.0
+      },
+      "alert_reduction_ratio": 5.2,
+      "scenario_coverage": {
+        "A1": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A2": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A3": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A4": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A5": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A6": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 0.0
+        }
+      },
+      "per_scenario": [
+        {
+          "scenario_id": "A1-0",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 420.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A1-1",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 720.0,
+          "latency_correlated_seconds": 720.0
+        },
+        {
+          "scenario_id": "A2-0",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 360.0
+        },
+        {
+          "scenario_id": "A2-1",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 480.0
+        },
+        {
+          "scenario_id": "A3-0",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A3-1",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 240.0
+        },
+        {
+          "scenario_id": "A4-0",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 840.0
+        },
+        {
+          "scenario_id": "A4-1",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 360.0
+        },
+        {
+          "scenario_id": "A5-0",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 360.0
+        },
+        {
+          "scenario_id": "A5-1",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A6-0",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        },
+        {
+          "scenario_id": "A6-1",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        }
+      ],
+      "provenance": {
+        "seed": 71,
+        "scenarios_per_type": 2,
+        "num_benign_identities": 5,
+        "base_time": "2026-09-01T00:00:00+00:00",
+        "dataset_sha256": "179ada611a5736b2960c79136278d5431b99ea27fe032e522452837443e36152",
+        "rules_sha256": "0035e33a1492c9e3cfd472186038812777b4e232e3fa1cb79b65d88b80ae53ea",
+        "rule_files": {
+          "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+          "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+          "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+          "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+          "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+          "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+          "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+          "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+          "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+          "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+          "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+          "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+          "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+          "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+          "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+          "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+          "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+          "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+          "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+          "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+        },
+        "application_sha256": "409b4a3ae586f84b8fc190b01cd827976740976a4a413930d1996e72544751b1",
+        "python": "3.12.10",
+        "dependencies": {
+          "identitytrace": "1.2.0",
+          "sqlalchemy": "2.0.52",
+          "pydantic": "2.13.5",
+          "pyyaml": "6.0.3"
+        },
+        "limitations": "Synthetic workflows are correlated and generated from known patterns. Wilson intervals describe sample uncertainty only; they do not establish external validity."
+      }
+    },
+    "101": {
+      "metric_version": 2,
+      "workflow_metrics": {
+        "isolated_rule_baseline": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 12,
+          "false_positive_workflows": 5,
+          "precision": 0.7058823529411765,
+          "recall": 1.0,
+          "false_negative_workflows": 0,
+          "true_negative_workflows": 10,
+          "false_positive_rate": 0.3333333333333333,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.4687,
+              "upper": 0.8672,
+              "trials": 17,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.7575,
+              "upper": 1,
+              "trials": 12,
+              "successes": 12,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0.1518,
+              "upper": 0.5829,
+              "trials": 15,
+              "successes": 5,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.828
+        },
+        "correlation_engine": {
+          "unit": "labeled workflow",
+          "true_positive_workflows": 10,
+          "false_positive_workflows": 0,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "false_negative_workflows": 2,
+          "true_negative_workflows": 15,
+          "false_positive_rate": 0.0,
+          "intervals_95": {
+            "precision": {
+              "lower": 0.7225,
+              "upper": 1.0,
+              "trials": 10,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "recall": {
+              "lower": 0.552,
+              "upper": 0.953,
+              "trials": 12,
+              "successes": 10,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            },
+            "false_positive_rate": {
+              "lower": 0,
+              "upper": 0.2039,
+              "trials": 15,
+              "successes": 0,
+              "method": "Wilson",
+              "confidence_level": 0.95
+            }
+          },
+          "f1": 0.909
+        }
+      },
+      "metric_definitions": {
+        "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+        "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+        "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1"
+      },
+      "totals": {
+        "attack_scenarios": 12,
+        "benign_events": 88,
+        "benign_sequences": 15,
+        "malicious_events": 26,
+        "atomic_alerts": 52,
+        "incidents": 10
+      },
+      "isolated_rule_baseline": {
+        "recall": 1.0,
+        "precision": 0.596,
+        "f1": 0.747,
+        "false_positive_alerts": 21,
+        "false_positive_rate": 0.239,
+        "avg_detection_latency_seconds": 135.0
+      },
+      "correlation_engine": {
+        "recall": 0.833,
+        "precision": 1.0,
+        "f1": 0.909,
+        "false_positive_incidents": 0,
+        "false_positive_rate": 0.0,
+        "avg_detection_latency_seconds": 492.0
+      },
+      "alert_reduction_ratio": 5.2,
+      "scenario_coverage": {
+        "A1": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A2": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A3": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A4": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A5": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 1.0
+        },
+        "A6": {
+          "instances": 2,
+          "recall_isolated": 1.0,
+          "recall_correlated": 0.0
+        }
+      },
+      "per_scenario": [
+        {
+          "scenario_id": "A1-0",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 1140.0,
+          "latency_correlated_seconds": 1140.0
+        },
+        {
+          "scenario_id": "A1-1",
+          "attack_type": "A1",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 480.0,
+          "latency_correlated_seconds": 480.0
+        },
+        {
+          "scenario_id": "A2-0",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 720.0
+        },
+        {
+          "scenario_id": "A2-1",
+          "attack_type": "A2",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 360.0
+        },
+        {
+          "scenario_id": "A3-0",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 180.0
+        },
+        {
+          "scenario_id": "A3-1",
+          "attack_type": "A3",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 60.0
+        },
+        {
+          "scenario_id": "A4-0",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 840.0
+        },
+        {
+          "scenario_id": "A4-1",
+          "attack_type": "A4",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A5-0",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 300.0
+        },
+        {
+          "scenario_id": "A5-1",
+          "attack_type": "A5",
+          "detected_isolated_rule": true,
+          "detected_correlation": true,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": 420.0
+        },
+        {
+          "scenario_id": "A6-0",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        },
+        {
+          "scenario_id": "A6-1",
+          "attack_type": "A6",
+          "detected_isolated_rule": true,
+          "detected_correlation": false,
+          "latency_isolated_seconds": 0.0,
+          "latency_correlated_seconds": null
+        }
+      ],
+      "provenance": {
+        "seed": 101,
+        "scenarios_per_type": 2,
+        "num_benign_identities": 5,
+        "base_time": "2026-09-01T00:00:00+00:00",
+        "dataset_sha256": "149c8698d4513b1ea5a4919b5dcf69c87978e64850fa1266941f551ff4e31fd0",
+        "rules_sha256": "0035e33a1492c9e3cfd472186038812777b4e232e3fa1cb79b65d88b80ae53ea",
+        "rule_files": {
+          "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+          "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+          "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+          "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+          "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+          "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+          "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+          "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+          "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+          "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+          "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+          "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+          "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+          "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+          "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+          "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+          "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+          "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+          "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+          "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+        },
+        "application_sha256": "409b4a3ae586f84b8fc190b01cd827976740976a4a413930d1996e72544751b1",
+        "python": "3.12.10",
+        "dependencies": {
+          "identitytrace": "1.2.0",
+          "sqlalchemy": "2.0.52",
+          "pydantic": "2.13.5",
+          "pyyaml": "6.0.3"
+        },
+        "limitations": "Synthetic workflows are correlated and generated from known patterns. Wilson intervals describe sample uncertainty only; they do not establish external validity."
+      }
+    }
+  }
+}

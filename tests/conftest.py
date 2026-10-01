@@ -11,7 +11,8 @@ import tempfile
 import pytest
 
 _tmp_db = tempfile.NamedTemporaryFile(prefix="identitytrace_test_", suffix=".db", delete=False)
-os.environ["DATABASE_URL"] = f"sqlite:///{_tmp_db.name}"
+os.environ["DATABASE_URL"] = os.environ.get("IDENTITYTRACE_TEST_DATABASE_URL", f"sqlite:///{_tmp_db.name}")
+os.environ["IDENTITYTRACE_DEMO_MODE"] = "1"
 
 
 @pytest.fixture()

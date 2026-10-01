@@ -1,0 +1,184 @@
+{
+  "completed_at": "2026-09-25T14:36:22.201069+00:00",
+  "environment": {
+    "os": "Windows",
+    "python": "3.12.10",
+    "postgresql": "17.11",
+    "identity_provider": "local HTTPS test issuer; NOT Microsoft Entra",
+    "application_tls": "private lab CA explicitly trusted by clients; no trust-store changes"
+  },
+  "implementation_sha256": {
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/api/detections.py": "ee98be449087807a44d9dc2c48fa0c21e0f9db7439814111566c8790acfb5ff7",
+    "app/api/evaluation.py": "01154ada565cd58787eba6085bac6eaa0adcf59366170ce6f7de615637aaeea6",
+    "app/api/events.py": "f1c6d3239a1cb14097b3af3f7d0509271ee8a3e5c6f535aeace0a5dce09664e7",
+    "app/api/identities.py": "44d4c75c7c8682821ddb45bfebec112d13f1352025879cda1981d1c07e3ef3b4",
+    "app/api/incidents.py": "d01809598c3b25ddb6558a9529f3621578609606616357895990d348cf8815c3",
+    "app/api/operations.py": "a403ffa86fb29cc8ecf4a1e995c311d630f145bd3745ac2d8e8d670f3d349524",
+    "app/api/reports.py": "a4f3e8f9f63db57239cf94f37cf344aee16511eb5c056dcde9d23b9784cbda67",
+    "app/baselines/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/baselines/deviation.py": "6126bbecb40f1dcf2ebd92e7fffb4f1d96efc6f1cc48c6d09193168b34486b63",
+    "app/baselines/profile.py": "cfba95d7f1ae7143dd6dc4b796cde12f24552cc6a4564b84783ce5994b2dafc7",
+    "app/browser_auth.py": "31dabc49b0dd48715ffc7f156c1b75146142d545c8c989d44b855eecf8677163",
+    "app/collectors/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/correlation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/correlation/build.py": "ecdc972c2dda9a810a0d7c839c05cb861e8f790c8359514ddb5c7ae3761d8599",
+    "app/correlation/engine.py": "74f3e3d61d21a2a104b732e9fe4f8124339c9d4a8ef34d8672c9c5b216006e1f",
+    "app/correlation/loader.py": "6b09b304f489a67f038b3100d26e402c5f89d6c95268775408be31afd12a7965",
+    "app/correlation/run.py": "821851e87bbc07ba4a3f7ec477fe2fe416fb881e022b84dba71d2f5ea32f4e3a",
+    "app/correlation/schema.py": "24af9625a11b4473bb216f883143de4c9e9392b4906bb2cf734baaf15913427a",
+    "app/correlation/scoring.py": "f0c21d9f2292388dbb8b10f8680785847b8528cd43555b38ef0d37dc16da64e6",
+    "app/correlation/signals.py": "9507a76f8c559587beee9ea198aaed277bbafaf7aa8491622808d8bd6306b899",
+    "app/detections/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/detections/engine.py": "9c57915ff0899dc1607c990ed4c366cc96b1b128cca4a8af44c6bf7ad7003841",
+    "app/detections/loader.py": "2d1c17a66f0eb13b2dc83ba36f88bbd19c526bb59354c599a0243e785d5d3dfe",
+    "app/detections/schema.py": "06f07d432c8b09004b282375f10c6d5e4474160e28587a86cae8392bc930e83c",
+    "app/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/evaluation/external.py": "930ed00a759ad6b7f45b40454bd9c1b3265b1ddcf0a07575a5533853451ccb27",
+    "app/evaluation/harness.py": "ce99131e062ee47526aca2576512dba5c999bcc7276a415981b4c947a1c0e41b",
+    "app/evaluation/holdout.py": "a182c50599f8d76b72749337cc66f29127aceb13690b75eae90a5647e311be77",
+    "app/evaluation/holdout_runner.py": "a4ac1d317b736c3df325feeb7e835f3a4662730f7a97f182a86fa5c45439279d",
+    "app/evaluation/metrics.py": "b34ed02433b1e6c470a298dc6db544f832d58b3ad192368f4fded2cf48ea970d",
+    "app/evaluation/scenarios.py": "732649944e68b4c76524f50c99df340ea68ddf6b38068dec1b8cc6c55fade332",
+    "app/evaluation/service.py": "a25e3dfab5dc220b76b9a55c06c3378d54bc9225c96226b3ae6e88053805f602",
+    "app/evaluation/statistics.py": "c7b130d08a9a83623cc7cd8bc1233ff7cf4141e38aa94390ce49836023980ddd",
+    "app/graph/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/graph/build.py": "90b26e2a036d56250788041f9cf6636c6c052edafc466ac688423d8740d3797e",
+    "app/graph/serialize.py": "3b7a8c850fcd39a3f67098146b1b7a21fa4ca2ab972c3ac5f3d4efadb7fc9d9a",
+    "app/graph/svg.py": "6d18947099f2a8a538a757cfdce8172ce6ea2300b1654f2170613f04c0ab384f",
+    "app/identity.py": "c2a00ecc24e91d1b804fb7a65a63ca08a4d4cf7263d36cb4028fad4d4b96520c",
+    "app/incident_query.py": "cc8956b9729a94dfb8235f9a553e7b1d965b3caceb4f172925d13e41b3b3d481",
+    "app/main.py": "a16a6a9138040f1cc471be87c22b0ef2a8fd066dbc84cf908bdb46aaefc2f594",
+    "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/models/access.py": "b2970f62003a4c1d9775deea09cb375f79823a746891685666d5618a4648e00a",
+    "app/models/baseline.py": "63696c20d0476ca3cd8daca2ff867b01001503b34d8185119c045ff0855a4cae",
+    "app/models/db.py": "774b6d44d3366927d3075b9a8a36e431f062f8d4b1a48c52f79e3580daebb530",
+    "app/models/detection.py": "6b07db33bb403bfe7e6b08f04c834ac14d335af3a8b15da98bba9d84f1ba4c46",
+    "app/models/event.py": "b948a40034fdf545b27864d587b92b52d499f93d69396137428fa7864ac0d0c2",
+    "app/models/incident.py": "cc5aa1d31cc47b1a8a922ddc559584800520bfd8cfbbd7d04b38be805fc3e891",
+    "app/models/operations.py": "7aec453160dd2186e24a5bad1e8a2e2c0ef064d7779fae86d8364f2ef1cedd5f",
+    "app/normalizers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/normalizers/entra.py": "de91113142af07e19691a6fd73605365f4a490fafb9635ec7f64d634b63758a7",
+    "app/normalizers/github.py": "4defcfc7566509d6a4b38741ec529cae08b6005bde7a8da4020186a1c16f6e7f",
+    "app/normalizers/m365.py": "654e50e27396d1d372a78b396c4c20d25010ba84f6d1dbe89e534982587ca7ae",
+    "app/observability.py": "94f21ee95160686f0b0f85a66df0bf5679651b21cad203fac44a7446fed04db6",
+    "app/oidc.py": "8520a2ec0d127f6ab6921fdaa693978c37c6c2e3cee6a3b8108d217549aece0b",
+    "app/pipeline.py": "9a4a45912268c2d1f20b94d9ad73b8965d214e796a3750ea830e0a2c2af2b3e7",
+    "app/reports.py": "f90d8f313ddd53f55fe8ef6ecf43edc2c0c0d13b62bedf2dcbf1d411cef56c40",
+    "app/resources.py": "9a22fcc6d6ed237392db578cc5f4ec3648067ef3cde909c3eba5cc43b5a908bd",
+    "app/security.py": "212e2ea1e3db04150af8ed6c817711115294ad01a977a6a286f590d9eb52e191",
+    "app/writes.py": "8f1097b244a8d67f4236cd5ff7be823a920c23e105a4daf13273af7cc5734119",
+    "scripts/backup_sqlite.py": "ccafa83badd73c4e8ec0d8583ce4dbe575c54c72cc25e65236ff403094fbc755",
+    "scripts/benchmark.py": "33c1a11a279bafd642cc55cdfd27a870adeede8f95dbb39fb711fee4172433c1",
+    "scripts/collect_entra_telemetry.py": "8e2838e25f57adb81ffe84257989ebbed1a758bc173db384259397b49f6c0037",
+    "scripts/collect_github_telemetry.py": "ac0bcc9718888fb2e8fbbf98f3227f15bd7a15b679061deaa55647b24f95f339",
+    "scripts/evaluate_dataset.py": "b1875f7c61640cc4be87ad9e223cf9fc041c059d31af51887c5e733e0a93a2ab",
+    "scripts/freeze_holdout.py": "622d57cc00d5559fc6629d36ea1c960b3c23e442b9ef4138148a5053e1e58ce6",
+    "scripts/ingest_real_export.py": "8ece4bd3b5984d833872dc135b2c8f49bc087a4bf2d52c68ea84bbbc2ffa8b23",
+    "scripts/manage_credentials.py": "2fc61ded33a1a70c4ebadf0d763f428c599f921654fd808e2799e3f1a69df993",
+    "scripts/migrate_database.py": "58d40699d6df563589691d51580c119f14b4db4fa01c98d0ff3115e9d8f72687",
+    "scripts/onboard_customer.py": "f6699ba959687506858daedeb82e0cc81844d8324a89afedb23665dcff3e4a5c",
+    "scripts/production_lab.py": "ffdedd5c265368554de2998050a8a2170414d37e5ec0952b2279633c1f5ccd06",
+    "scripts/real_metrics_report.py": "39b3941045bcfda8ce450c13f78b1337713f4883d6560a7c0eb054df52df2aa2",
+    "scripts/report_by_provenance.py": "7263ec78be4c57723a926860be5fc48aee337d85c456d5f03c1ac06d012166d4",
+    "scripts/report_workflow_semantics.py": "7af7f30e66d7a3fc0fd5233e1c8f622943f426388171084a77f72acd98f9cfb0",
+    "scripts/seed_demo_data.py": "da8d3cead2c2f0a1d25779d385d5c5a12fed7c4c203ad55c701f828531ff5a93",
+    "detections/cross_domain/bulk_data_transfer.yaml": "4cdba312cd92ae6fab8e73350be92a818fd218f11e711e188d7a09e64a827e87",
+    "detections/cross_domain/sensitive_resource_type_access.yaml": "a2a019df0a14cf2e085e9929a7c616c35949064fb3dd3a03e550247c80b8f597",
+    "detections/entra/admin_consent_required_signin.yaml": "840098b931979694cc101bf079e90ef6e31959a61b169cdbfb88b7a1c54576c4",
+    "detections/entra/device_code_auth_success.yaml": "f5dfa8d9bb69ebfeb7f65e001f3bcdc834c108924e83ea354b4d005f12175653",
+    "detections/entra/legacy_auth_protocol.yaml": "81d72926696107ea9347dca8b1baf9a552775c588b9b6088ecd00874636fd615",
+    "detections/entra/oauth_consent_offline_access.yaml": "80639d38289349bc0752672ad897857b3be13cf7ce8990bc4033b2a39f1a5d07",
+    "detections/entra/risky_oauth_consent.yaml": "910275b3d0f0fb610f3766af3937411320fe4d682568f4ab6d1c2a39d2ec8696",
+    "detections/entra/role_privilege_assignment.yaml": "b176df208b0f377da45d64b7a37b7dcf6a60480e94a51293cabe3d3a6486314c",
+    "detections/entra/signin_success_without_mfa.yaml": "0ff6ff102f45ef4fdf8f8eda65e6c21472b9b938f41229c696a22692d9a119a7",
+    "detections/github/pat_bulk_clone.yaml": "31a11cf074bf924bc217eebbf42cb6cac6ced2aa7616e15a1516b164fed897dd",
+    "detections/github/pat_repo_access.yaml": "0f6611968ecbfcf6b524095d8fda9babbc5d6ac3404f6caf60a1a1ecf4279fac",
+    "detections/github/sensitive_repo_access.yaml": "260996b433f8c38eaf528f62a244dcb6f177f8693c6a64956a491d86fc301477",
+    "detections/github/token_admin_scope.yaml": "fac925d51a850015b30e36a99ecf23903e52fae903b4203a5146931664cde2e1",
+    "detections/m365/mailbox_forwarding_rule.yaml": "6c0393da5bbc22e33e3c85b7c3a8b7417a199fe06a9449cfa6ce0373513ebb7a",
+    "correlations/admin_consent_bridge_same_user.yaml": "fb1b10f91317d0435bebcca0d5d53d8f554c09215c69821cd42a8bca021bb331",
+    "correlations/developer_token_full_chain.yaml": "09c68bb6b9d3588af0e59712df7ae6e4d753ba315b61530ef1523d5b199088c8",
+    "correlations/new_location_bulk_access.yaml": "d14605bfdc43b316fb24313f3a95fd43117a60c4de7c5911d32d9714d47224ea",
+    "correlations/new_session_to_sensitive_access.yaml": "b45e5d3bf50901db4f463d55069b662c7bcbabeac7552472736076d0e61a8a26",
+    "correlations/privilege_escalation_to_sensitive_access.yaml": "af20d6ae15ac44a981ccf030624b218221c712511b061a765f4af3daf97174a9",
+    "correlations/weak_auth_new_ip_bulk_access.yaml": "f2d3f7e11d9bbebebbaf245511edd4ce7c1e5d0440a90d8ca0e2c3c16984b5a3"
+  },
+  "checks": {
+    "both_production_apps_ready": true,
+    "untrusted_tls_rejected": true,
+    "pkce_login_over_verified_tls": true,
+    "secure_session_cookie": true,
+    "logout_revokes_session": true,
+    "wrong_organization_token_rejected": true,
+    "cross_database_connection_rejected": true,
+    "wrong_database_binding_rejected": true,
+    "concurrent_ingestion_correct": true,
+    "second_organization_has_no_events": true,
+    "all_tables_restored_exactly": true
+  },
+  "load": {
+    "workers": 8,
+    "workflows": 100,
+    "requests": 300,
+    "successful_requests": 300,
+    "elapsed_seconds": 34.03,
+    "requests_per_second": 8.82,
+    "latency_p50_ms": 264.14,
+    "latency_p95_ms": 2363.46,
+    "latency_max_ms": 3201.21,
+    "events": 300,
+    "incidents": 100
+  },
+  "recovery": {
+    "tables": {
+      "audit_records": {
+        "rows": 2,
+        "sha256": "b94ffda33e7961f9845f160554bdfad150a65cf270a09aac7dd1b83ca4173075"
+      },
+      "baseline_deviations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "baseline_states": {
+        "rows": 100,
+        "sha256": "945d465ca2794ddf1dfb7ed8a3d80d75f4553368162bcd202e73e98141a33d6c"
+      },
+      "browser_sessions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment_binding": {
+        "rows": 1,
+        "sha256": "f619d936c47b68ef8ccfa6eb65052092f48fa769f2b45f0f5a8b88f46b028a81"
+      },
+      "detection_matches": {
+        "rows": 300,
+        "sha256": "eb650db77563edbb22a7ad7a86a8509868b825ff739673026a75216475ecc85d"
+      },
+      "events": {
+        "rows": 300,
+        "sha256": "df5b2600004629d03e2793f1499d6f4481cca5d0034dbe123609bf9a4bb35219"
+      },
+      "identity_links": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "identitytrace_schema_versions": {
+        "rows": 3,
+        "sha256": "ebce4870a1da5c1e585af0dd26548a7bc4aa09eba7a1a1eb6c5aee613471d88d"
+      },
+      "incidents": {
+        "rows": 100,
+        "sha256": "aa82cd5775b94a44f9186065155cd9f10160217c7137c8555dad3df93e290e0d"
+      }
+    },
+    "dump_sha256": "bb0af84a992ce04dabc9b6f3e510e80a2dc78d5a25d2787a94f9344d94894ab5"
+  },
+  "limitations": [
+    "Short local workload, not a sustained capacity claim",
+    "No external Entra tenant or public TLS endpoint tested",
+    "Dedicated databases, not shared-table multi-tenancy"
+  ]
+}

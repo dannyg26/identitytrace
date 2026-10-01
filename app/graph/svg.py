@@ -31,29 +31,26 @@ def _esc(value: object) -> str:
     return html.escape(str(value))
 
 
-def render_svg(graph: nx.MultiDiGraph, width: int = 900, height: int = 560) -> str:
+def render_svg(graph: nx.MultiDiGraph, width: int = 1040, height: int = 360) -> str:
     if graph.number_of_nodes() == 0:
         return f'<svg width="{width}" height="{height}"></svg>'
 
-    k = 1.4 / max(1, graph.number_of_nodes() ** 0.5)
-    pos = nx.spring_layout(graph, seed=42, k=k)
-
-    xs = [p[0] for p in pos.values()]
-    ys = [p[1] for p in pos.values()]
-    min_x, max_x = min(xs), max(xs)
-    min_y, max_y = min(ys), max(ys)
-    pad = 60
-
-    def scale(x: float, y: float) -> tuple[float, float]:
-        sx = pad + (x - min_x) / (max_x - min_x or 1) * (width - 2 * pad)
-        sy = pad + (y - min_y) / (max_y - min_y or 1) * (height - 2 * pad)
-        return sx, sy
-
-    scaled = {node: scale(x, y) for node, (x, y) in pos.items()}
+    # Stable columns avoid spring-layout label collisions and visual movement
+    # between investigations. Relationships remain available as tooltips.
+    columns = [[], [], [], []]
+    for node, data in sorted(graph.nodes(data=True), key=lambda item: str(item[0])):
+        kind = data.get("kind", "event")
+        column = (3 if kind == "incident" else 1 if kind == "event" else
+                  0 if kind in {"identity", "session", "device", "ip"} else 2)
+        columns[column].append(node)
+    width = max(width, 1040)
+    height = max(height, 100 * max(map(len, columns)) + 80)
+    scaled = {node: (130 + column * (width - 260) / 3, 60 + row * 100)
+              for column, nodes in enumerate(columns) for row, node in enumerate(nodes)}
 
     parts = [
         f'<svg viewBox="0 0 {width} {height}" width="100%" height="{height}" '
-        f'xmlns="http://www.w3.org/2000/svg" style="background:#0f1420;border-radius:10px;">'
+        f'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Incident evidence relationships" style="min-width:{width}px;background:#0f1420;border-radius:10px;">'
     ]
 
     seen_edges: set[tuple[str, str, str]] = set()
@@ -65,14 +62,9 @@ def render_svg(graph: nx.MultiDiGraph, width: int = 900, height: int = 560) -> s
         seen_edges.add(key)
         x1, y1 = scaled[u]
         x2, y2 = scaled[v]
-        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
         parts.append(
             f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
-            f'stroke="#333c58" stroke-width="1.5" />'
-        )
-        parts.append(
-            f'<text x="{mx:.1f}" y="{my:.1f}" font-size="9" fill="#7d87a8" '
-            f'text-anchor="middle">{_esc(relation)}</text>'
+            f'stroke="#333c58" stroke-width="1.5"><title>{_esc(relation)}</title></line>'
         )
 
     for node, (x, y) in scaled.items():
@@ -81,6 +73,7 @@ def render_svg(graph: nx.MultiDiGraph, width: int = 900, height: int = 560) -> s
         color = NODE_COLORS.get(kind, "#9aa3bd")
         radius = NODE_RADIUS.get(kind, DEFAULT_RADIUS)
         label = str(data.get("label", node))
+        parts.append(f'<g tabindex="0"><title>{_esc(kind)}: {_esc(label)}</title>')
         if len(label) > MAX_LABEL_LEN:
             label = label[: MAX_LABEL_LEN - 3] + "..."
         parts.append(
@@ -95,6 +88,7 @@ def render_svg(graph: nx.MultiDiGraph, width: int = 900, height: int = 560) -> s
             f'<text x="{x:.1f}" y="{y + 4:.1f}" font-size="9" fill="#0f1420" '
             f'text-anchor="middle">{_esc(kind[:3])}</text>'
         )
+        parts.append('</g>')
 
     parts.append("</svg>")
     return "".join(parts)

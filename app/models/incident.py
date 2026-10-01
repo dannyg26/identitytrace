@@ -45,6 +45,8 @@ class IncidentRecord(Base):
     notes: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    superseded_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
+    superseded_reason: Mapped[Optional[str]] = mapped_column(String, nullable=True)
 
     def to_dict(self) -> dict:
         return {
@@ -72,6 +74,8 @@ class IncidentRecord(Base):
             "notes": self.notes,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
+            "superseded_at": self.superseded_at,
+            "superseded_reason": self.superseded_reason,
         }
 
 
@@ -109,6 +113,8 @@ def upsert_incident(db: Session, payload: dict) -> IncidentRecord:
     existing = db.get(IncidentRecord, payload["incident_id"])
 
     if existing is not None:
+        existing.superseded_at = None
+        existing.superseded_reason = None
         for field in _MUTABLE_FIELDS:
             setattr(existing, field, payload[field])
         existing.updated_at = now

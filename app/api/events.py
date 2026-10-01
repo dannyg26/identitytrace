@@ -31,12 +31,13 @@ from sqlalchemy.orm import Session
 
 from app.api.detections import get_loaded_rules
 from app.api.incidents import get_loaded_correlation_rules
+from app.identity import resolve_identity
 from app.models.baseline import BaselineDeviationRecord
 from app.models.db import get_db
 from app.models.detection import DetectionMatchRecord
 from app.models.event import EventRecord, NormalizedEvent
 from app.models.incident import IncidentRecord
-from app.pipeline import normalize_payload, process_event
+from app.pipeline import EventConflictError, normalize_payload, process_event
 
 router = APIRouter(tags=["events"])
 
@@ -45,6 +46,8 @@ def _normalize_payload(payload: dict[str, Any]) -> NormalizedEvent:
     """HTTP-status-coded wrapper around app.pipeline.normalize_payload."""
     try:
         return normalize_payload(payload)
+    except ValidationError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
     except ValueError as exc:
         # Unknown source - a request-shape problem, not a data problem.
         raise HTTPException(status_code=400, detail=str(exc)) from exc
@@ -52,16 +55,17 @@ def _normalize_payload(payload: dict[str, Any]) -> NormalizedEvent:
         raise HTTPException(
             status_code=422, detail=f"failed to normalize raw event: {exc}"
         ) from exc
-    except ValidationError as exc:
-        raise HTTPException(status_code=422, detail=exc.errors()) from exc
 
 
 @router.post("/events", response_model=NormalizedEvent, status_code=201)
 def ingest_event(
     payload: dict[str, Any] = Body(...), db: Session = Depends(get_db)
 ) -> NormalizedEvent:
-    event = _normalize_payload(payload)
-    process_event(db, event, get_loaded_rules(), get_loaded_correlation_rules())
+    event = resolve_identity(db, _normalize_payload(payload))
+    try:
+        process_event(db, event, get_loaded_rules(), get_loaded_correlation_rules())
+    except EventConflictError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
     return event
 
 
@@ -136,7 +140,5 @@ def get_event_incidents(event_id: str, db: Session = Depends(get_db)) -> list[di
     # evidence_ids is a JSON list column - filtering it in SQL is backend-
     # specific, so scope to the identity (cheap, indexed) and filter in
     # Python. Incident volume per identity is small at this project's scale.
-    candidates = (
-        db.query(IncidentRecord).filter(IncidentRecord.identity_id == record.actor_id).all()
-    )
+    candidates = db.query(IncidentRecord).filter(IncidentRecord.superseded_at.is_(None)).all()
     return [c.to_dict() for c in candidates if event_id in c.evidence_ids]

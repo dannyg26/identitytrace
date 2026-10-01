@@ -12,27 +12,37 @@ status codes to the API layer.
 
 from __future__ import annotations
 
+from datetime import timezone
+from itertools import groupby
 from typing import Any
 
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.baselines.deviation import evaluate_deviations
-from app.baselines.profile import build_profile
+from app.baselines.profile import IdentityProfile, build_profile, extend_profile
 from app.correlation.run import run_correlation_for_actor
 from app.correlation.schema import CorrelationRule
 from app.detections.engine import evaluate_event
 from app.detections.schema import DetectionRule
+from app.identity import resolve_identity
 from app.models.baseline import BaselineDeviationRecord
 from app.models.detection import DetectionMatchRecord
 from app.models.event import EventRecord, NormalizedEvent
-from app.models.incident import upsert_incident
+from app.models.incident import IncidentRecord, upsert_incident
+from app.models.operations import AuditRecord, BaselineState
 from app.normalizers import entra, github, m365
+from app.writes import write_lock
 
 NORMALIZERS = {
     "entra": entra.normalize,
     "github": github.normalize,
     "m365": m365.normalize,
 }
+
+
+class EventConflictError(ValueError):
+    """An event ID was reused with different evidence."""
 
 
 def normalize_payload(payload: dict[str, Any]) -> NormalizedEvent:
@@ -61,33 +71,108 @@ def process_event(
     rules: list[DetectionRule],
     correlation_rules: list[CorrelationRule],
 ) -> None:
+    with write_lock(db):
+        _process_event(db, event, rules, correlation_rules)
+
+
+def _process_event(db, event, rules, correlation_rules):
     """Run one already-normalized event through the full pipeline and
     persist everything it produces: the event itself, any Phase 2 rule
     matches, any Phase 3 baseline deviations, and any Phase 4 incidents
     those matches/deviations complete.
     """
-    # Build the identity's baseline from events strictly before this one -
-    # before inserting the event, so the profile never includes the event
-    # it's about to be compared against.
-    profile = build_profile(db, event.actor_id, before=event.timestamp)
+    try:
+        event = resolve_identity(db, event)
+        existing = db.get(EventRecord, event.event_id)
+        if existing is not None:
+            # to_schema normalizes SQLite's naive UTC timestamps before comparison.
+            if existing.to_schema() != event:
+                raise EventConflictError(
+                    f"event '{event.event_id}' already exists with different content"
+                )
+            db.commit()
+            return  # An identical retry must not mutate evidence or analyst triage.
 
-    record = EventRecord.from_schema(event)
-    db.merge(record)
+        state = db.get(BaselineState, event.actor_id)
+        latest = state.last_timestamp if state else db.query(func.max(EventRecord.timestamp)).filter(
+            EventRecord.actor_id == event.actor_id
+        ).scalar()
+        late = latest is not None and event.timestamp <= _utc(latest)
+        profile = (IdentityProfile.model_validate(state.profile) if state and not late
+                   else build_profile(db, event.actor_id, before=event.timestamp))
+        db.add(EventRecord.from_schema(event))
+        # Persist the parent first, including on databases enforcing foreign keys.
+        db.flush()
+        if late:
+            rebuild_evidence(db, rules, correlation_rules, reason="Late event changed historical evidence")
+            db.commit()
+            return
+        for match in evaluate_event(event, rules):
+            db.add(DetectionMatchRecord.from_match(match))
+        for deviation in evaluate_deviations(event, profile):
+            db.add(BaselineDeviationRecord.from_deviation(event, deviation))
 
-    for match in evaluate_event(event, rules):
-        db.merge(DetectionMatchRecord.from_match(match))
+        # Queries in this same transaction can see flushed signals. Committing
+        # here would leave partial evidence behind if correlation subsequently fails.
+        db.flush()
+        for incident_payload in run_correlation_for_actor(
+            db, event.actor_id, as_of=event.timestamp, rules=correlation_rules
+        ):
+            upsert_incident(db, incident_payload)
+            db.flush()
+        extend_profile(profile, event)
+        db.merge(BaselineState(actor_id=event.actor_id, last_timestamp=event.timestamp,
+                               profile=profile.model_dump(mode="json")))
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise
 
-    for deviation in evaluate_deviations(event, profile):
-        db.merge(BaselineDeviationRecord.from_deviation(event, deviation))
 
-    # Matches/deviations must be committed before correlation queries them
-    # back out (app/correlation/signals.py reads from the DB) - this
-    # event's own signals need to already be visible to participate in a
-    # chain.
-    db.commit()
+def _utc(timestamp):
+    return timestamp.replace(tzinfo=timezone.utc) if timestamp.tzinfo is None else timestamp
 
-    for incident_payload in run_correlation_for_actor(
-        db, event.actor_id, as_of=event.timestamp, rules=correlation_rules
-    ):
-        upsert_incident(db, incident_payload)
-    db.commit()
+
+def rebuild_evidence(db, rules, correlation_rules, reason="Identity links changed"):
+    """Deterministically replay derived evidence without deleting investigations.
+
+    Caller owns the transaction and writer lock. Full replay is intentionally an
+    exceptional path; normal chronological ingestion uses baseline checkpoints.
+    Equal-timestamp events all see the same strictly-earlier baseline.
+    """
+    from datetime import datetime
+
+    events = [resolve_identity(db, row.to_schema()) for row in db.query(EventRecord).order_by(
+        EventRecord.timestamp, EventRecord.event_id
+    ).all()]
+    db.query(BaselineDeviationRecord).delete(synchronize_session="fetch")
+    db.query(DetectionMatchRecord).delete(synchronize_session="fetch")
+    db.query(BaselineState).delete(synchronize_session="fetch")
+    profiles = {}
+    for _, group in groupby(events, key=lambda event: event.timestamp):
+        batch = list(group)
+        for event in batch:
+            db.merge(EventRecord.from_schema(event))
+            profile = profiles.setdefault(event.actor_id, IdentityProfile(actor_id=event.actor_id))
+            for deviation in evaluate_deviations(event, profile):
+                db.add(BaselineDeviationRecord.from_deviation(event, deviation))
+            for match in evaluate_event(event, rules):
+                db.add(DetectionMatchRecord.from_match(match))
+        for event in batch:
+            extend_profile(profiles[event.actor_id], event)
+    for actor, profile in profiles.items():
+        db.add(BaselineState(actor_id=actor, last_timestamp=profile.last_seen,
+                             profile=profile.model_dump(mode="json")))
+    db.flush()
+    found = set()
+    for event in events:
+        for payload in run_correlation_for_actor(db, event.actor_id, event.timestamp, correlation_rules):
+            upsert_incident(db, payload)
+            found.add(payload["incident_id"])
+            db.flush()
+    for incident in db.query(IncidentRecord).filter(IncidentRecord.superseded_at.is_(None)).all():
+        if incident.incident_id not in found:
+            incident.superseded_at = datetime.now(timezone.utc)
+            incident.superseded_reason = reason
+            db.add(AuditRecord(principal="system", action="incident.superseded",
+                               entity_id=incident.incident_id, after={"reason": reason}))

@@ -1,0 +1,5 @@
+<nav class="pager" aria-label="Pagination">
+  {% if page > 1 %}<a href="{{ request.url.include_query_params(page=page-1) }}">← Previous</a>{% else %}<span></span>{% endif %}
+  <span class="muted">Page {{ page }} · {{ total }} records</span>
+  {% if page * 50 < total %}<a href="{{ request.url.include_query_params(page=page+1) }}">Next →</a>{% else %}<span></span>{% endif %}
+</nav>

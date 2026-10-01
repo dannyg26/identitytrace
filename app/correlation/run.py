@@ -25,11 +25,27 @@ def run_correlation_for_actor(
         if rule.is_bridged:
             incident_payloads.extend(_run_bridged_rule(db, rule, as_of))
             continue
-        since = as_of - timedelta(seconds=rule.window_seconds)
-        signals = get_signals_for_actor(db, actor_id, since=since, until=as_of)
-        hit = evaluate_correlation_rule(rule, signals)
-        if hit is not None:
-            incident_payloads.append(build_incident_payload(db, hit))
+        window = timedelta(seconds=rule.window_seconds)
+        signals = get_signals_for_actor(
+            db, actor_id, since=as_of - window, until=as_of + window
+        )
+        # Reconsider already-stored later signals when an earlier event arrives.
+        # Each candidate is still evaluated inside ONE rule window; evaluating
+        # the whole two-window fetch would incorrectly join overlong chains.
+        # Signal timestamps come back naive on SQLite, so compare against an
+        # equally naive UTC boundary there (all persisted timestamps are UTC).
+        boundary = as_of
+        if signals and signals[0].timestamp.tzinfo is None:
+            boundary = as_of.replace(tzinfo=None)
+        endpoints = sorted({boundary} | {s.timestamp for s in signals if s.timestamp >= boundary})
+        payloads_by_id = {}
+        for endpoint in endpoints:
+            candidates = [s for s in signals if endpoint - window <= s.timestamp <= endpoint]
+            hit = evaluate_correlation_rule(rule, candidates)
+            if hit is not None:
+                payload = build_incident_payload(db, hit)
+                payloads_by_id[payload["incident_id"]] = payload
+        incident_payloads.extend(payloads_by_id.values())
     return incident_payloads
 
 

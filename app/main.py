@@ -18,11 +18,12 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from sqlalchemy import func
+from sqlalchemy import func, text
 from sqlalchemy.orm import Session
+from starlette.responses import JSONResponse, Response
 
 from app.api.detections import get_loaded_rules, set_loaded_rules
 from app.api.detections import router as detections_router
@@ -35,44 +36,66 @@ from app.api.incidents import (
     set_loaded_correlation_rules,
 )
 from app.api.incidents import router as incidents_router
+from app.api.operations import router as operations_router
+from app.api.reports import router as reports_router
+from app.browser_auth import router as auth_router
 from app.correlation.loader import load_correlation_rules
 from app.detections.loader import load_rules
-from app.evaluation.harness import run_evaluation
+from app.evaluation.service import run_interactive_evaluation
 from app.graph.build import build_incident_graph
 from app.graph.svg import render_svg
+from app.incident_query import IncidentFilters, incident_query
 from app.models.baseline import BaselineDeviationRecord
-from app.models.db import SessionLocal, init_db
+from app.models.db import SessionLocal, engine, init_db, verify_schema
 from app.models.detection import DetectionMatchRecord
 from app.models.event import EventRecord
 from app.models.incident import IncidentRecord
+from app.observability import ObservabilityMiddleware, RequestMetrics
+from app.resources import resource_directory
+from app.security import AccessMiddleware, AccessPolicy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # See app/detections/loader.py's _default_detections_dir() docstring: this
 # relative path only resolves correctly when app/ sits in a source
 # checkout (local run or editable install) - override for other layouts.
-DASHBOARD_DIR = Path(os.environ.get("IDENTITYTRACE_DASHBOARD_DIR", str(BASE_DIR / "dashboard")))
+DASHBOARD_DIR = Path(os.environ.get("IDENTITYTRACE_DASHBOARD_DIR", str(resource_directory("dashboard"))))
 
 
 @asynccontextmanager
 async def _lifespan(_: FastAPI) -> AsyncIterator[None]:
-    init_db()
-    set_loaded_rules(load_rules())
-    set_loaded_correlation_rules(load_correlation_rules())
+    app.state.access_policy = AccessPolicy()
+    if app.state.access_policy.production:
+        if engine.dialect.name != "postgresql":
+            raise RuntimeError("Production mode requires a dedicated PostgreSQL database")
+        verify_schema(app.state.access_policy.oidc.organization)
+    else:
+        init_db()
+    rules, correlations = load_rules(), load_correlation_rules()
+    if not rules or not correlations or not (DASHBOARD_DIR / "templates" / "base.html").exists():
+        raise RuntimeError("Required rules or dashboard assets are missing")
+    set_loaded_rules(rules)
+    set_loaded_correlation_rules(correlations)
     yield
 
 
 app = FastAPI(
     title="IdentityTrace",
     description="Cross-SaaS identity attack detection platform (research/lab build).",
-    version="1.0.0",
+    version="1.3.0",
     lifespan=_lifespan,
 )
+app.add_middleware(AccessMiddleware)
+app.state.metrics = RequestMetrics()
+app.add_middleware(ObservabilityMiddleware, metrics=app.state.metrics)
 
 app.include_router(events_router, prefix="/api")
 app.include_router(detections_router, prefix="/api")
 app.include_router(identities_router, prefix="/api")
 app.include_router(incidents_router, prefix="/api")
 app.include_router(evaluation_router, prefix="/api")
+app.include_router(operations_router, prefix="/api")
+app.include_router(reports_router, prefix="/api")
+app.include_router(auth_router)
 
 if (DASHBOARD_DIR / "static").exists():
     app.mount(
@@ -85,6 +108,23 @@ templates = Jinja2Templates(directory=DASHBOARD_DIR / "templates")
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/ready")
+def readiness():
+    try:
+        with SessionLocal() as db:
+            db.execute(text("SELECT 1"))
+        policy = app.state.access_policy
+        ready = bool(policy.demo or policy.users or policy.oidc) and bool(get_loaded_rules())
+    except Exception:
+        ready = False
+    return JSONResponse({"status": "ready" if ready else "unavailable"}, status_code=200 if ready else 503)
+
+
+@app.get("/metrics")
+def metrics():
+    return Response(app.state.metrics.render(), media_type="text/plain; version=0.0.4")
 
 
 @app.get("/")
@@ -111,6 +151,7 @@ def overview(request: Request) -> Any:  # noqa: ANN401 - Jinja2 response type
         )
         recent_incidents = (
             db.query(IncidentRecord)
+            .filter(IncidentRecord.superseded_at.is_(None))
             .order_by(IncidentRecord.last_event_at.desc())
             .limit(10)
             .all()
@@ -237,17 +278,14 @@ def identity_detail_page(request: Request, actor_id: str) -> Any:  # noqa: ANN40
 @app.get("/incidents")
 def incidents_page(
     request: Request,
-    severity: str | None = None,
-    status: str | None = None,
+    filters: IncidentFilters = Depends(),
+    page: int = Query(1, ge=1),
 ) -> Any:  # noqa: ANN401 - Jinja2 response type
     db: Session = SessionLocal()
     try:
-        query = db.query(IncidentRecord)
-        if severity:
-            query = query.filter(IncidentRecord.severity == severity)
-        if status:
-            query = query.filter(IncidentRecord.status == status)
-        records = query.order_by(IncidentRecord.last_event_at.desc()).limit(200).all()
+        query = incident_query(db, filters)
+        total = query.count()
+        records = query.order_by(IncidentRecord.last_event_at.desc(), IncidentRecord.incident_id).offset((page - 1) * 50).limit(50).all()
     finally:
         db.close()
     return templates.TemplateResponse(
@@ -255,8 +293,14 @@ def incidents_page(
         "incidents.html",
         {
             "incidents": [r.to_dict() for r in records],
-            "severity": severity or "",
-            "status": status or "",
+            "severity": filters.severity or "",
+            "status": filters.status or "",
+            "q": filters.q,
+            "identity_id": filters.identity_id or "",
+            "since": filters.since.isoformat() if filters.since else "",
+            "until": filters.until.isoformat() if filters.until else "",
+            "include_superseded": filters.include_superseded,
+            "page": page, "total": total,
         },
     )
 
@@ -292,6 +336,10 @@ def incident_detail_page(request: Request, incident_id: str) -> Any:  # noqa: AN
             "timeline": timeline,
             "allowed_statuses": sorted(ALLOWED_STATUSES),
             "graph_svg": graph_svg,
+            "graph_relations": [{"source": graph.nodes[u].get("label", u),
+                                 "relation": data.get("relation", ""),
+                                 "target": graph.nodes[v].get("label", v)}
+                                for u, v, data in graph.edges(data=True)],
         },
     )
 
@@ -300,12 +348,12 @@ def incident_detail_page(request: Request, incident_id: str) -> Any:  # noqa: AN
 def evaluation_page(
     request: Request,
     seed: int = 42,
-    scenarios_per_type: int = 2,
+    scenarios_per_type: int = Query(default=2, ge=1, le=10),
 ) -> Any:  # noqa: ANN401 - Jinja2 response type
     # Runs synchronously against a throwaway in-memory DB (see
     # app/evaluation/harness.py) - fast at this dataset size, and never
     # touches the live database backing the rest of the dashboard.
-    metrics = run_evaluation(seed=seed, scenarios_per_type=scenarios_per_type)
+    metrics = run_interactive_evaluation(seed=seed, scenarios_per_type=scenarios_per_type)
     return templates.TemplateResponse(
         request,
         "evaluation.html",
@@ -318,7 +366,8 @@ def evaluation_page(
 
 
 @app.get("/alerts")
-def alerts_page(request: Request, actor_id: str | None = None) -> Any:  # noqa: ANN401
+def alerts_page(request: Request, actor_id: str | None = None,
+                page: int = Query(1, ge=1)) -> Any:  # noqa: ANN401
     """Phase 9 #9: high/critical atomic matches as their own queue,
     alongside (not instead of) /incidents - see app/api/detections.py's
     list_alerts() docstring."""
@@ -329,11 +378,12 @@ def alerts_page(request: Request, actor_id: str | None = None) -> Any:  # noqa: 
         )
         if actor_id:
             query = query.filter(DetectionMatchRecord.actor_id == actor_id)
-        records = query.order_by(DetectionMatchRecord.timestamp.desc()).limit(200).all()
+        total = query.count()
+        records = query.order_by(DetectionMatchRecord.timestamp.desc(), DetectionMatchRecord.match_id).offset((page - 1) * 50).limit(50).all()
     finally:
         db.close()
     return templates.TemplateResponse(
         request,
         "alerts.html",
-        {"alerts": [r.to_dict() for r in records], "actor_id": actor_id or ""},
+        {"alerts": [r.to_dict() for r in records], "actor_id": actor_id or "", "page": page, "total": total},
     )

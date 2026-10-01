@@ -6,13 +6,29 @@ __pycache__/
 venv/
 env/
 .env
+.env.*
+!.env.example
+*.publishsettings
+publish.xml
+*.pfx
+*.p12
+*.key
 *.db
 *.sqlite3
+*.db-wal
+*.db-shm
+*.sqlite3-wal
+*.sqlite3-shm
 .DS_Store
 dashboard/static/.cache/
 .ruff_cache/
 .coverage
 htmlcov/
+build/
+dist/
+secrets/
+backups/
+deployments/
 
 # Real vendor exports (Phase 9B) - may contain real tenant/org/user
 # identifiers. Never committed - see docs/phase9b-first-collection-checklist.md.
@@ -22,3 +38,5 @@ htmlcov/
 # Cached Entra device-code token (scripts/collect_entra_telemetry.py) -
 # a real credential for a real tenant, never committed.
 .entra_token_cache.json
+credentials*.json
+credentials*.json.tmp

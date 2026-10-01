@@ -5,9 +5,60 @@ project). Normalizes authentication, OAuth, developer-platform, privilege,
 and data-access telemetry into one schema and correlates it into
 evidence-backed incidents.
 
-**Current status: every phase in the blueprint's roadmap is built
-(Phase 0-8), plus a post-blueprint Phase 9 hardening the evaluation
-itself** - noisy benign personas, a frozen out-of-sample holdout set,
+**Release status: v1.3 portfolio pilot.** The Azure pilot was demonstrated on
+2026-09-29 and removed at the owner's request on 2026-09-30; resource-group
+deletion was verified on 2026-10-01. There is no hosted demo currently.
+Run the application locally with the instructions below.
+
+### What has been verified
+
+| Exercise | Recorded result | Limit |
+|---|---|---|
+| Live Azure workflow | Four synthetic events stored; one expected three-event incident; no duplicate on replay; notes and Word export persisted | Functional demonstration, not independent accuracy evidence |
+| Local PostgreSQL/TLS lab | 300/300 requests; 300 events; 100 incidents; native backup/restore fingerprints matched | Short lab run, not sustained cloud capacity or recovery validation |
+| Earlier controlled real-telemetry study | Redacted Entra and GitHub evidence and metrics retained below | Small corpus; GitHub observability incomplete; benign consent can resemble an attack |
+
+See [live workflow evidence](evidence_pack/azure-live-workflow-20260929.json),
+[local lab evidence](evidence_pack/production-lab-v1.3-final.json), and
+[release notes](docs/release-v1.3.md). Continuous vendor-log collection is not
+configured by installing the app. The repository includes manual collection/import
+scripts; they require the operator's own accounts, permissions, and configuration.
+The engine uses rules and behavioral baselines, not a trained machine-learning model.
+
+## Version 1.3 improvements
+
+- Built-in browser sign-in with authorization code + PKCE, expiring server-side
+  sessions, local logout and HTTPS enforcement. See [Entra setup](docs/entra-setup.md).
+- Customer deployment generator with separate networks, volumes and credentials;
+  PostgreSQL is persistently bound to its owning organization.
+- A repeatable PostgreSQL/TLS lab tests concurrent ingestion, cross-customer denial
+  and native backup/restore with all-table fingerprints. Recorded local results:
+  300/300 successful requests, 300 events and 100 incidents. This is a short lab
+  exercise, not a production capacity or availability commitment.
+- [External telemetry evaluation](docs/independent-evaluation.md) keeps annotations
+  out of the detector, validates frozen inputs and reports unknown cases separately.
+  No new independently labeled corpus has been verified in this upgrade.
+
+### Included from version 1.2
+
+- Word incident reports and filtered summary reports with plain tables, evidence
+  fingerprints, audited downloads, and CSV export. Open `/incidents` to download.
+- Shared queue/API/export filters; analyst edits can reject stale updates with HTTP 409.
+- Organization-scoped OIDC access-token verification, explicit role mapping and
+  production safeguards. One deployment and database per organization.
+- Readiness checks, structured request logs, request IDs, admin-only Prometheus metrics,
+  file-mounted database secrets, hardened containers and a verified SQLite backup tool.
+- Workflow confusion counts and Wilson intervals, reproducible dataset/rule/code hashes,
+  and a multi-seed benchmark CLI. Synthetic scores remain research evidence, not proof
+  of enterprise detection performance.
+
+See [the operations guide](docs/operations.md) for exact configuration, migration,
+backup/recovery instructions and deployment limitations. Browser SSO requires your
+Entra registrations and HTTPS deployment. No cloud infrastructure is provisioned
+automatically. Shared-database multi-tenancy is not supported.
+
+**Current status: research implementation with deployment safeguards and
+measured limitations.** The evaluation includes noisy benign personas, a frozen out-of-sample holdout set,
 multi-seed statistics, F1/false-positive-rate reporting, a standalone
 atomic-alerts queue alongside incidents, and the real-vendor-telemetry
 ingestion path - since exercised against a real Microsoft 365 developer
@@ -74,7 +125,7 @@ project builds against.
   `/rules` detection library, `/identities[/{id}]` profile pages,
   `/evaluation` metrics) - deliberately on separate paths from the JSON
   API, see `app/main.py`'s docstring for why.
-- 412 unit + integration tests, ~98% line coverage: schema validation,
+- An extensive unit + integration test suite with measured coverage: schema validation,
   all three normalizers, the detection engine and all 14 rules (positive +
   negative cases each), the baseline profile builder and deviation
   evaluator, the correlation engine/scoring, the identity graph builder/
@@ -109,7 +160,7 @@ project builds against.
 - **Docker**: `docker compose up --build` runs Postgres and the app
   together end-to-end (see `Dockerfile`, `docker-compose.yml`). Not
   verified with an actual `docker build` in this project's own dev
-  environment (Docker isn't installed there) - CI is what actually
+  environment (Docker isn't installed there) - the configured CI job
   exercises it, and a real packaging bug in the detection/correlation
   rule-loading path was caught and fixed while writing it (see
   [`docs/architecture.md`](docs/architecture.md)'s Phase 8 section).
@@ -204,6 +255,26 @@ results, the release file manifest, and manual commit/tag instructions.
 
 ## Quick start
 
+The quick start below uses an explicitly enabled, loopback-only demo mode.
+Production mode requires organization-scoped OIDC, HTTPS, and a dedicated
+PostgreSQL database bound to that organization. Docker Compose binds published
+ports to `127.0.0.1`. See the operations guide for authenticated deployments.
+
+### Ingestion guarantees
+
+- Event IDs are immutable: identical normalized retries are accepted;
+  reusing an ID with different content returns HTTP `409` and preserves
+  the original evidence. Replays are not a rule-reprocessing mechanism.
+- Events, detection matches, deviations, and correlated incidents commit
+  together. A processing failure rolls the transaction back.
+- Correlation rechecks later stored signals when an earlier event arrives,
+  while still enforcing each rule's original time window.
+- Late events rebuild baseline and incident evidence for the affected identity.
+  Findings no longer supported are marked superseded; analyst notes are preserved.
+- Interactive evaluation accepts 1-10 instances per scenario and 1-20
+  benign identities through the API (the dashboard exposes the scenario
+  limit). A per-process semaphore permits one interactive evaluation at a time.
+
 ```bash
 cd identitytrace
 python -m venv .venv
@@ -212,12 +283,15 @@ pip install -e ".[dev]"
 
 pytest                          # run the test suite
 
-python scripts/seed_demo_data.py  # optional: populate real incidents to explore
+python scripts/seed_demo_data.py  # optional: populate synthetic incidents to explore
 
-uvicorn app.main:app --reload   # serve at http://127.0.0.1:8000
+# Loopback-only demo. PowerShell: $env:IDENTITYTRACE_DEMO_MODE = '1'
+export IDENTITYTRACE_DEMO_MODE=1
+uvicorn app.main:app --reload --no-access-log
 ```
 
-Or with Docker (runs Postgres + the app together):
+For Docker, first configure the credential and database secret files and run the
+migration steps in [the operations guide](docs/operations.md). Then:
 
 ```bash
 docker compose up --build
@@ -232,7 +306,7 @@ curl http://127.0.0.1:8000/health
 curl -X POST http://127.0.0.1:8000/api/events \
   -H "Content-Type: application/json" \
   -d '{"source":"entra","raw":{"id":"signin-1","createdDateTime":"2026-09-09T17:02:11Z","userPrincipalName":"alice@example.test","appId":"app-123","ipAddress":"203.0.113.25","status":{"errorCode":0},"authenticationProtocol":"deviceCode"}}'
-# -> normalized event, plus a fired IDT-ENTRA-003 (device-code auth) match
+# -> normalized event; query /api/matches to inspect rule results
 
 curl http://127.0.0.1:8000/api/events
 curl http://127.0.0.1:8000/api/detections           # the 14-rule library

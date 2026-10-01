@@ -1,0 +1,2 @@
+# Azure Oryx installs the application and its pyproject.toml dependencies.
+.

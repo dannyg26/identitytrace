@@ -1,0 +1,12 @@
+# One stack per organization. Back up and migrate before starting production mode.
+services:
+  app:
+    environment:
+      IDENTITYTRACE_ENV: production
+      IDENTITYTRACE_OIDC_ISSUER: ${IDENTITYTRACE_OIDC_ISSUER:?Set a tenant-specific issuer}
+      IDENTITYTRACE_OIDC_AUDIENCE: ${IDENTITYTRACE_OIDC_AUDIENCE:?Set the API audience}
+      IDENTITYTRACE_OIDC_JWKS_URL: ${IDENTITYTRACE_OIDC_JWKS_URL:?Set the issuer JWKS URL}
+      IDENTITYTRACE_ORGANIZATION_ID: ${IDENTITYTRACE_ORGANIZATION_ID:?Set the organization ID}
+      IDENTITYTRACE_OIDC_ORG_CLAIM: ${IDENTITYTRACE_OIDC_ORG_CLAIM:-tid}
+      IDENTITYTRACE_OIDC_ROLES_CLAIM: ${IDENTITYTRACE_OIDC_ROLES_CLAIM:-roles}
+      IDENTITYTRACE_OIDC_ROLE_MAP: ${IDENTITYTRACE_OIDC_ROLE_MAP:?Set the explicit role mapping}

@@ -12,7 +12,7 @@ ingestion volume ever made this query the bottleneck - not needed yet.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -35,6 +35,38 @@ class IdentityProfile(BaseModel):
     login_hours: set[int] = Field(default_factory=set)  # UTC hours (0-23) seen
     max_bytes_transferred: Optional[int] = None
     avg_bytes_transferred: Optional[float] = None
+    transfer_count: int = 0
+
+
+def extend_profile(profile: IdentityProfile, event) -> None:
+    """Fold one event into a checkpoint in constant work, excluding set growth."""
+    timestamp = event.timestamp
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.replace(tzinfo=timezone.utc)
+    else:
+        timestamp = timestamp.astimezone(timezone.utc)
+    profile.event_count += 1
+    profile.first_seen = min(profile.first_seen, timestamp) if profile.first_seen else timestamp
+    profile.last_seen = max(profile.last_seen, timestamp) if profile.last_seen else timestamp
+    for field, collection in (
+        ("device_id", "known_devices"), ("ip_address", "known_ips"),
+        ("geo_country", "known_countries"), ("app_id", "known_apps"),
+        ("resource_id", "known_resources"), ("auth_protocol", "known_auth_protocols"),
+    ):
+        value = getattr(event, field)
+        if value:
+            getattr(profile, collection).add(value)
+    profile.login_hours.add(timestamp.hour)
+    if event.bytes_transferred is not None:
+        count = profile.transfer_count
+        profile.avg_bytes_transferred = (
+            (profile.avg_bytes_transferred or 0) * count + event.bytes_transferred
+        ) / (count + 1)
+        profile.transfer_count += 1
+        profile.max_bytes_transferred = max(
+            profile.max_bytes_transferred if profile.max_bytes_transferred is not None else event.bytes_transferred,
+            event.bytes_transferred,
+        )
 
 
 def build_profile(
@@ -52,34 +84,7 @@ def build_profile(
         query = query.filter(EventRecord.timestamp < before)
     records = query.all()
 
-    profile = IdentityProfile(actor_id=actor_id, event_count=len(records))
-    if not records:
-        return profile
-
-    timestamps = [r.timestamp for r in records]
-    profile.first_seen = min(timestamps)
-    profile.last_seen = max(timestamps)
-
-    transferred: list[int] = []
+    profile = IdentityProfile(actor_id=actor_id)
     for r in records:
-        if r.device_id:
-            profile.known_devices.add(r.device_id)
-        if r.ip_address:
-            profile.known_ips.add(r.ip_address)
-        if r.geo_country:
-            profile.known_countries.add(r.geo_country)
-        if r.app_id:
-            profile.known_apps.add(r.app_id)
-        if r.resource_id:
-            profile.known_resources.add(r.resource_id)
-        if r.auth_protocol:
-            profile.known_auth_protocols.add(r.auth_protocol)
-        profile.login_hours.add(r.timestamp.hour)
-        if r.bytes_transferred is not None:
-            transferred.append(r.bytes_transferred)
-
-    if transferred:
-        profile.max_bytes_transferred = max(transferred)
-        profile.avg_bytes_transferred = sum(transferred) / len(transferred)
-
+        extend_profile(profile, r)
     return profile

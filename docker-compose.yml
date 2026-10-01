@@ -11,12 +11,12 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: identitytrace
-      POSTGRES_PASSWORD: identitytrace
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
       POSTGRES_DB: identitytrace
-    ports:
-      - "5432:5432"
     volumes:
       - identitytrace_pgdata:/var/lib/postgresql/data
+    secrets: [db_password]
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U identitytrace"]
       interval: 5s
@@ -26,12 +26,34 @@ services:
   app:
     build: .
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     environment:
-      DATABASE_URL: postgresql+psycopg://identitytrace:identitytrace@postgres:5432/identitytrace
+      IDENTITYTRACE_DB_HOST: postgres
+      IDENTITYTRACE_DB_PASSWORD_FILE: /run/secrets/db_password
+      IDENTITYTRACE_CREDENTIALS_FILE: /run/secrets/app_credentials
+    secrets: [db_password, app_credentials]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    pids_limit: 128
+    mem_limit: 1g
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
     depends_on:
       postgres:
         condition: service_healthy
 
 volumes:
   identitytrace_pgdata:
+
+secrets:
+  db_password:
+    file: ${IDENTITYTRACE_DB_PASSWORD_FILE:?Set IDENTITYTRACE_DB_PASSWORD_FILE}
+  app_credentials:
+    file: ${IDENTITYTRACE_CREDENTIALS_FILE:?Set IDENTITYTRACE_CREDENTIALS_FILE}

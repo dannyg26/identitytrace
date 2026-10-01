@@ -2,40 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}IdentityTrace{% endblock %}</title>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, sans-serif; margin: 0; background: #0f1420; color: #e6e9f0; }
-    header { padding: 16px 24px; background: #141a2b; border-bottom: 1px solid #232b42; display: flex; align-items: center; gap: 24px; }
-    header a { color: #8fb3ff; text-decoration: none; font-weight: 600; }
-    header a.brand { color: #e6e9f0; font-size: 1.1rem; }
-    main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+    :root { color-scheme: light; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #ffffff; color: #222222; }
+    header { padding: 14px 24px; background: #f3f3f3; border-bottom: 1px solid #cfcfcf; display: flex; align-items: center; gap: 20px; }
+    header a { color: #333333; text-decoration: none; font-weight: 600; }
+    header a.brand { color: #111111; font-size: 1.05rem; }
+    main { padding: 24px; max-width: 1120px; margin: 0 auto; }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #232b42; }
-    th { color: #9aa3bd; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; background: #232b42; color: #8fb3ff; }
-    .sev-low { color: #8fb3ff; }
-    .sev-medium { color: #e0c341; }
-    .sev-high { color: #e0913f; }
-    .sev-critical { color: #e05f5f; font-weight: 700; }
-    .enabled-yes { color: #6fcf7a; }
-    .enabled-no { color: #6b7290; }
-    .reason-list { margin: 4px 0 0 0; padding-left: 18px; font-size: 0.8rem; color: #9aa3bd; }
+    th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #d9d9d9; }
+    th { color: #555555; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; }
+    .badge { display: inline-block; padding: 2px 7px; border: 1px solid #bdbdbd; font-size: 0.75rem; background: #f5f5f5; color: #333333; }
+    .sev-low { color: #333333; }
+    .sev-medium { color: #745300; }
+    .sev-high { color: #8a3f00; }
+    .sev-critical { color: #8f1d1d; font-weight: 700; }
+    .enabled-yes { color: #285c2d; }
+    .enabled-no { color: #555555; }
+    .reason-list { margin: 4px 0 0 0; padding-left: 18px; font-size: 0.8rem; color: #555555; }
     .stat-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-    .stat-card { background: #141a2b; border: 1px solid #232b42; border-radius: 10px; padding: 16px 20px; min-width: 140px; }
+    .stat-card { background: #f7f7f7; border: 1px solid #d1d1d1; padding: 16px 20px; min-width: 140px; }
     .stat-card .value { font-size: 1.6rem; font-weight: 700; }
-    .stat-card .label { color: #9aa3bd; font-size: 0.8rem; }
+    .stat-card .label { color: #555555; font-size: 0.8rem; }
     form.filters { margin-bottom: 16px; display: flex; gap: 8px; }
-    form.filters input { background: #141a2b; border: 1px solid #232b42; color: inherit; padding: 6px 10px; border-radius: 6px; }
-    form.filters button { background: #2f5fe0; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; }
-    select, textarea { background: #141a2b; border: 1px solid #232b42; color: inherit; padding: 6px 10px; border-radius: 6px; font-family: inherit; }
-    .btn { background: #2f5fe0; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: inherit; }
+    form.filters input { background: #ffffff; border: 1px solid #bdbdbd; color: inherit; padding: 7px 10px; }
+    form.filters button { background: #444444; color: white; border: none; padding: 7px 14px; cursor: pointer; }
+    select, textarea { background: #ffffff; border: 1px solid #bdbdbd; color: inherit; padding: 7px 10px; font-family: inherit; }
+    .btn { background: #444444; color: white; border: none; padding: 7px 14px; cursor: pointer; font-family: inherit; }
     dl.kv { display: grid; grid-template-columns: 220px 1fr; gap: 6px 12px; margin: 0; }
-    dl.kv dt { color: #9aa3bd; }
+    dl.kv dt { color: #555555; }
     dl.kv dd { margin: 0; }
-    code { background: #141a2b; padding: 1px 5px; border-radius: 4px; }
-    main a { color: #8fb3ff; text-decoration: none; }
+    code { background: #f3f3f3; padding: 1px 5px; }
+    main a { color: #333333; text-decoration: underline; }
     main a:hover { text-decoration: underline; }
+    header { flex-wrap: wrap; gap: 16px; }
+    table { display: block; overflow-x: auto; }
+    td { vertical-align: top; overflow-wrap: anywhere; min-width: 85px; }
+    .incident-table td { min-width: 65px; }
+    .incident-table td:nth-child(1) { min-width: 130px; }
+    .incident-table td:nth-child(2) { min-width: 240px; }
+    .incident-table td:nth-child(7) { min-width: 160px; }
+    .muted { color: #555555; }
+    .notice { padding: 12px 16px; border-left: 3px solid #777777; background: #f5f5f5; margin: 16px 0; }
+    .pager { display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:16px; }
+    .filters { flex-wrap:wrap; }
+    summary { cursor: pointer; color: #333333; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #555555; outline-offset: 3px; }
+    @media(max-width:650px) { main {padding:16px;} h1 {font-size:1.5rem;} dl.kv {grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
@@ -49,6 +64,14 @@
     <a href="/identities">Identities</a>
     <a href="/evaluation">Evaluation</a>
     <a href="/docs">API docs</a>
+    {% if request.state.principal is defined %}<span class="muted">{{ request.state.principal.name }} · {{ request.state.principal.role }}</span>{% endif %}
+    {% if request.app.state.access_policy.browser %}
+      <button class="btn" id="sign-out">Sign out</button>
+      <script>document.getElementById('sign-out').addEventListener('click', async () => {
+        const response = await fetch('/auth/logout', {method:'POST', headers:{'Content-Type':'application/json'}, body:'{}'});
+        if (response.ok) location.assign('/auth/login');
+      });</script>
+    {% endif %}
   </header>
   <main>
     {% block content %}{% endblock %}

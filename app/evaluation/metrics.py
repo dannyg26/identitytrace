@@ -17,6 +17,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 
 from app.evaluation.scenarios import BenignSequence, ScenarioInstance
+from app.evaluation.statistics import wilson_interval
 from app.models.detection import DetectionMatchRecord
 from app.models.incident import IncidentRecord
 
@@ -34,8 +35,10 @@ def _aware(dt: datetime) -> datetime:
 
 
 def _f1(precision: Optional[float], recall: Optional[float]) -> Optional[float]:
-    if precision is None or recall is None or (precision + recall) == 0:
+    if precision is None or recall is None:
         return None
+    if precision + recall == 0:
+        return 0.0
     return round(2 * precision * recall / (precision + recall), 3)
 
 
@@ -47,7 +50,7 @@ def compute_metrics(
     benign_sequences: Optional[list[BenignSequence]] = None,
 ) -> dict:
     all_matches = db.query(DetectionMatchRecord).all()
-    all_incidents = db.query(IncidentRecord).all()
+    all_incidents = db.query(IncidentRecord).filter(IncidentRecord.superseded_at.is_(None)).all()
 
     tp_alerts = [m for m in all_matches if m.event_id in malicious_event_ids]
     fp_alerts = [m for m in all_matches if m.event_id in benign_event_ids]
@@ -92,7 +95,7 @@ def compute_metrics(
     precision_isolated = len(tp_alerts) / len(all_matches) if all_matches else None
     precision_correlated = len(tp_incidents) / len(all_incidents) if all_incidents else None
 
-    fp_rate_isolated = len(fp_alerts) / len(benign_event_ids) if benign_event_ids else None
+    fp_rate_isolated = len({m.event_id for m in fp_alerts}) / len(benign_event_ids) if benign_event_ids else None
     # The correlation layer's false-positive rate needs a denominator that
     # means something at the identity/activity level, not the raw event
     # level (one incident spans several events; "per event" isn't the
@@ -100,9 +103,29 @@ def compute_metrics(
     # rate = false-positive incidents / benign *sequences* (one persona's
     # full activity = one trial), falling back to None if the caller
     # didn't pass sequences (e.g. a hand-built metrics test).
-    fp_rate_correlated = (
-        len(fp_incidents) / len(benign_sequences) if benign_sequences else None
-    )
+    fp_incident_evidence = {eid for incident in fp_incidents for eid in incident.evidence_ids}
+    fp_sequences = sum(bool({event.event_id for event in sequence.events} & fp_incident_evidence)
+                       for sequence in (benign_sequences or []))
+    fp_rate_correlated = fp_sequences / len(benign_sequences) if benign_sequences else None
+
+    def trial_metrics(findings):
+        evidence = set().union(*findings) if findings else set()
+        tp = sum(bool(scenario.malicious_event_ids & evidence) for scenario in scenarios)
+        fp = sum(bool({event.event_id for event in sequence.events} & evidence)
+                 for sequence in (benign_sequences or []))
+        precision = tp / (tp + fp) if tp + fp and benign_sequences else None
+        recall = tp / len(scenarios) if scenarios else None
+        return {"unit": "labeled workflow", "true_positive_workflows": tp,
+                "false_positive_workflows": fp, "precision": precision, "recall": recall,
+                "false_negative_workflows": len(scenarios) - tp,
+                "true_negative_workflows": len(benign_sequences) - fp if benign_sequences is not None else None,
+                "false_positive_rate": fp / len(benign_sequences) if benign_sequences else None,
+                "intervals_95": {
+                    "precision": wilson_interval(tp, tp + fp) if benign_sequences else None,
+                    "recall": wilson_interval(tp, len(scenarios)),
+                    "false_positive_rate": wilson_interval(fp, len(benign_sequences)) if benign_sequences else None,
+                },
+                "f1": _f1(precision, recall)}
 
     alert_reduction_ratio = (
         round(len(all_matches) / len(all_incidents), 2) if all_incidents else None
@@ -126,6 +149,16 @@ def compute_metrics(
     recall_correlated_r = round(recall_correlated, 3)
 
     return {
+        "metric_version": 2,
+        "workflow_metrics": {
+            "isolated_rule_baseline": trial_metrics([{m.event_id} for m in all_matches]),
+            "correlation_engine": trial_metrics([set(i.evidence_ids) for i in all_incidents]),
+        },
+        "metric_definitions": {
+            "isolated_false_positive_rate": "Unique alerted benign events / labeled benign events",
+            "correlation_false_positive_rate": "Benign workflows with a false incident / labeled benign workflows",
+            "legacy_f1": "Legacy mixed alert/incident precision and scenario recall; use workflow_metrics for consistent-unit F1",
+        },
         "totals": {
             "attack_scenarios": len(scenarios),
             "benign_events": len(benign_event_ids),

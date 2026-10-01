@@ -49,5 +49,5 @@ def test_render_svg_truncates_long_labels():
     long_label = "a" * 50
     g.add_node("a", kind="resource", label=long_label)
     svg = render_svg(g)
-    assert long_label not in svg
+    assert f"<title>resource: {long_label}</title>" in svg
     assert "..." in svg

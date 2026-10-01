@@ -1,0 +1,34 @@
+{
+  "run_id": "synthetic-livecheck-20260929-2222",
+  "date_utc": "2026-09-29",
+  "target": "https://identitytrace-d6r4t5afqtrzq.azurewebsites.net",
+  "synthetic": true,
+  "method": "Authenticated browser session, Swagger UI ingestion, incident UI, native report download",
+  "events_submitted": 4,
+  "http_201_responses": 5,
+  "duplicate_replay_count": 1,
+  "persisted_events": 4,
+  "incidents": 1,
+  "benign_control_incidents": 0,
+  "incident_id": "IDT-CORR-005:synthetic-livecheck-20260929-2222-01",
+  "rule": "IDT-CORR-005",
+  "evidence_events": 3,
+  "status": "resolved",
+  "notes_persisted_after_reload": true,
+  "report_downloaded": true,
+  "report_bytes": 38065,
+  "report_sha256": "dfcc54057ea08f966de9299a28351bae8b69bc058e6bd5ead4a160c657bdc06e",
+  "report_content_verified": true,
+  "report_visual_layout_verified": false,
+  "report_render_limitation": "Bundled LibreOffice renderer absent on Windows",
+  "findings": [
+    "Overview still contains obsolete Phase 1 placeholder description",
+    "UI saves status and notes but does not expose separate analyst_disposition field; report consequently says No disposition recorded despite resolved status"
+  ],
+  "not_tested": [
+    "Sustained authenticated load",
+    "Azure backup restore",
+    "Alert email delivery",
+    "Independent detection accuracy"
+  ]
+}

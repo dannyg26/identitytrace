@@ -3,12 +3,24 @@
 {% block content %}
   <h1>Incident queue</h1>
   <form class="filters" method="get" action="/incidents">
-    <input type="text" name="severity" placeholder="severity (low/medium/high/critical)" value="{{ severity }}">
-    <input type="text" name="status" placeholder="status (open/investigating/resolved/false_positive)" value="{{ status }}">
+    <input type="search" name="q" aria-label="Search incidents" placeholder="Search title, identity or notes" value="{{ q }}">
+    <input type="text" name="identity_id" aria-label="Exact identity" placeholder="Exact identity" value="{{ identity_id }}">
+    <select name="severity" aria-label="Severity">
+      <option value="">All severities</option>
+      {% for value in ['low', 'medium', 'high', 'critical'] %}<option value="{{ value }}" {% if severity == value %}selected{% endif %}>{{ value|capitalize }}</option>{% endfor %}
+    </select>
+    <select name="status" aria-label="Status">
+      <option value="">All statuses</option>
+      {% for value in ['open', 'investigating', 'resolved', 'false_positive'] %}<option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ value|replace('_', ' ')|capitalize }}</option>{% endfor %}
+    </select>
     <button type="submit">Filter</button>
+    <label><input type="checkbox" name="include_superseded" value="true" {% if include_superseded %}checked{% endif %}> Include superseded findings</label>
   </form>
+  <p><a href="{{ request.url.replace(path='/api/reports/summary.docx') }}">Download Word report</a>
+    · <a href="{{ request.url.replace(path='/api/reports/incidents.csv') }}">Download CSV</a>
+    · Bookmark this page to save the current filters.</p>
 
-  <table>
+  <table class="incident-table">
     <thead>
       <tr>
         <th>Last event</th><th>Incident</th><th>Scenario</th><th>Severity</th>
@@ -25,11 +37,12 @@
         <td>{{ i.score }}</td>
         <td>{{ i.confidence }}</td>
         <td><a href="/identities/{{ i.identity_id }}">{{ i.identity_id }}</a></td>
-        <td>{{ i.status }}</td>
+        <td>{{ i.status }}{% if i.superseded_at %}<br><span class="muted">Superseded</span>{% endif %}</td>
       </tr>
       {% else %}
       <tr><td colspan="8">No incidents match.</td></tr>
       {% endfor %}
     </tbody>
   </table>
+  {% include "pagination.html" %}
 {% endblock %}

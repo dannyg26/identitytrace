@@ -13,15 +13,18 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends, HTTPException, Request
+from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.correlation.schema import CorrelationRule
 from app.graph.build import build_incident_graph
 from app.graph.serialize import graph_to_dict
+from app.incident_query import IncidentFilters, incident_query
 from app.models.db import get_db
 from app.models.incident import IncidentRecord
+from app.models.operations import AuditRecord
+from app.writes import write_lock
 
 router = APIRouter(tags=["incidents"])
 
@@ -40,9 +43,10 @@ def get_loaded_correlation_rules() -> list[CorrelationRule]:
 
 
 class IncidentUpdate(BaseModel):
+    expected_updated_at: Optional[datetime] = None
     status: Optional[str] = None
-    analyst_disposition: Optional[str] = None
-    notes: Optional[str] = None
+    analyst_disposition: Optional[str] = Field(default=None, max_length=200)
+    notes: Optional[str] = Field(default=None, max_length=20000)
 
 
 @router.get("/correlation-rules")
@@ -69,27 +73,19 @@ def list_correlation_rules() -> list[dict]:
 
 @router.get("/incidents")
 def list_incidents(
-    severity: Optional[str] = None,
-    identity_id: Optional[str] = None,
-    status: Optional[str] = None,
+    filters: IncidentFilters = Depends(),
     scenario: Optional[str] = None,
     limit: int = 50,
     offset: int = 0,
     db: Session = Depends(get_db),
 ) -> list[dict]:
     limit = max(1, min(limit, 1000))
-    query = db.query(IncidentRecord)
-    if severity:
-        query = query.filter(IncidentRecord.severity == severity)
-    if identity_id:
-        query = query.filter(IncidentRecord.identity_id == identity_id)
-    if status:
-        query = query.filter(IncidentRecord.status == status)
+    query = incident_query(db, filters)
     if scenario:
         query = query.filter(IncidentRecord.scenario == scenario)
     records = (
         query.order_by(IncidentRecord.last_event_at.desc())
-        .offset(offset)
+        .offset(max(0, offset))
         .limit(limit)
         .all()
     )
@@ -115,12 +111,24 @@ def get_incident_graph(incident_id: str, db: Session = Depends(get_db)) -> dict:
 
 @router.patch("/incidents/{incident_id}")
 def patch_incident(
-    incident_id: str, update: IncidentUpdate, db: Session = Depends(get_db)
+    incident_id: str, update: IncidentUpdate, request: Request, db: Session = Depends(get_db)
 ) -> dict:
+    with write_lock(db):
+        return _update_incident(incident_id, update, request, db)
+
+
+def _update_incident(incident_id, update, request, db):
     record = db.get(IncidentRecord, incident_id)
     if record is None:
         raise HTTPException(status_code=404, detail=f"incident '{incident_id}' not found")
 
+    def utc(value):
+        return value.replace(tzinfo=timezone.utc) if value.tzinfo is None else value.astimezone(timezone.utc)
+
+    if update.expected_updated_at is not None and utc(update.expected_updated_at) != utc(record.updated_at):
+        raise HTTPException(409, "This incident changed since you opened it. Reload before saving.")
+
+    previous = {key: getattr(record, key) for key in ("status", "analyst_disposition", "notes")}
     if update.status is not None:
         if update.status not in ALLOWED_STATUSES:
             raise HTTPException(
@@ -134,5 +142,8 @@ def patch_incident(
         record.notes = update.notes
 
     record.updated_at = datetime.now(timezone.utc)
+    db.add(AuditRecord(principal=request.state.principal.name, action="incident.updated",
+                       entity_id=incident_id, before=previous,
+                       after={key: getattr(record, key) for key in previous}))
     db.commit()
     return record.to_dict()

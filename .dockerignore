@@ -9,6 +9,14 @@ __pycache__/
 tests/
 docs/
 .env
+.env.*
+*.publishsettings
+publish.xml
+*.pfx
+*.p12
+*.key
+*.db-wal
+*.db-shm
 .ruff_cache/
 
 # Private lab collection stays outside the Docker build context.
@@ -16,3 +24,10 @@ real_data/
 .entra_token_cache.json
 .coverage
 htmlcov/
+credentials*.json
+credentials*.json.tmp
+secrets/
+backups/
+deployments/
+build/
+dist/

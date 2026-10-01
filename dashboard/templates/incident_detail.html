@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ incident.incident_id }} - IdentityTrace{% endblock %}
 {% block content %}
+  {% if incident.superseded_at %}<div class="notice"><strong>Superseded finding.</strong> {{ incident.superseded_reason }}. This record and its analyst notes are retained for review.</div>{% endif %}
   <h1>{{ incident.correlation_rule_title }}</h1>
   <p><code>{{ incident.incident_id }}</code>
     <span class="badge sev-{{ incident.severity }}">{{ incident.severity }}</span>
@@ -36,13 +37,14 @@
   </p>
 
   <h2>Evidence graph</h2>
-  <p style="color:#9aa3bd;font-size:0.85rem">
-    Every identity/session/device/IP/app/resource/privilege touched by this
-    incident's evidence events, per the blueprint's §8.1 relationship
-    vocabulary. Also available as JSON at
-    <code>GET /api/incidents/{{ incident.incident_id }}/graph</code>.
-  </p>
+  <p><a href="/api/reports/incidents/{{ incident.incident_id }}.docx">Download this incident as a Word report</a></p>
+  <p class="muted">Explore the entities connected to this finding. Hover for full labels; scroll horizontally on smaller screens.</p>
   <div style="overflow-x:auto">{{ graph_svg|safe }}</div>
+  <details><summary>Relationship details</summary>
+    <table><thead><tr><th>From</th><th>Relationship</th><th>To</th></tr></thead><tbody>
+    {% for relation in graph_relations %}<tr><td>{{ relation.source }}</td><td>{{ relation.relation }}</td><td>{{ relation.target }}</td></tr>{% endfor %}
+    </tbody></table>
+  </details>
 
   <h2>Timeline &amp; evidence</h2>
   <table>
@@ -69,13 +71,14 @@
 
   <h2>Score breakdown</h2>
   <dl class="kv">
-    <dt>event_risk (Phase 2 rule scores)</dt><dd>+{{ incident.score_breakdown.event_risk }}</dd>
-    <dt>behavioral_deviation (Phase 3 deviation weights)</dt><dd>+{{ incident.score_breakdown.behavioral_deviation }}</dd>
-    <dt>temporal_chain_bonus (this correlation rule)</dt><dd>+{{ incident.score_breakdown.temporal_chain_bonus }}</dd>
+    <dt>Detection evidence</dt><dd>+{{ incident.score_breakdown.event_risk }}</dd>
+    <dt>Behavioral deviations</dt><dd>+{{ incident.score_breakdown.behavioral_deviation }}</dd>
+    <dt>Sequence bonus</dt><dd>+{{ incident.score_breakdown.temporal_chain_bonus }}</dd>
     <dt><strong>total score</strong></dt><dd><strong>{{ incident.score }}</strong> (clamped 0-100)</dd>
   </dl>
 
   <h2>Confidence breakdown</h2>
+  <p class="muted">Evidence-strength heuristic; not a probability of compromise.</p>
   <dl class="kv">
     <dt>correlation_strength</dt><dd>{{ incident.confidence_breakdown.correlation_strength }} (how tightly the chain clustered vs. the {{ incident.window_seconds }}s window)</dd>
     <dt>evidence_quality</dt><dd>{{ incident.confidence_breakdown.evidence_quality }} (based on the rule's {{ incident.attack_chain|length }}-step sequence)</dd>
@@ -98,24 +101,37 @@
       </select>
     </label>
   </p>
+  <p>
+    <label for="disposition-input">Assessment</label>
+    <input id="disposition-input" type="text" maxlength="200" style="width:100%"
+           value="{{ incident.analyst_disposition or '' }}"
+           placeholder="Assessment or reason for resolving this finding">
+  </p>
   <textarea id="notes-input" rows="3" style="width:100%" placeholder="Analyst notes">{{ incident.notes or "" }}</textarea>
   <p>
     <button class="btn" id="save-disposition">Save disposition</button>
     <span id="save-status" style="color:#9aa3bd"></span>
   </p>
   <script>
+    let expectedUpdatedAt = {{ incident.updated_at.isoformat()|tojson }};
     document.getElementById('save-disposition').addEventListener('click', async () => {
       const status = document.getElementById('status-select').value;
       const notes = document.getElementById('notes-input').value;
+      const analyst_disposition = document.getElementById('disposition-input').value;
       const statusEl = document.getElementById('save-status');
       statusEl.textContent = 'Saving...';
       try {
         const resp = await fetch('/api/incidents/{{ incident.incident_id }}', {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({status, notes}),
+          body: JSON.stringify({status, notes, analyst_disposition, expected_updated_at: expectedUpdatedAt}),
         });
-        statusEl.textContent = resp.ok ? 'Saved.' : 'Failed to save.';
+        if (resp.ok) {
+          expectedUpdatedAt = (await resp.json()).updated_at;
+          statusEl.textContent = 'Saved.';
+        } else {
+          statusEl.textContent = resp.status === 409 ? 'This incident changed. Reload before saving.' : 'Failed to save.';
+        }
       } catch (err) {
         statusEl.textContent = 'Failed to save.';
       }

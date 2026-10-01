@@ -1,0 +1,86 @@
+{
+  "completed_at": "2026-09-24T15:59:04.238446+00:00",
+  "environment": {
+    "os": "Windows",
+    "python": "3.12.10",
+    "postgresql": "17.11",
+    "identity_provider": "local HTTPS test issuer; NOT Microsoft Entra",
+    "application_tls": "private lab CA explicitly trusted by clients; no trust-store changes"
+  },
+  "checks": {
+    "both_production_apps_ready": true,
+    "untrusted_tls_rejected": true,
+    "pkce_login_over_verified_tls": true,
+    "secure_session_cookie": true,
+    "logout_revokes_session": true,
+    "wrong_organization_token_rejected": true,
+    "cross_database_connection_rejected": true,
+    "wrong_database_binding_rejected": true,
+    "concurrent_ingestion_correct": true,
+    "second_organization_has_no_events": true,
+    "all_tables_restored_exactly": true
+  },
+  "load": {
+    "workers": 8,
+    "workflows": 100,
+    "requests": 300,
+    "successful_requests": 300,
+    "elapsed_seconds": 29.212,
+    "requests_per_second": 10.27,
+    "latency_p50_ms": 68.63,
+    "latency_p95_ms": 2155.14,
+    "latency_max_ms": 2485.05,
+    "events": 300,
+    "incidents": 100
+  },
+  "recovery": {
+    "tables": {
+      "audit_records": {
+        "rows": 2,
+        "sha256": "c122879a193db973373b0e6f68cc0ee8687c92fb6ab52cc2300ea8c70dab4c42"
+      },
+      "baseline_deviations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "baseline_states": {
+        "rows": 100,
+        "sha256": "945d465ca2794ddf1dfb7ed8a3d80d75f4553368162bcd202e73e98141a33d6c"
+      },
+      "browser_sessions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment_binding": {
+        "rows": 1,
+        "sha256": "f619d936c47b68ef8ccfa6eb65052092f48fa769f2b45f0f5a8b88f46b028a81"
+      },
+      "detection_matches": {
+        "rows": 300,
+        "sha256": "eb650db77563edbb22a7ad7a86a8509868b825ff739673026a75216475ecc85d"
+      },
+      "events": {
+        "rows": 300,
+        "sha256": "df5b2600004629d03e2793f1499d6f4481cca5d0034dbe123609bf9a4bb35219"
+      },
+      "identity_links": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "identitytrace_schema_versions": {
+        "rows": 3,
+        "sha256": "ffde903680a0618a3daa742fdfb87b32c7e9200e07acd18baa1dd7b156bb7b42"
+      },
+      "incidents": {
+        "rows": 100,
+        "sha256": "9a58b50063bf4de75bd0bdcb5661e36d025216f2144dfe8d8ebfae3c50428eb1"
+      }
+    },
+    "dump_sha256": "3dc44949f2299aebe77f5443719448db55d89234adbfdf9b6e8192dbf39f107f"
+  },
+  "limitations": [
+    "Short local workload, not a sustained capacity claim",
+    "No external Entra tenant or public TLS endpoint tested",
+    "Dedicated databases, not shared-table multi-tenancy"
+  ]
+}

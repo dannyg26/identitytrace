@@ -37,6 +37,7 @@ class NormalizedEvent(BaseModel):
     result: str
     actor_id: str
     actor_type: str
+    source_actor_id: Optional[str] = None
     session_id: Optional[str] = None
     device_id: Optional[str] = None
     ip_address: Optional[str] = None
@@ -104,6 +105,7 @@ class EventRecord(Base):
     result: Mapped[str] = mapped_column(String)
     actor_id: Mapped[str] = mapped_column(String, index=True)
     actor_type: Mapped[str] = mapped_column(String)
+    source_actor_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     session_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     device_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     ip_address: Mapped[Optional[str]] = mapped_column(String, nullable=True)
@@ -129,6 +131,7 @@ class EventRecord(Base):
             result=self.result,
             actor_id=self.actor_id,
             actor_type=self.actor_type,
+            source_actor_id=self.source_actor_id,
             session_id=self.session_id,
             device_id=self.device_id,
             ip_address=self.ip_address,
